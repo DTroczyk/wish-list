@@ -10,11 +10,13 @@ import { MainComponent } from './pages/main/main.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, ContactComponent, MainComponent],
+  declarations: [AppComponent, ContactComponent, MainComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,6 +24,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LayoutModule,
     MatButtonModule,
     MatIconModule,
+    MatInputModule,
     MatToolbarModule,
     NgbModule,
   ],
