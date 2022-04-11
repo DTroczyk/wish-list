@@ -19,20 +19,10 @@ $wish-list-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$wish-list-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: $wish-list-primary,
-      accent: $wish-list-accent,
-      warn: $wish-list-warn,
-    ),
-  )
-);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
-@include mat.all-component-themes($wish-list-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
