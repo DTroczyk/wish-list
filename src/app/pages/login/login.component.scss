@@ -1,8 +1,15 @@
 .login-form {
-  display: block;
-  color: white;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 25px auto;
 }
 
-.form-field {
-  background-color: #303030;
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.col-sm {
+  margin: 5px 8px;
 }
