@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -18,7 +19,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [AppComponent, ContactComponent, MainComponent, LoginComponent],
+  declarations: [
+    AppComponent,
+    ContactComponent,
+    LoginComponent,
+    MainComponent,
+    RegisterComponent,
+  ],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
