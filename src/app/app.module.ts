@@ -1,19 +1,20 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
+
+import { AppComponent } from './app.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { MainComponent } from './pages/main/main.component';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MainComponent } from './pages/main/main.component';
-import { ContactComponent } from './pages/contact/contact.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [AppComponent, MainComponent, ContactComponent],
+  declarations: [AppComponent, ContactComponent, MainComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,6 +23,7 @@ import { ContactComponent } from './pages/contact/contact.component';
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
