@@ -9,10 +9,40 @@
       </button>
     </div>
     <div class="user-nav">
-      <button class="nav-button" mat-button routerLink="/register">
-        Register
-      </button>
-      <button class="nav-button" mat-button routerLink="/login">Log In</button>
+      <ng-container *ngIf="user === null; else userLogged">
+        <button class="nav-button" mat-button routerLink="/register">
+          Register
+        </button>
+        <button class="nav-button" mat-button routerLink="/login">
+          Log In
+        </button>
+      </ng-container>
+      <ng-template #userLogged>
+        <button class="nav-button" mat-button [mat-menu-trigger-for]="main">
+          Hi, {{ user.firstName }}
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+        <mat-menu #main="matMenu">
+          <button mat-menu-item [mat-menu-trigger-for]="profile">
+            <mat-icon>person</mat-icon>
+            Profile
+          </button>
+          <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            Settings
+          </button>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>meeting_room</mat-icon>
+            Log Out
+          </button>
+        </mat-menu>
+        <mat-menu #profile="matMenu">
+          <button mat-menu-item>
+            <mat-icon>view_list</mat-icon>
+            My Wish List
+          </button>
+        </mat-menu>
+      </ng-template>
     </div>
   </mat-toolbar>
 </nav>

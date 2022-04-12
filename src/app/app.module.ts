@@ -13,6 +13,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -35,6 +36,7 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatIconModule,
     MatInputModule,
+    MatMenuModule,
     MatToolbarModule,
     NgbModule,
   ],

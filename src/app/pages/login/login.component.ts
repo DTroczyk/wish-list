@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { LoginUser } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +16,8 @@ export class LoginComponent {
     password: '',
   };
 
+  constructor(private userService: UserService, private router: Router) {}
+
   isInputsEmpty(): boolean {
     if (this.user.login === '' || this.user.login === null) return true;
     if (this.user.password === '' || this.user.password === null) return true;
@@ -21,6 +25,10 @@ export class LoginComponent {
   }
 
   login() {
-    alert(`Login user: ${this.user.login}, password: ${this.user.password}`);
+    if (this.userService.login(this.user.login, this.user.password)) {
+      this.router.navigate(['/']);
+    } else {
+      alert('Wrong login or password.');
+    }
   }
 }
