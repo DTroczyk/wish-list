@@ -2,11 +2,16 @@
   <h1>Log In</h1>
   <mat-form-field appearance="fill">
     <mat-label>Username:</mat-label>
-    <input matInput />
+    <input matInput [(ngModel)]="user.login" name="username" />
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Password:</mat-label>
-    <input matInput [type]="hide ? 'password' : 'text'" />
+    <input
+      matInput
+      [type]="hide ? 'password' : 'text'"
+      [(ngModel)]="user.password"
+      name="password"
+    />
     <button mat-icon-button matSuffix (click)="hide = !hide" type="button">
       <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
     </button>
@@ -15,6 +20,13 @@
     <button mat-raised-button class="col-sm" type="button">
       Forgot password
     </button>
-    <button mat-raised-button class="col-sm" type="submit">Login</button>
+    <button
+      mat-raised-button
+      class="col-sm"
+      type="submit"
+      [disabled]="isInputsEmpty()"
+    >
+      Login
+    </button>
   </div>
 </form>
