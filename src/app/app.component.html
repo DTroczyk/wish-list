@@ -20,7 +20,12 @@
       </ng-container>
 
       <ng-template #userLogged>
-        <button class="nav-button" mat-mini-fab color="primary">
+        <button
+          class="nav-button"
+          mat-mini-fab
+          color="primary"
+          routerLink="/messages"
+        >
           <mat-icon
             [matBadge]="4"
             matBadgeColor="warn"
