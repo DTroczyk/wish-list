@@ -18,6 +18,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
     LoginComponent,
     MainComponent,
     RegisterComponent,
+    NotFoundComponent,
   ],
   imports: [
     AppRoutingModule,
