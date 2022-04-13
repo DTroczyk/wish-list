@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { Observable, of, Subject, Subscription } from 'rxjs';
-import { User } from 'src/app/models/user';
+import User from 'src/app/models/user';
 
 @Injectable({
   providedIn: 'root',
@@ -14,13 +14,15 @@ export class UserService {
       email: 'JoeDoe@ex.pl',
       firstName: 'Joe',
       lastName: 'Doe',
+      wishes: [],
+      friends: [],
+      chats: [],
     });
     return true;
   }
 
   logout(): boolean {
     this.user.next(null as any);
-    console.log(this.user);
 
     return true;
   }
