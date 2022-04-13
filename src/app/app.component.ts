@@ -13,7 +13,7 @@ export class AppComponent implements OnInit, OnDestroy {
   subject: Subject<User> = this.userService.user;
   sub: Subscription = new Subscription();
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
     this.sub = this.subject.subscribe((val) => {
@@ -27,5 +27,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   logout(): void {
     this.userService.logout();
+    this.router.navigate(['/']);
   }
 }
