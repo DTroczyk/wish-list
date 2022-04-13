@@ -8,6 +8,7 @@
         Contact
       </button>
     </div>
+
     <div class="user-nav">
       <ng-container *ngIf="user === null; else userLogged">
         <button class="nav-button" mat-button routerLink="/register">
@@ -17,11 +18,21 @@
           Log In
         </button>
       </ng-container>
+
       <ng-template #userLogged>
+        <button class="nav-button" mat-mini-fab color="primary">
+          <mat-icon
+            [matBadge]="4"
+            matBadgeColor="warn"
+            matBadgePosition="before"
+            >message</mat-icon
+          >
+        </button>
         <button class="nav-button" mat-button [mat-menu-trigger-for]="main">
           Hi, {{ user.firstName }}
           <mat-icon>keyboard_arrow_down</mat-icon>
         </button>
+
         <mat-menu #main="matMenu">
           <button mat-menu-item [mat-menu-trigger-for]="profile">
             <mat-icon>person</mat-icon>
@@ -36,10 +47,15 @@
             Log Out
           </button>
         </mat-menu>
+
         <mat-menu #profile="matMenu">
           <button mat-menu-item>
             <mat-icon>view_list</mat-icon>
             My Wish List
+          </button>
+          <button mat-menu-item>
+            <mat-icon>people</mat-icon>
+            Friends
           </button>
         </mat-menu>
       </ng-template>

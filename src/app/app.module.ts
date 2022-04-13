@@ -10,6 +10,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
 import { RegisterComponent } from './pages/register/register.component';
 
+import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -35,6 +36,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     BrowserModule,
     FormsModule,
     LayoutModule,
+    MatBadgeModule,
     MatButtonModule,
     MatIconModule,
     MatInputModule,
