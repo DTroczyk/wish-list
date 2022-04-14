@@ -4,6 +4,13 @@
       <div class="channels-column-title row">
         <div class="title" (click)="isChannelsHidden = !isChannelsHidden">
           Channels
+          <span class="small">
+            <mat-icon>
+              {{
+                isChannelsHidden ? "keyboard_arrow_down" : "keyboard_arrow_up"
+              }}
+            </mat-icon>
+          </span>
         </div>
       </div>
       <div class="channels-column-textbox row">
@@ -14,12 +21,12 @@
           </button>
         </div>
       </div>
+      <div
+        class="channels-column-content row"
+        [ngClass]="isChannelsHidden ? '' : 'visible'"
+      >
         <div class="channel">
           <div class="channel-title">Very Long title of this channel</div>
-          <p class="channel-last-message">last message</p>
-        </div>
-        <div class="channel">
-          <div class="channel-title">Title</div>
           <p class="channel-last-message">last message</p>
         </div>
         <div class="channel">
@@ -34,16 +41,6 @@
             voluptate at et in id consectetur porro illo quia neque ea suscipit
             ut!
           </p>
-        </div>
-      </div>
-      <div class="column-content">
-        <div class="channel">
-          <div class="channel-title">Title</div>
-          <p class="channel-last-message">last message</p>
-        </div>
-        <div class="channel">
-          <div class="channel-title">Title</div>
-          <p class="channel-last-message">last message</p>
         </div>
       </div>
     </div>
@@ -80,10 +77,6 @@
           </div>
         </div>
       </div>
-      <div class="textbox row">
-        <div class="col-11">
-          <textarea class="textbox-input" type="text"></textarea>
-        </div>
       <div class="chat-column-textbox row">
         <div class="col-sm">
           <textarea class="chat-textbox-input" type="text"></textarea>
