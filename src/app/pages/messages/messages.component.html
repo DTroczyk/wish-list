@@ -1,8 +1,40 @@
 <div class="chat-container container">
-  <div class="row">
-    <div class="channels col-3">
-      <div class="column-title">
-        <div class="title">Channels</div>
+  <div class="row chat-row">
+    <div class="channels col-sm-3 container">
+      <div class="channels-column-title row">
+        <div class="title" (click)="isChannelsHidden = !isChannelsHidden">
+          Channels
+        </div>
+      </div>
+      <div class="channels-column-textbox row">
+        <div class="col-sm large">
+          <input class="channels-textbox-input" type="text" />
+          <button mat-mini-fab class="channels-textbox-button">
+            <mat-icon>search</mat-icon>
+          </button>
+        </div>
+      </div>
+        <div class="channel">
+          <div class="channel-title">Very Long title of this channel</div>
+          <p class="channel-last-message">last message</p>
+        </div>
+        <div class="channel">
+          <div class="channel-title">Title</div>
+          <p class="channel-last-message">last message</p>
+        </div>
+        <div class="channel">
+          <div class="channel-title">Title</div>
+          <p class="channel-last-message">last message</p>
+        </div>
+        <div class="channel">
+          <div class="channel-title">Title</div>
+          <p class="channel-last-message">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi,
+            reiciendis cum facere nobis, exercitationem sequi quasi, libero
+            voluptate at et in id consectetur porro illo quia neque ea suscipit
+            ut!
+          </p>
+        </div>
       </div>
       <div class="column-content">
         <div class="channel">
@@ -15,11 +47,11 @@
         </div>
       </div>
     </div>
-    <div class="chat col-9">
-      <div class="column-title">
+    <div class="chat col-sm-9 container">
+      <div class="row chat-column-title">
         <div class="title">Selected Channel</div>
       </div>
-      <div class="column-content">
+      <div class="row chat-column-content">
         <div class="message">
           <div class="message-text">
             Lorem ipsum dolor, sit amet consectetur adipisicing elit.
@@ -39,13 +71,23 @@
             Consequuntur aperiam iste, cumque, dicta nihil tempore dignissimos
           </div>
         </div>
+        <div class="message owner">
+          <div class="message-text owner">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque est
+            et ut earum. Vero porro odio accusantium ea neque voluptas cum,
+            facere perspiciatis, laborum repudiandae molestias quo aliquam
+            numquam distinctio?
+          </div>
+        </div>
       </div>
       <div class="textbox row">
         <div class="col-11">
           <textarea class="textbox-input" type="text"></textarea>
         </div>
-        <div class="col-1">
-          <button mat-mini-fab class="sent-button">
+      <div class="chat-column-textbox row">
+        <div class="col-sm">
+          <textarea class="chat-textbox-input" type="text"></textarea>
+          <button mat-mini-fab class="chat-textbox-button">
             <mat-icon>send</mat-icon>
           </button>
         </div>

@@ -7,39 +7,73 @@
   max-height: 80vh;
 }
 
-.column-title {
-  max-height: 15%;
-}
-
-.column-content {
-  max-height: 85%;
-  overflow: auto;
+.chat-row {
+  max-height: 80vh;
 }
 
 .title {
   font-size: 25px;
-  margin: 10px;
+  margin-left: 10px;
+  padding: 10px;
 }
 
 .channels {
   background-color: #222;
-  max-height: 100%;
-  overflow: hidden;
+  max-height: 80vh;
+}
+
+.channels-column-title {
+  height: 100%;
+  max-height: 8%;
+}
+
+.channels-column-content {
+  max-height: 85%;
+  overflow: auto;
+}
+
+.channels-column-textbox {
+  height: 100%;
+  max-height: 7%;
+}
+
+.channels-textbox-input {
+  padding: 5px 10px 6px 10px;
+  border-radius: 15px;
+  resize: none;
+  width: 100%;
+}
+
+.channels-textbox-button {
+  position: sticky;
+  left: 100%;
+  bottom: 100%;
+  transform: scale(0.7) translateY(-4px);
 }
 
 .channel {
   border-radius: 4px;
+  margin-top: 5px;
+  max-height: 80px;
+  height: 100%;
 }
 
 .channel-title {
   font-size: 20px;
   padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .channel-last-message {
   padding: 5px 0 5px 20px;
   color: #ccc;
-  text-overflow: clip;
+  font-size: 13px;
+  max-height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .channel:nth-child(even) {
@@ -52,8 +86,37 @@
 
 .chat {
   background-color: #444;
-  max-height: 100%;
-  overflow: hidden;
+  max-height: 80vh;
+}
+
+.chat-column-title {
+  height: 100%;
+  max-height: 8%;
+}
+
+.chat-column-content {
+  max-height: 80%;
+  overflow: auto;
+}
+
+.chat-column-textbox {
+  height: 100%;
+  max-height: 12%;
+}
+
+.chat-textbox-input {
+  padding: 5px 30px 5px 10px;
+  margin: 5px;
+  border-radius: 15px;
+  resize: none;
+  width: 100%;
+}
+
+.chat-textbox-button {
+  margin-top: 10px;
+  position: sticky;
+  left: 100%;
+  bottom: 100%;
 }
 
 .message {
@@ -65,7 +128,6 @@
 .message.owner {
   margin-top: 5px;
   width: 100%;
-  display: flex;
   flex-direction: row-reverse;
 }
 
@@ -73,11 +135,12 @@
   background-color: #ddd;
   color: black;
   width: fit-content;
-  max-width: 100%;
+  max-width: 97%;
   padding: 10px;
   border-radius: 20px;
   overflow: hidden;
   word-wrap: break-word;
+  margin-right: 5px;
 }
 
 .message-text.owner {
