@@ -24,17 +24,17 @@
 
 .channels-column-title {
   height: 100%;
-  max-height: 8%;
+  max-height: 45px;
 }
 
 .channels-column-content {
-  max-height: 85%;
+  max-height: calc(100% - 85px);
   overflow: auto;
 }
 
 .channels-column-textbox {
   height: 100%;
-  max-height: 7%;
+  max-height: 40px;
 }
 
 .channels-textbox-input {
@@ -91,17 +91,17 @@
 
 .chat-column-title {
   height: 100%;
-  max-height: 8%;
+  max-height: 35px;
 }
 
 .chat-column-content {
-  max-height: 80%;
+  max-height: calc(100% - 95px);
   overflow: auto;
 }
 
 .chat-column-textbox {
   height: 100%;
-  max-height: 12%;
+  max-height: 60px;
 }
 
 .chat-textbox-input {
@@ -110,6 +110,10 @@
   border-radius: 15px;
   resize: none;
   width: 100%;
+}
+
+.chat-textbox-input::-webkit-scrollbar {
+  display: none;
 }
 
 .chat-textbox-button {
@@ -170,6 +174,11 @@
     display: inline;
   }
 
+  .channel {
+    margin-top: 0;
+    padding: 3px 0;
+  }
+
   .channels-column-title > .title {
     text-align: center;
   }
@@ -185,5 +194,6 @@
     background-color: #1c1c1c;
     width: 100%;
     z-index: 100;
+    max-height: 80vh;
   }
 }
