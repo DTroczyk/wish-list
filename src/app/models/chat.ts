@@ -3,7 +3,7 @@ export default interface Chat {
   name: string;
   users: string[];
   messages: Message[];
-  lastAcces: LastAccess[];
+  lastAccess: LastAccess[];
 }
 
 export interface Message {
