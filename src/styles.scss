@@ -28,12 +28,13 @@ $wish-list-warn: mat.define-palette(mat.$red-palette);
 
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
+@import "./assets/styles/variables.scss";
 
 html,
 body {
   margin: 0;
   height: 100%;
-  background-color: #303030;
+  background-color: $main-background;
   color: #fff;
 }
 header {
@@ -53,6 +54,6 @@ header {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #9c27b0;
+  background: $primary-color;
   border-radius: 10px;
 }

@@ -3,6 +3,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { ContactComponent } from './pages/contact/contact.component';
@@ -16,9 +18,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 
@@ -44,6 +45,7 @@ import { MessagesComponent } from './pages/messages/messages.component';
     MatInputModule,
     MatMenuModule,
     MatToolbarModule,
+    MatTooltipModule,
     NgbModule,
   ],
   providers: [],

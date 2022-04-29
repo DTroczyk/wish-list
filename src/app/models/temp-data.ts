@@ -26,6 +26,18 @@ export const messages: Message[] = [
     postDate: new Date(2022, 3, 29, 9, 15, 24),
     text: 'Hello!',
   },
+  {
+    chatId: 2,
+    author: '?unknown?',
+    postDate: new Date(2022, 3, 29, 12, 45, 1),
+    text: 'Hello!',
+  },
+  {
+    chatId: 3,
+    author: '?unknown?',
+    postDate: new Date(2022, 3, 29, 12, 45, 1),
+    text: 'Hello!',
+  },
 ];
 
 export const channels: Chat[] = [

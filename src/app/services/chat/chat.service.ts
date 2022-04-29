@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { Subject, Subscription } from 'rxjs';
-import Chat from 'src/app/models/chat';
+import Chat, { Message } from 'src/app/models/chat';
 import User from 'src/app/models/user';
 import { UserService } from '../user/user.service';
 
@@ -41,6 +41,10 @@ export class ChatService implements OnDestroy {
     );
   }
 
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
+
   private unreadMessages() {
     let chats = [...this._chats];
     chats = chats.filter((chat) => {
@@ -48,7 +52,7 @@ export class ChatService implements OnDestroy {
         if (
           la.chatId === chat.id &&
           la.user.toLowerCase() === this.username.toLowerCase() &&
-          la.date.getDate() < Date.now()
+          la.date < chat.messages[chat.messages.length - 1]?.postDate
         )
           return true;
         return false;
@@ -59,7 +63,19 @@ export class ChatService implements OnDestroy {
     this.unreadMessagesSubject.next(chats.length);
   }
 
-  ngOnDestroy(): void {
-    this.subs.unsubscribe();
+  public sendMessage(message: string, chatId: number): void {
+    if (message && chatId) {
+      let newMessage: Message = {
+        chatId: chatId,
+        text: message,
+        author: this.username,
+        postDate: new Date(),
+      };
+
+      let chat = this._chats.find((chat) => chat.id === chatId);
+      chat?.messages.push(newMessage);
+
+      this.chatsSubject.next(this._chats);
+    }
   }
 }

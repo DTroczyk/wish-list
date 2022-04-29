@@ -47,12 +47,39 @@
         <div class="row chat-column-content">
           <div
             class="message"
-            *ngFor="let message of selectedChannel.messages"
+            *ngFor="let message of selectedChannel.messages; let i = index"
             [class.owner]="
               message.author.toLowerCase() === ownerLogin.toLowerCase()
             "
           >
-            <div class="message-text">
+            <div
+              class="message-date"
+              *ngIf="
+                (i - 1 >= 0 &&
+                  selectedChannel.messages[i - 1].postDate.getTime() <
+                    message.postDate.getTime() - 600000 &&
+                  message.author !== ownerLogin) ||
+                (i === 0 && message.author !== ownerLogin)
+              "
+            >
+              {{ displayDate(message.postDate) }}
+            </div>
+            <div
+              class="message-owner-name"
+              *ngIf="
+                (i - 1 >= 0 &&
+                  message.author.toLowerCase() !== ownerLogin.toLowerCase() &&
+                  message.author !== selectedChannel.messages[i - 1].author) ||
+                (i === 0 &&
+                  message.author.toLowerCase() !== ownerLogin.toLowerCase())
+              "
+            >
+              {{ message.author }}
+            </div>
+            <div
+              class="message-text"
+              [matTooltip]="displayDate(message.postDate)"
+            >
               {{ message.text }}
             </div>
           </div>

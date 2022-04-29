@@ -1,7 +1,9 @@
+@import "../../../assets/styles/variables.scss";
+
 .chat-container {
   margin-top: 20px;
   border-radius: 10px;
-  background-color: #3c3c3c;
+  background-color: $component-background;
   box-shadow: 2px 2px 2px 2px #1c1c1c;
   overflow: hidden;
   max-height: 80vh;
@@ -100,7 +102,7 @@
 }
 
 .chat-column-content {
-  max-height: calc(100% - 95px);
+  max-height: calc(80vh - 95px);
   overflow: auto;
 }
 
@@ -132,6 +134,7 @@
   margin-top: 5px;
   width: 100%;
   display: flex;
+  flex-direction: column;
 }
 
 .message.owner {
@@ -141,8 +144,18 @@
 }
 
 .message.owner > .message-text {
-  background-color: #9c27b0;
+  background-color: $primary-color;
   color: white;
+}
+
+.message-owner-name {
+  font-size: 12px;
+  margin-left: 10px;
+}
+
+.message-date {
+  position: relative;
+  text-align: center;
 }
 
 .message-text {
