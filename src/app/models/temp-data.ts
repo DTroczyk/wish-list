@@ -72,13 +72,59 @@ export const channels: Chat[] = [
   },
 ];
 
+// export default interface Wish {
+//   id: number;
+//   name: string;
+//   userId: string;
+//   price: number | null;
+//   description: string;
+//   imageUrl: string;
+// }
+
 export const users: User[] = [
   {
     login: 'DTroczyk',
     email: 'DTroczyk@wishlist.com',
     firstName: 'Dominik',
     lastName: 'Wish',
-    wishes: [],
+    wishes: [
+      {
+        id: 1,
+        name: 'Bike',
+        userId: 'DTroczyk',
+        price: 269999,
+        description: 'I want a bike for the city and the forest',
+        imageUrl:
+          'https://www.greenbike.pl/images/level_2_0_black_blue_white_egloss.png.jpg',
+      },
+      {
+        id: 2,
+        name: 'Motorbike 125cm',
+        userId: 'DTroczyk',
+        price: 599999,
+        description: 'Motorbike is good for cities.',
+        imageUrl:
+          'https://www.autocentrum.pl/ac-file/article/5892c61c582c7da1b2909bb7/honda-cbr-125-r-scigacz-w-miniaturze-07.jpg',
+      },
+      {
+        id: 3,
+        name: 'DJI Spark',
+        userId: 'DTroczyk',
+        price: 150000,
+        description: 'DJI Spark is like an flying tank. Good for begginers.',
+        imageUrl:
+          'https://www.cnet.com/a/img/resize/668d2aca568ea89f72001ef46c323c4f62098ac0/hub/2017/07/14/057fc4a6-5f1b-404b-928f-d91c83e8cf92/dji-spark-0013.jpg?auto=webp&width=768',
+      },
+      {
+        id: 4,
+        name: 'Raspberry',
+        userId: 'DTroczyk',
+        price: 29999,
+        description: 'Raspberry for my projects.',
+        imageUrl:
+          'https://cdn-reichelt.de/bilder/web/xxl_ws/A300/PI4_CASE1_255.png',
+      },
+    ],
     friends: [],
     chats: [channels[0], channels[2]],
   },

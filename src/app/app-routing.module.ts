@@ -4,6 +4,7 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
 import { MessagesComponent } from './pages/messages/messages.component';
+import { MyWishListComponent } from './pages/my-wish-list/my-wish-list.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './pages/register/register.component';
 
@@ -32,6 +33,15 @@ const routes: Routes = [
   {
     path: 'messages',
     component: MessagesComponent,
+  },
+  {
+    path: 'profile',
+    children: [
+      {
+        path: 'my-wish-list',
+        component: MyWishListComponent,
+      },
+    ],
   },
   {
     path: '**',

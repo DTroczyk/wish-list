@@ -14,6 +14,7 @@ import { RegisterComponent } from './pages/register/register.component';
 
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
@@ -22,6 +23,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MessagesComponent } from './pages/messages/messages.component';
+import { MyWishListComponent } from './pages/my-wish-list/my-wish-list.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { MessagesComponent } from './pages/messages/messages.component';
     RegisterComponent,
     NotFoundComponent,
     MessagesComponent,
+    MyWishListComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -41,6 +44,7 @@ import { MessagesComponent } from './pages/messages/messages.component';
     LayoutModule,
     MatBadgeModule,
     MatButtonModule,
+    MatCardModule,
     MatIconModule,
     MatInputModule,
     MatMenuModule,
