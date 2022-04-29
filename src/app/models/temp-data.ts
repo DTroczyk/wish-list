@@ -5,20 +5,26 @@ export const messages: Message[] = [
   {
     chatId: 1,
     author: 'DTroczyk',
-    postDate: new Date('28-04-2022 14:12:24'),
+    postDate: new Date(2022, 3, 28, 14, 12, 24),
     text: 'Hello',
   },
   {
     chatId: 1,
     author: 'joedoe',
-    postDate: new Date('28-04-2022 15:02:24'),
+    postDate: new Date(2022, 3, 28, 15, 2, 24),
     text: 'Hello',
   },
   {
     chatId: 1,
     author: 'joedoe',
-    postDate: new Date('28-04-2022 15:02:24'),
+    postDate: new Date(2022, 3, 28, 15, 2, 24),
     text: 'Are you good?',
+  },
+  {
+    chatId: 3,
+    author: 'janedoe',
+    postDate: new Date(2022, 3, 29, 9, 15, 24),
+    text: 'Hello!',
   },
 ];
 
@@ -29,8 +35,8 @@ export const channels: Chat[] = [
     users: ['DTroczyk', 'joedoe'],
     messages: messages.filter((mes) => mes.chatId === 1),
     lastAccess: [
-      { date: new Date('28-04-2022 14:13:24'), user: 'dtroczyk', chatId: 1 },
-      { date: new Date('28-04-2022 15:03:24'), user: 'joedoe', chatId: 1 },
+      { date: new Date(2022, 3, 28, 14, 13, 24), user: 'dtroczyk', chatId: 1 },
+      { date: new Date(2022, 3, 28, 15, 3, 24), user: 'joedoe', chatId: 1 },
     ],
   },
   {
@@ -39,8 +45,8 @@ export const channels: Chat[] = [
     users: ['joedoe', 'janedoe'],
     messages: messages.filter((mes) => mes.chatId === 2),
     lastAccess: [
-      { date: new Date('28-04-2022 14:13:24'), user: 'joedoe ', chatId: 2 },
-      { date: new Date('28-04-2022 15:03:24'), user: 'janedoe', chatId: 2 },
+      { date: new Date(2022, 3, 28, 14, 13, 24), user: 'joedoe ', chatId: 2 },
+      { date: new Date(2022, 3, 28, 15, 3, 24), user: 'janedoe', chatId: 2 },
     ],
   },
   {
@@ -48,7 +54,9 @@ export const channels: Chat[] = [
     name: 'Dominik, Joe, Jane',
     users: ['DTroczyk', 'joedoe', 'janedoe'],
     messages: messages.filter((mes) => mes.chatId === 3),
-    lastAccess: [],
+    lastAccess: [
+      { date: new Date(2022, 3, 28, 14, 13, 24), user: 'dtroczyk', chatId: 3 },
+    ],
   },
 ];
 

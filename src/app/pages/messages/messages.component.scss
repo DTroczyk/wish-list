@@ -56,6 +56,11 @@
   margin-top: 5px;
   max-height: 80px;
   height: 100%;
+  cursor: pointer;
+}
+
+.channel:hover {
+  background-color: #444 !important;
 }
 
 .channel-title {
@@ -135,6 +140,11 @@
   flex-direction: row-reverse;
 }
 
+.message.owner > .message-text {
+  background-color: #9c27b0;
+  color: white;
+}
+
 .message-text {
   background-color: #ddd;
   color: black;
@@ -145,11 +155,6 @@
   overflow: hidden;
   word-wrap: break-word;
   margin-right: 5px;
-}
-
-.message-text.owner {
-  background-color: #9c27b0;
-  color: white;
 }
 
 .small {

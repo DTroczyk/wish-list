@@ -7,18 +7,26 @@ import User from 'src/app/models/user';
   providedIn: 'root',
 })
 export class UserService implements OnDestroy {
-  userSubject: Subject<User> = new Subject<User>();
+  public userSubject: Subject<User> = new Subject<User>();
+  public get user() {
+    return this._user;
+  }
 
   private _user!: User | null;
   private subs: Subscription = new Subscription();
 
   login(username: string, password: string): boolean {
-    this._user = users.find((user) => user.login === username) as User | null;
-    if (this._user !== null) {
-      this.userSubject.next(this._user);
+    this._user = users.find(
+      (user) => user.login.toLowerCase() === username.toLowerCase()
+    ) as User | null;
+
+    if (this._user) {
+      this.userSubject.next(this._user as User);
       return true;
     }
+    this._user = null;
 
+    this.userSubject.next(this._user as any);
     return false;
   }
 

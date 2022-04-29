@@ -27,7 +27,8 @@
           routerLink="/messages"
         >
           <mat-icon
-            [matBadge]="4"
+            [matBadge]="unreadMessagesCount"
+            [matBadgeHidden]="unreadMessagesCount <= 0"
             matBadgeColor="warn"
             matBadgePosition="before"
             >message</mat-icon
