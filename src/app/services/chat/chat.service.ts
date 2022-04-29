@@ -34,6 +34,7 @@ export class ChatService implements OnDestroy {
           this.unreadMessages();
         } else {
           this._chats = null as any;
+          this.username = '';
           this.chatsSubject.next(this._chats);
           this.unreadMessagesSubject.next(0);
         }
@@ -52,7 +53,8 @@ export class ChatService implements OnDestroy {
         if (
           la.chatId === chat.id &&
           la.user.toLowerCase() === this.username.toLowerCase() &&
-          la.date < chat.messages[chat.messages.length - 1]?.postDate
+          la.date.getTime() <
+            chat.messages[chat.messages.length - 1]?.postDate.getTime()
         )
           return true;
         return false;
@@ -75,7 +77,25 @@ export class ChatService implements OnDestroy {
       let chat = this._chats.find((chat) => chat.id === chatId);
       chat?.messages.push(newMessage);
 
+      this.updateLastAccess(chatId);
+    }
+  }
+
+  public updateLastAccess(chatId: number) {
+    if (this.username !== '') {
+      let lastAccess;
+      let chat = this._chats.find((chat) => chat.id === chatId);
+      if (chat) {
+        lastAccess = chat.lastAccess.find(
+          (la) => la.user.toUpperCase() === this.username.toUpperCase()
+        );
+      } else return;
+      if (lastAccess) {
+        lastAccess.date = new Date();
+      } else return;
+
       this.chatsSubject.next(this._chats);
+      this.unreadMessages();
     }
   }
 }

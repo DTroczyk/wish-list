@@ -32,7 +32,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
   ) {
     this.selectedChannel = null as any;
     this.chats = chatService.chats;
-    this.selectedChannel = this.chats[0];
+    this.selectChannel(this.chats[0]);
     this.chatSubject = chatService.chatsSubject;
     this.subs = new Subscription();
     this.ownerLogin = userService.user?.login ? userService.user.login : '';
@@ -47,6 +47,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
   selectChannel(chat: Chat) {
     this.selectedChannel = chat;
     this.isChannelsHidden = true;
+    this.chatService.updateLastAccess(chat.id);
   }
 
   sendMessage() {
