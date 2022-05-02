@@ -1,12 +1,27 @@
 <nav>
   <mat-toolbar class="toolbar" color="primary">
     <div class="toolbar-nav">
+      <button
+        class="nav-button expand-button small-nav"
+        mat-button
+        [mat-menu-trigger-for]="responsiveMenu"
+      >
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </button>
       <button class="nav-button" mat-button routerLink="/main">
         Wish List
       </button>
-      <button class="nav-button" mat-button routerLink="/contact">
+      <button class="nav-button big-nav" mat-button routerLink="/contact">
         Contact
       </button>
+
+      <mat-menu #responsiveMenu="matMenu">
+        <button class="nav-button" mat-button routerLink="/contact">
+          <mat-icon>contact_phone</mat-icon>
+
+          Contact
+        </button>
+      </mat-menu>
     </div>
 
     <div class="user-nav">
@@ -34,8 +49,20 @@
             >message</mat-icon
           >
         </button>
-        <button class="nav-button" mat-button [mat-menu-trigger-for]="main">
+        <button
+          class="nav-button big-nav-user"
+          mat-button
+          [mat-menu-trigger-for]="main"
+        >
           Hi, {{ user.firstName }}
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+
+        <button
+          class="nav-button small-nav-user"
+          mat-button
+          [mat-menu-trigger-for]="main"
+        >
           <mat-icon>keyboard_arrow_down</mat-icon>
         </button>
 
