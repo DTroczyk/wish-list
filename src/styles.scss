@@ -57,3 +57,10 @@ header {
   background: $primary-color;
   border-radius: 10px;
 }
+
+mat-spinner {
+  position: fixed !important;
+  z-index: 100;
+  left: 45%;
+  top: 45%;
+}

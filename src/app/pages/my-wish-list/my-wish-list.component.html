@@ -1,9 +1,22 @@
 <div class="bootstrap-wrapper">
   <div class="container">
-    <div class="row">
+    <div class="toolbar">
+      <button
+        mat-mini-fab
+        color="primary"
+        class="add-button"
+        (click)="openDialog()"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <mat-spinner *ngIf="isWishesLoading"></mat-spinner>
+    <div class="row g-1" *ngIf="!isWishesLoading">
       <mat-card
         *ngFor="let item of user.wishes"
         class="item col-12 col-sm-6 col-md-4 col-lg-3"
+        matTooltip="Click to edit."
+        (click)="openDialog(item)"
       >
         <mat-card-title-group>
           <mat-card-title>{{ item.name }}</mat-card-title>

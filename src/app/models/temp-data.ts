@@ -111,7 +111,7 @@ export const users: User[] = [
         name: 'DJI Spark',
         userId: 'DTroczyk',
         price: 150000,
-        description: 'DJI Spark is like an flying tank. Good for begginers.',
+        description: 'DJI Spark is like a flying tank. Good for beginners.',
         imageUrl:
           'https://www.cnet.com/a/img/resize/668d2aca568ea89f72001ef46c323c4f62098ac0/hub/2017/07/14/057fc4a6-5f1b-404b-928f-d91c83e8cf92/dji-spark-0013.jpg?auto=webp&width=768',
       },

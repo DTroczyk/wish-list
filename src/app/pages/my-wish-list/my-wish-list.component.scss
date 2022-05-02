@@ -5,3 +5,20 @@
   width: auto;
   height: auto;
 }
+
+.item {
+  cursor: pointer;
+}
+
+.item:hover {
+  background-color: #474747;
+}
+
+.toolbar {
+  text-align: right;
+}
+
+.add-button {
+  margin: 5px;
+  position: relative;
+}
