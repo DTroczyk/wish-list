@@ -1,11 +1,5 @@
-import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewChild,
-} from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import Chat from 'src/app/models/chat';
 import { ChatService } from 'src/app/services/chat/chat.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -16,14 +10,13 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./messages.component.scss'],
 })
 export class MessagesComponent implements OnInit, OnDestroy {
-  public chats: Chat[];
+  public chats!: Chat[];
   public selectedChannel: Chat;
-  public ownerLogin: string;
+  public ownerLogin!: string;
   public messageText!: string;
   public isChannelsHidden: boolean = true;
   public isChatsLoading: boolean = true;
 
-  private chatSubject: Subject<Chat[]>;
   private subs: Subscription;
 
   constructor(
@@ -31,14 +24,23 @@ export class MessagesComponent implements OnInit, OnDestroy {
     private userService: UserService
   ) {
     this.selectedChannel = null as any;
-    this.chats = chatService.chats;
-    this.selectChannel(this.chats[0]);
-    this.chatSubject = chatService.chatsSubject;
     this.subs = new Subscription();
-    this.ownerLogin = userService.user?.login ? userService.user.login : '';
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.subs.add(
+      this.userService.userSubject.subscribe(
+        (res) => (this.ownerLogin = res.login)
+      )
+    );
+    this.subs.add(
+      this.chatService.chatsSubject.subscribe((res) => {
+        this.chats = res;
+        this.isChatsLoading = false;
+        if (this.selectedChannel === null) this.selectChannel(res[0]);
+      })
+    );
+  }
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
@@ -47,7 +49,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
   selectChannel(chat: Chat) {
     this.selectedChannel = chat;
     this.isChannelsHidden = true;
-    this.chatService.updateLastAccess(chat.id);
+    setTimeout(() => this.chatService.updateLastAccess(chat.id));
   }
 
   sendMessage() {

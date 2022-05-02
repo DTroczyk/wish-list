@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { Subject, Subscription } from 'rxjs';
+import { BehaviorSubject, Subject, Subscription } from 'rxjs';
 import Chat, { Message } from 'src/app/models/chat';
 import User from 'src/app/models/user';
 import { UserService } from '../user/user.service';
@@ -8,10 +8,7 @@ import { UserService } from '../user/user.service';
   providedIn: 'root',
 })
 export class ChatService implements OnDestroy {
-  public chatsSubject: Subject<Chat[]>;
-  public get chats(): Chat[] {
-    return this._chats;
-  }
+  public chatsSubject: BehaviorSubject<Chat[]>;
   public unreadMessagesSubject: Subject<number>;
 
   private userSubject: Subject<User>;
@@ -21,8 +18,8 @@ export class ChatService implements OnDestroy {
 
   constructor(private userService: UserService) {
     this.userSubject = this.userService.userSubject;
-    this.chatsSubject = new Subject<Chat[]>();
-    this.unreadMessagesSubject = new Subject<number>();
+    this.chatsSubject = new BehaviorSubject<Chat[]>([]);
+    this.unreadMessagesSubject = new BehaviorSubject<number>(0);
     this._chats = [];
     this.username = '';
     this.subs.add(

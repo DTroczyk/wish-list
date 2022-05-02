@@ -1,6 +1,7 @@
 <div class="chat-container container">
+  <mat-spinner *ngIf="isChatsLoading"></mat-spinner>
   <div class="row chat-row">
-    <div class="channels col-sm-3 container">
+    <div class="channels col-sm-3 container" *ngIf="!isChatsLoading">
       <div class="channels-column-title row">
         <div class="title" (click)="isChannelsHidden = !isChannelsHidden">
           Channels
@@ -25,7 +26,7 @@
         class="channels-column-content row"
         [ngClass]="isChannelsHidden ? '' : 'visible'"
       >
-        <ng-container *ngIf="isChatsLoading">
+        <ng-container *ngIf="!isChatsLoading">
           <div
             *ngFor="let chat of chats"
             class="channel"
@@ -39,7 +40,7 @@
         </ng-container>
       </div>
     </div>
-    <div class="chat col-sm-9 container">
+    <div class="chat col-sm-9 container" *ngIf="!isChatsLoading">
       <div class="messages-container" *ngIf="selectedChannel">
         <div class="row chat-column-title">
           <div class="title">{{ selectedChannel.name }}</div>
