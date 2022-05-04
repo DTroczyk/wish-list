@@ -1,8 +1,15 @@
+@import "../../../assets/styles/variables.scss";
+
 .image {
   display: block;
   max-width: 100px !important;
   max-height: 70px !important;
   width: auto;
+}
+
+.item {
+  border: solid 1px $main-background;
+  border-radius: 10px;
 }
 
 .toolbar {
