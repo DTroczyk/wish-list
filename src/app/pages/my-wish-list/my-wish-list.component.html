@@ -15,8 +15,6 @@
       <mat-card
         *ngFor="let item of user.wishes"
         class="item col-12 col-sm-6 col-md-4 col-lg-3"
-        matTooltip="Click to edit."
-        (click)="openDialog(item)"
       >
         <mat-card-title-group>
           <mat-card-title>{{ item.name }}</mat-card-title>
@@ -34,6 +32,23 @@
         <mat-card-content>
           {{ item.description }}
         </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-actions>
+          <button
+            mat-button
+            (click)="openDialog(item)"
+            matTooltip="Click to edit."
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button
+            mat-button
+            (click)="openConfirmDialog(item)"
+            matTooltip="Click to delete."
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions>
       </mat-card>
     </div>
   </div>

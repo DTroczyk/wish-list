@@ -60,4 +60,11 @@ export class UserService implements OnDestroy {
       this.userSubject.next(this._user as User);
     }
   }
+
+  daleteWish(wishId: number) {
+    if (this._user) {
+      this._user.wishes = this._user?.wishes.filter((w) => w.id !== wishId);
+      this.userSubject.next(this._user);
+    }
+  }
 }

@@ -133,7 +133,15 @@ export const users: User[] = [
     email: 'joedoe@wishlist.com',
     firstName: 'Joe',
     lastName: 'Doe',
-    wishes: [],
+    wishes: [
+      {
+        id: 5,
+        name: 'Travel to the America',
+        userId: 'joedoe',
+        price: 500000,
+        description: 'I never been in the USA',
+      },
+    ],
     friends: [],
     chats: [channels[0], channels[1], channels[2]],
   },
@@ -142,7 +150,17 @@ export const users: User[] = [
     email: 'janedoe@wishlist.com',
     firstName: 'Jane',
     lastName: 'Doe',
-    wishes: [],
+    wishes: [
+      {
+        id: 6,
+        name: 'Factorio',
+        userId: 'janedoe',
+        price: 500000,
+        description: 'I want play Factorio',
+        imageUrl:
+          'https://cdn.cloudflare.steamstatic.com/steam/apps/427520/capsule_616x353.jpg?t=1620730652',
+      },
+    ],
     friends: [],
     chats: [channels[1], channels[2]],
   },

@@ -1,17 +1,8 @@
 .image {
   display: block;
-  max-width: 100px;
-  max-height: 100px;
+  max-width: 100px !important;
+  max-height: 70px !important;
   width: auto;
-  height: auto;
-}
-
-.item {
-  cursor: pointer;
-}
-
-.item:hover {
-  background-color: #474747;
 }
 
 .toolbar {
@@ -21,4 +12,19 @@
 .add-button {
   margin: 5px;
   position: relative;
+}
+
+mat-card-title {
+  max-height: 20px;
+  overflow: hidden;
+}
+
+mat-card-content {
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 }

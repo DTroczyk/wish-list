@@ -16,6 +16,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
@@ -27,6 +28,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { MyWishListComponent } from './pages/my-wish-list/my-wish-list.component';
 import { AddOrEditDialog } from './pages/my-wish-list/add-or-edit-dialog/add-or-edit-dialog';
+import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { AddOrEditDialog } from './pages/my-wish-list/add-or-edit-dialog/add-or-
     NotFoundComponent,
     MessagesComponent,
     MyWishListComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -50,6 +53,7 @@ import { AddOrEditDialog } from './pages/my-wish-list/add-or-edit-dialog/add-or-
     MatButtonModule,
     MatCardModule,
     MatDialogModule,
+    MatDividerModule,
     MatIconModule,
     MatInputModule,
     MatMenuModule,

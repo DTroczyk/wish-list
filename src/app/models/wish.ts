@@ -2,7 +2,7 @@ export default interface Wish {
   id: number;
   name: string;
   userId: string;
-  price: number | null;
+  price?: number;
   description: string;
-  imageUrl: string;
+  imageUrl?: string;
 }
