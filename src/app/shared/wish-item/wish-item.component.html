@@ -1,0 +1,16 @@
+<mat-card class="item" (click)="openDialog(item)">
+  <mat-card-title-group>
+    <mat-card-title>{{ item.name }}</mat-card-title>
+    <mat-card-subtitle>{{ item.userId }}</mat-card-subtitle>
+    <img
+      *ngIf="item.imageUrl"
+      mat-card-md-image
+      [src]="item.imageUrl"
+      [alt]="item.name"
+      class="image"
+    />
+  </mat-card-title-group>
+  <mat-card-content>
+    {{ item.description }}
+  </mat-card-content>
+</mat-card>

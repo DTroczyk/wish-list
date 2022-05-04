@@ -1,0 +1,45 @@
+@import "../../../assets/styles/variables.scss";
+
+.image {
+  display: block;
+  max-width: 100px !important;
+  max-height: 70px !important;
+  width: auto;
+  border: rgba(5, 5, 5, 0.2) solid 2px;
+  border-radius: 5px;
+}
+
+.item {
+  border: solid 1px $main-background;
+  border-radius: 10px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.item:hover {
+  background-color: rgba(15, 15, 15, 0.2);
+}
+
+.add-button {
+  margin: 5px;
+  position: relative;
+}
+
+mat-card-title {
+  max-height: 20px;
+  overflow: hidden;
+}
+
+mat-card-subtitle {
+  margin-bottom: 30px;
+}
+
+mat-card-content {
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

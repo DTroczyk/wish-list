@@ -49,5 +49,13 @@
         </div>
       </div>
     </div>
+    <h2 class="mt-4 text-center">Sample wishes</h2>
+    <div class="row g-1">
+      <app-wish-item
+        *ngFor="let item of wishes"
+        [item]="item"
+        class="col-12 col-sm-6 col-md-4 col-lg-3"
+      ></app-wish-item>
+    </div>
   </div>
 </div>

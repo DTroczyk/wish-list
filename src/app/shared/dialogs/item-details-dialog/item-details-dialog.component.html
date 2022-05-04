@@ -1,0 +1,16 @@
+<div class="item-details">
+  <h2 class="text-center">{{ data.name }}</h2>
+  <div class="text-center" *ngIf="data.imageUrl">
+    <img class="image" [src]="data.imageUrl" />
+  </div>
+  <div class="content">
+    <p class="owner">User: {{ data.userId }}</p>
+    <p class="price" *ngIf="data.price">
+      Price: <span class="price-value">{{ data.price / 100 }} zł</span>
+    </p>
+    <div class="description">
+      Description:
+      <p>{{ data.description }}</p>
+    </div>
+  </div>
+</div>

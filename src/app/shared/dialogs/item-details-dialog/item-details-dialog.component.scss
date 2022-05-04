@@ -1,0 +1,24 @@
+.image {
+  max-height: 50vh;
+  max-width: 60vw;
+  text-align: center;
+  border: rgba(10, 10, 10, 0.2) solid 2px;
+  border-radius: 5px;
+}
+
+.content {
+  color: #bbb;
+}
+
+.owner {
+  margin-bottom: 0;
+  margin-top: 5px;
+}
+
+.price {
+  margin-top: 0;
+}
+
+.description {
+  color: white;
+}

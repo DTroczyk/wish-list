@@ -29,6 +29,8 @@ import { MessagesComponent } from './pages/messages/messages.component';
 import { MyWishListComponent } from './pages/my-wish-list/my-wish-list.component';
 import { AddOrEditDialog } from './pages/my-wish-list/add-or-edit-dialog/add-or-edit-dialog';
 import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-dialog.component';
+import { WishItemComponent } from './shared/wish-item/wish-item.component';
+import { ItemDetailsDialogComponent } from './shared/dialogs/item-details-dialog/item-details-dialog.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-
     MessagesComponent,
     MyWishListComponent,
     ConfirmDialogComponent,
+    WishItemComponent,
+    ItemDetailsDialogComponent,
   ],
   imports: [
     AppRoutingModule,
