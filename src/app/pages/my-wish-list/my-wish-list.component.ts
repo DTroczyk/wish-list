@@ -9,6 +9,7 @@ import {
   ConfirmDialogComponent,
   ConfirmDialogData,
 } from 'src/app/shared/dialogs/confirm-dialog/confirm-dialog.component';
+import { WishService } from 'src/app/services/wish/wish.service';
 
 @Component({
   selector: 'app-my-wish-list',
@@ -16,19 +17,19 @@ import {
   styleUrls: ['./my-wish-list.component.scss'],
 })
 export class MyWishListComponent implements OnInit {
-  public user!: User;
-  public isWishesLoading = true;
+  public wishes!: Wish[];
+  public isWishesLoading: boolean = true;
 
   private subs: Subscription;
 
-  constructor(private userService: UserService, public dialog: MatDialog) {
+  constructor(private wishService: WishService, public dialog: MatDialog) {
     this.subs = new Subscription();
   }
 
   ngOnInit(): void {
     this.subs.add(
-      this.userService.userSubject.subscribe((res) => {
-        this.user = res;
+      this.wishService.wishesSubject.subscribe((res) => {
+        this.wishes = res;
         this.isWishesLoading = false;
       })
     );
@@ -42,7 +43,7 @@ export class MyWishListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      this.userService.addOrEditWish(result);
+      this.wishService.addOrEditWish(result);
     });
   }
 
@@ -58,7 +59,7 @@ export class MyWishListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      if (result) this.userService.daleteWish(wish.id);
+      if (result) this.wishService.deleteWish(wish.id);
     });
   }
 }
