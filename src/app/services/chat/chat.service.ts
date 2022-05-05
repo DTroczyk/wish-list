@@ -23,7 +23,7 @@ export class ChatService implements OnDestroy {
     this.username = '';
     this.subs.add(
       this.userSubject.subscribe((res) => {
-        if (res) {
+        if (res.user) {
           this._chats = res.user.chats;
           this.username = res.user.login;
           this.chatsSubject.next(this._chats);

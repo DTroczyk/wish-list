@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/index.guard';
 import { ContactComponent } from './pages/contact/contact.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
@@ -33,6 +34,7 @@ const routes: Routes = [
   {
     path: 'messages',
     component: MessagesComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'profile',
@@ -42,6 +44,7 @@ const routes: Routes = [
         component: MyWishListComponent,
       },
     ],
+    canActivate: [AuthGuard],
   },
   {
     path: '**',

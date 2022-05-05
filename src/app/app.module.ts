@@ -31,6 +31,7 @@ import { AddOrEditDialog } from './pages/my-wish-list/add-or-edit-dialog/add-or-
 import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { WishItemComponent } from './shared/wish-item/wish-item.component';
 import { ItemDetailsDialogComponent } from './shared/dialogs/item-details-dialog/item-details-dialog.component';
+import { AuthGuard } from './guards/index.guard';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,7 @@ import { ItemDetailsDialogComponent } from './shared/dialogs/item-details-dialog
     MatTooltipModule,
     NgbModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
