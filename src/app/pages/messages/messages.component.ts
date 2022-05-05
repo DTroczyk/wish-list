@@ -30,7 +30,7 @@ export class MessagesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subs.add(
       this.userService.userSubject.subscribe(
-        (res) => (this.ownerLogin = res.login)
+        (res) => (this.ownerLogin = res.user.login)
       )
     );
     this.subs.add(

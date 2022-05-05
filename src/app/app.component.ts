@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Subject, Subscription } from 'rxjs';
 import User from './models/user';
 import { ChatService } from './services/chat/chat.service';
-import { UserService } from './services/user/user.service';
+import { UserResponse, UserService } from './services/user/user.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ import { UserService } from './services/user/user.service';
 })
 export class AppComponent implements OnInit, OnDestroy {
   user: User = null as any;
-  subject: Subject<User> = this.userService.userSubject;
+  subject: Subject<UserResponse> = this.userService.userSubject;
   subs: Subscription = new Subscription();
   unreadMessagesCount: number = 0;
 
@@ -25,7 +25,7 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.subs.add(
       this.subject.subscribe((val) => {
-        this.user = val;
+        this.user = val.user;
       })
     );
     this.subs.add(
