@@ -17,6 +17,7 @@ export class LoginComponent {
     login: '',
     password: '',
   };
+  public isToastVisible: boolean = false;
 
   private subs: Subscription = new Subscription();
 
@@ -28,6 +29,8 @@ export class LoginComponent {
         if (res.status === STATUS_CODE.SUCCES) {
           this.router.navigate(['/']);
         } else if (res.status === STATUS_CODE.REJECTED) {
+          this.isToastVisible = true;
+          setTimeout(() => (this.isToastVisible = false), 5000);
         } else if (res.status === STATUS_CODE.FAILED) {
           console.error('Something went wrong.');
         }

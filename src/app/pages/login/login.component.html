@@ -1,4 +1,18 @@
+<div
+  class="toast align-items-center text-white border-0 wrong-login"
+  [ngClass]="{ show: isToastVisible }"
+  role="alert"
+  aria-live="assertive"
+  aria-atomic="true"
+  #toast
+>
+  <div class="d-flex">
+    <div class="toast-body">Wrong login or password.</div>
+  </div>
+</div>
+
 <form class="login-form container" #form="ngForm" (ngSubmit)="login()">
+  <mat-spinner *ngIf="loginStatus === 1"></mat-spinner>
   <h1>Log In</h1>
   <mat-form-field appearance="fill">
     <mat-label>Username:</mat-label>
