@@ -1,3 +1,5 @@
+@import "../../../assets/styles/variables.scss";
+
 .login-form {
   display: flex;
   flex-direction: column;
@@ -12,4 +14,28 @@
 
 .col-sm {
   margin: 5px 8px;
+}
+
+.wrong-login {
+  background-color: $warn-color;
+  position: absolute;
+  left: -350px;
+  display: block;
+}
+
+@keyframes show {
+  15% {
+    transform: translateX(350px);
+  }
+  50% {
+    transform: translateX(350px);
+  }
+  75% {
+    transform: translateX(-350px);
+  }
+}
+
+.wrong-login.show {
+  animation-name: show;
+  animation-duration: 10s;
 }

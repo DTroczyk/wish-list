@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { LoginUser } from 'src/app/models/user';
+import { STATUS_CODE } from 'src/app/services/user/status-code';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
@@ -9,14 +11,32 @@ import { UserService } from 'src/app/services/user/user.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  hide: boolean = true;
-
-  user: LoginUser = {
+  public hide: boolean = true;
+  public loginStatus: STATUS_CODE;
+  public user: LoginUser = {
     login: '',
     password: '',
   };
+  public isToastVisible: boolean = false;
 
-  constructor(private userService: UserService, private router: Router) {}
+  private subs: Subscription = new Subscription();
+
+  constructor(private userService: UserService, private router: Router) {
+    this.loginStatus = STATUS_CODE.NOT_SEND;
+    this.subs.add(
+      userService.userSubject.subscribe((res) => {
+        this.loginStatus = res.status;
+        if (res.status === STATUS_CODE.SUCCES) {
+          this.router.navigate(['/']);
+        } else if (res.status === STATUS_CODE.REJECTED) {
+          this.isToastVisible = true;
+          setTimeout(() => (this.isToastVisible = false), 5000);
+        } else if (res.status === STATUS_CODE.FAILED) {
+          console.error('Something went wrong.');
+        }
+      })
+    );
+  }
 
   isInputsEmpty(): boolean {
     if (this.user.login === '' || this.user.login === null) return true;
@@ -25,10 +45,7 @@ export class LoginComponent {
   }
 
   login() {
-    if (this.userService.login(this.user.login, this.user.password)) {
-      this.router.navigate(['/']);
-    } else {
-      alert('Wrong login or password.');
-    }
+    this.userService.login(this.user.login, this.user.password);
+    this.loginStatus = STATUS_CODE.PENDING;
   }
 }
