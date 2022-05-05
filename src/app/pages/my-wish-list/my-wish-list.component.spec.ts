@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { MyWishListComponent } from './my-wish-list.component';
 
@@ -8,9 +9,9 @@ describe('MyWishListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MyWishListComponent ]
-    })
-    .compileComponents();
+      imports: [MatDialogModule],
+      declarations: [MyWishListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

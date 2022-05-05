@@ -9,7 +9,7 @@ import { ItemDetailsDialogComponent } from '../dialogs/item-details-dialog/item-
   styleUrls: ['./wish-item.component.scss'],
 })
 export class WishItemComponent implements OnInit {
-  @Input() public item!: Wish;
+  @Input() public item: Wish = { id: 0, name: '', description: '', userId: '' };
 
   constructor(public dialog: MatDialog) {}
 
