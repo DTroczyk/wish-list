@@ -29,15 +29,16 @@ export class MessagesComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subs.add(
-      this.userService.userSubject.subscribe(
-        (res) => (this.ownerLogin = res.user.login)
-      )
+      this.userService.userSubject.subscribe((res) => {
+        if (res.user) this.ownerLogin = res.user.login;
+      })
     );
     this.subs.add(
       this.chatService.chatsSubject.subscribe((res) => {
         this.chats = res;
         this.isChatsLoading = false;
-        if (this.selectedChannel === null) this.selectChannel(res[0]);
+        if (this.selectedChannel === null && res !== null)
+          this.selectChannel(res[0]);
       })
     );
   }
