@@ -72,15 +72,6 @@ export const channels: Chat[] = [
   },
 ];
 
-// export default interface Wish {
-//   id: number;
-//   name: string;
-//   userId: string;
-//   price: number | null;
-//   description: string;
-//   imageUrl: string;
-// }
-
 export const users: User[] = [
   {
     login: 'DTroczyk',
@@ -125,7 +116,7 @@ export const users: User[] = [
           'https://cdn-reichelt.de/bilder/web/xxl_ws/A300/PI4_CASE1_255.png',
       },
     ],
-    friends: [],
+    friends: ['janedoe', 'joedoe'],
     chats: [channels[0], channels[2]],
   },
   {
@@ -142,7 +133,7 @@ export const users: User[] = [
         description: 'I never been in the USA',
       },
     ],
-    friends: [],
+    friends: ['janedoe', 'dtroczyk'],
     chats: [channels[0], channels[1], channels[2]],
   },
   {
@@ -161,7 +152,7 @@ export const users: User[] = [
           'https://cdn.cloudflare.steamstatic.com/steam/apps/427520/capsule_616x353.jpg?t=1620730652',
       },
     ],
-    friends: [],
+    friends: ['dtroczyk', 'joedoe'],
     chats: [channels[1], channels[2]],
   },
 ];
