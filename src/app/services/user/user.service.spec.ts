@@ -2,31 +2,13 @@ import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { delay } from 'rxjs';
 import User from 'src/app/models/user';
 import { WishService } from '../wish/wish.service';
+import { SampleUsers } from './sampleUsers';
 
 import { UserService } from './user.service';
 
 describe('UserService', () => {
   let service: UserService;
-  const userDatabase: User[] = [
-    {
-      login: 'user',
-      email: 'user@wish.com',
-      firstName: 'User',
-      lastName: 'New',
-      wishes: [],
-      friends: [],
-      chats: [],
-    },
-    {
-      login: 'user2',
-      email: 'user2@wish.com',
-      firstName: 'User',
-      lastName: 'New',
-      wishes: [],
-      friends: [],
-      chats: [],
-    },
-  ];
+  let userDatabase = SampleUsers;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -42,11 +24,11 @@ describe('UserService', () => {
   it('should be user login and logout', fakeAsync(() => {
     // @ts-ignore
     service.userApi = userDatabase;
-    expect(userDatabase.length).toEqual(2);
+    expect(userDatabase.length).toEqual(3);
     var user: User = null as any;
     let sub = service.userSubject.subscribe((res) => (user = res.user));
     expect(user).toBeNull();
-    service.login('user', 'pass');
+    service.login('user1', 'pass');
     tick(10000);
     expect(user).toEqual(userDatabase[0]);
 

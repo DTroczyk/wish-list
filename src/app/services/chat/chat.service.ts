@@ -1,6 +1,6 @@
 import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Subject, Subscription } from 'rxjs';
-import Chat, { Message } from 'src/app/models/chat';
+import Chat, { LastAccess, Message } from 'src/app/models/chat';
 import { UserResponse, UserService } from '../user/user.service';
 
 @Injectable({
@@ -24,7 +24,7 @@ export class ChatService implements OnDestroy {
     this.subs.add(
       this.userSubject.subscribe((res) => {
         if (res.user) {
-          this._chats = res.user.chats;
+          this._chats = this.sortMessages(res.user.chats);
           this.username = res.user.login;
           this.chatsSubject.next(this._chats);
           this.unreadMessages();
@@ -42,23 +42,37 @@ export class ChatService implements OnDestroy {
     this.subs.unsubscribe();
   }
 
+  private sortMessages(chats: Chat[]): Chat[] {
+    return chats.map((chat) => {
+      let sortedMessages = chat.messages.sort(
+        (a, b) => a.postDate.getTime() - b.postDate.getTime()
+      );
+      return {
+        ...chat,
+        messages: sortedMessages,
+      };
+    });
+  }
+
   private unreadMessages() {
-    let chats = [...this._chats];
-    chats = chats.filter((chat) => {
-      let isUnread = chat.lastAccess.find((la) => {
+    let chatsRead = [...this._chats];
+    chatsRead = chatsRead.filter((chat) => {
+      let isRead = chat.lastAccess.find((la) => {
         if (
           la.chatId === chat.id &&
           la.user.toLowerCase() === this.username.toLowerCase() &&
-          la.date.getTime() <
+          la.date.getTime() >=
             chat.messages[chat.messages.length - 1]?.postDate.getTime()
         )
           return true;
         return false;
       });
-      return isUnread !== undefined;
+      return isRead !== undefined;
     });
 
-    this.unreadMessagesSubject.next(chats.length);
+    // Substract read from total chats
+    let result = this._chats.length - chatsRead.length;
+    this.unreadMessagesSubject.next(result);
   }
 
   public sendMessage(message: string, chatId: number): void {
@@ -85,10 +99,21 @@ export class ChatService implements OnDestroy {
         lastAccess = chat.lastAccess.find(
           (la) => la.user.toUpperCase() === this.username.toUpperCase()
         );
-      } else return;
-      if (lastAccess) {
-        lastAccess.date = new Date();
-      } else return;
+
+        if (lastAccess) {
+          lastAccess.date = new Date();
+        } else {
+          lastAccess = {
+            date: new Date(),
+            user: this.username,
+            chatId: chatId,
+          } as LastAccess;
+          chat.lastAccess.push(lastAccess);
+        }
+      } else {
+        console.error(`Chat id: ${chatId} is not found`);
+        return;
+      }
 
       this.chatsSubject.next(this._chats);
       this.unreadMessages();
