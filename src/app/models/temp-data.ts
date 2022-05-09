@@ -116,7 +116,7 @@ export const users: User[] = [
           'https://cdn-reichelt.de/bilder/web/xxl_ws/A300/PI4_CASE1_255.png',
       },
     ],
-    friends: ['janedoe', 'joedoe'],
+    friends: ['janedoe', 'joedoe', 'leianeale'],
     chats: [channels[0], channels[2]],
   },
   {
@@ -133,7 +133,7 @@ export const users: User[] = [
         description: 'I never been in the USA',
       },
     ],
-    friends: ['janedoe', 'dtroczyk'],
+    friends: ['janedoe', 'dtroczyk', 'shaanferguson'],
     chats: [channels[0], channels[1], channels[2]],
   },
   {
@@ -146,7 +146,7 @@ export const users: User[] = [
         id: 6,
         name: 'Factorio',
         userId: 'janedoe',
-        price: 500000,
+        price: 7000,
         description: 'I want play Factorio',
         imageUrl:
           'https://cdn.cloudflare.steamstatic.com/steam/apps/427520/capsule_616x353.jpg?t=1620730652',
@@ -154,5 +154,33 @@ export const users: User[] = [
     ],
     friends: ['dtroczyk', 'joedoe'],
     chats: [channels[1], channels[2]],
+  },
+  {
+    login: 'shaanferguson',
+    email: 'sfergus@wishlist.com',
+    firstName: 'Shaan',
+    lastName: 'Ferguson',
+    wishes: [
+      {
+        id: 7,
+        name: 'Scooter',
+        userId: 'shaanferguson',
+        price: 200000,
+        description: 'I need this to commute to work.',
+        imageUrl:
+          'https://hndelectric.pl/wp-content/uploads/2021/03/IMG_8613-600x600.jpg',
+      },
+    ],
+    friends: ['joedoe'],
+    chats: [],
+  },
+  {
+    login: 'leianeale',
+    email: 'leianeale@wishlist.com',
+    firstName: 'Leia',
+    lastName: 'Neale',
+    wishes: [],
+    friends: ['dtroczyk'],
+    chats: [],
   },
 ];

@@ -13,8 +13,17 @@
             {{ i + 1 }}. {{ friend.firstName }}
             {{ friend.lastName }}</mat-panel-title
           >
+          <mat-panel-description class="description">
+            <button mat-mini-fab color="primary">
+              <mat-icon>message</mat-icon>
+            </button>
+            <button mat-mini-fab color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-panel-description>
         </mat-expansion-panel-header>
-        <p>This is the primary content of the panel.</p>
+        <h3 class="text-center">List of wishes</h3>
+        <app-friend-wish-list [wishes]="friend.wishes"></app-friend-wish-list>
       </mat-expansion-panel>
     </mat-accordion>
   </div>

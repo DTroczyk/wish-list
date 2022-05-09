@@ -6,6 +6,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+// App components
 import { AppComponent } from './app.component';
 import { AuthGuard } from './guards/index.guard';
 import { ContactComponent } from './pages/contact/contact.component';
@@ -17,12 +18,15 @@ import { MyWishListComponent } from './pages/my-wish-list/my-wish-list.component
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './pages/register/register.component';
 
+// Dialogs
 import { AddOrEditDialog } from './pages/my-wish-list/add-or-edit-dialog/add-or-edit-dialog';
 import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { ItemDetailsDialogComponent } from './shared/dialogs/item-details-dialog/item-details-dialog.component';
 
+// Shared components
 import { WishItemComponent } from './shared/wish-item/wish-item.component';
 
+// Material modules
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
@@ -31,11 +35,13 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FriendWishListComponent } from './pages/friends/friend-wish-list/friend-wish-list.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +58,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     WishItemComponent,
     ItemDetailsDialogComponent,
     FriendsComponent,
+    FriendWishListComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -67,6 +74,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatExpansionModule,
     MatIconModule,
     MatInputModule,
+    MatListModule,
     MatMenuModule,
     MatProgressSpinnerModule,
     MatTableModule,
