@@ -19,7 +19,7 @@ export class AssignDialogComponent {
   onSliderChange() {
     if (this.data.price)
       this.amountValue = Math.round(
-        (this.sliderValue / 100) * (this.data.price / 100)
+        (this.sliderValue / 100) * (this.data.price / 100) * this.data.quantity
       );
   }
 
@@ -27,7 +27,7 @@ export class AssignDialogComponent {
     this.amountValue = Math.round(this.amountValue);
     if (this.data.price)
       this.sliderValue = Math.round(
-        (this.amountValue / (this.data.price / 100)) * 100
+        (this.amountValue / (this.data.price)) * 100
       );
   }
 

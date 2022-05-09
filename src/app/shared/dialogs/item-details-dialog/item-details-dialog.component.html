@@ -15,12 +15,13 @@
   </div>
   <mat-divider></mat-divider>
   <div class="wish-status mt-2 mb-1">
-    <span>Status: {{ wish.status ? "In progress" : "Free" }} </span>
+    <span>Status: {{ wishStatus(wish.status) }} </span>
     <br />
-    <mat-progress-bar></mat-progress-bar>
+    <mat-progress-bar [value]="wish.price ? wish.status / wish.price / wish.quantity * 100 : wish.status"></mat-progress-bar>
     <div class="mt-1 text-center">
-      Filled: {{ wish.price ? wish.status / wish.price : wish.status }}%
+      Filled: {{ (wish.price ? wish.status / wish.price * 100 / wish.quantity : wish.status) | number:'1.0-2' }}%
     </div>
+    <div class="mt-1 text-center" *ngIf="wish.price">Collected amount: {{wish.status / 100}}zł</div>
     Assigned: ...
   </div>
   <div class="buttons mt-2">

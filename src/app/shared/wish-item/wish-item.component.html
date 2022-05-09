@@ -16,7 +16,7 @@
   <mat-card-footer>
     <mat-progress-bar
       [value]="
-        item.price ? (item.status / item.price) * item.quantity : item.status
+        item.price ? (item.status / item.price) * 100 / item.quantity : item.status
       "
     ></mat-progress-bar>
   </mat-card-footer>

@@ -30,4 +30,16 @@ export class ItemDetailsDialogComponent {
 
     dialogRef.afterClosed().subscribe((result) => {});
   }
+
+  wishStatus(wishStatus: number | null): string {
+    if (!wishStatus) {
+      return "Free"
+    } 
+    if (wishStatus === this.wish.price) {
+      return "Done"
+    }
+
+    return "In progress"
+
+  }
 }

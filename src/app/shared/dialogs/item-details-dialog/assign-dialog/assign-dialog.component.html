@@ -11,7 +11,8 @@
       click the button.
     </p>
     <p class="price" *ngIf="data.price">
-      Price: <span class="price-value">{{ data.price / 100 }} zł</span>
+      Price: <span class="price-value">{{ data.price / 100 }} zł</span><br>
+      <span *ngIf="data.quantity > 1">Quantity: {{data.quantity}}</span>
     </p>
   </div>
   <section class="values row mt-2" *ngIf="data.price">
@@ -36,7 +37,7 @@
         [(ngModel)]="amountValue"
         (change)="onAmountChange()"
         min="0"
-        [max]="data.price / 100"
+        [max]="data.price * data.quantity"
       />
     </mat-form-field>
   </section>
@@ -47,7 +48,7 @@
       (click)="onSubmit()"
       [disabled]="
         (!(sliderValue > 0 && amountValue > 0) && data.price) ||
-        (data.price && amountValue > data.price / 100 && sliderValue > 100)
+        (data.price && amountValue > data.price && sliderValue > 100)
       "
       color="accent"
     >
