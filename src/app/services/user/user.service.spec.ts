@@ -24,7 +24,7 @@ describe('UserService', () => {
   it('should be user login and logout', fakeAsync(() => {
     // @ts-ignore
     service.userApi = userDatabase;
-    expect(userDatabase.length).toEqual(3);
+    expect(userDatabase.length).toEqual(2);
     var user: User = null as any;
     let sub = service.userSubject.subscribe((res) => (user = res.user));
     expect(user).toBeNull();
