@@ -1,16 +1,26 @@
 <div class="item-details">
-  <h2 class="text-center">{{ data.name }}</h2>
-  <div class="text-center" *ngIf="data.imageUrl">
-    <img class="image" [src]="data.imageUrl" />
+  <h2 class="text-center">{{ wish.name }}</h2>
+  <div class="text-center" *ngIf="wish.imageUrl">
+    <img class="image" [src]="wish.imageUrl" />
   </div>
   <div class="content">
-    <p class="owner">User: {{ data.userId }}</p>
-    <p class="price" *ngIf="data.price">
-      Price: <span class="price-value">{{ data.price / 100 }} zł</span>
+    <p class="owner">User: {{ wish.userId }}</p>
+    <p class="price" *ngIf="wish.price">
+      Price: <span class="price-value">{{ wish.price / 100 }} zł</span>
     </p>
     <div class="description">
       Description:
-      <p>{{ data.description }}</p>
+      <p>{{ wish.description }}</p>
     </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div class="wish-status mt-2">
+    Status: Free | Reserved <br />
+    Assigned: ...
+  </div>
+  <div class="buttons mt-2">
+    <button mat-button (click)="openDialog(wish)">
+      Fill wish <mat-icon>assignment_turned_in</mat-icon>
+    </button>
   </div>
 </div>
