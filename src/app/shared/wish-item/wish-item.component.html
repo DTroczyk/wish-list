@@ -13,4 +13,11 @@
   <mat-card-content>
     {{ item.description }}
   </mat-card-content>
+  <mat-card-footer>
+    <mat-progress-bar
+      [value]="
+        item.price ? (item.status / item.price) * item.quantity : item.status
+      "
+    ></mat-progress-bar>
+  </mat-card-footer>
 </mat-card>

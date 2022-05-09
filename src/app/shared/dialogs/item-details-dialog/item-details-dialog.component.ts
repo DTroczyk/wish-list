@@ -25,6 +25,7 @@ export class ItemDetailsDialogComponent {
       data,
       width: '400px',
       maxWidth: '100vw',
+      maxHeight: '100vh',
     });
 
     dialogRef.afterClosed().subscribe((result) => {});

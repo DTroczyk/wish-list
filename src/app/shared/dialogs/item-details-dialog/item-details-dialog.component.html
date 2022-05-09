@@ -14,8 +14,13 @@
     </div>
   </div>
   <mat-divider></mat-divider>
-  <div class="wish-status mt-2">
-    Status: Free | Reserved <br />
+  <div class="wish-status mt-2 mb-1">
+    <span>Status: {{ wish.status ? "In progress" : "Free" }} </span>
+    <br />
+    <mat-progress-bar></mat-progress-bar>
+    <div class="mt-1 text-center">
+      Filled: {{ wish.price ? wish.status / wish.price : wish.status }}%
+    </div>
     Assigned: ...
   </div>
   <div class="buttons mt-2">

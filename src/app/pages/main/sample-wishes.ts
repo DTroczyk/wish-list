@@ -9,6 +9,7 @@ export const SampleWishes: Wish[] = [
     userId: 'johnsample',
     assignedTo: [],
     status: 0,
+    quantity: 1,
   },
   {
     id: 2,
@@ -20,6 +21,7 @@ export const SampleWishes: Wish[] = [
       'https://pl.menu.town/storage/media/dishes_main/2286529/green-tea.jpg',
     assignedTo: [],
     status: 0,
+    quantity: 1,
   },
   {
     id: 3,
@@ -32,6 +34,7 @@ export const SampleWishes: Wish[] = [
       'https://a.allegroimg.com/original/11a32f/b730fb444e6196cccb28a3cdf9fb/Sand-and-fog-sojowa-swieca-Tahitian-Vanilla',
     assignedTo: [],
     status: 0,
+    quantity: 1,
   },
   {
     id: 4,
@@ -42,6 +45,7 @@ export const SampleWishes: Wish[] = [
       'https://wartokupic.co/wp-content/uploads/2016/05/cukierki-mister-ron-smietanka-truskawka.jpg',
     assignedTo: [],
     status: 0,
+    quantity: 1,
   },
   {
     id: 5,
@@ -53,6 +57,7 @@ export const SampleWishes: Wish[] = [
       'https://www.ubuy.com.pl/productimg/?image=aHR0cHM6Ly9pNS53YWxtYXJ0aW1hZ2VzLmNvbS9hc3IvZmU0N2E0YWItNWVjYy00MTRmLWFlNDktNmM3YTI2NjllMTFiXzEuNDI0ODllZjBlMzMxYzk3ZjUyNTJkN2ZjMjExMzAzYTEuanBlZw.jpg',
     assignedTo: [],
     status: 0,
+    quantity: 1,
   },
   {
     id: 6,
@@ -63,6 +68,7 @@ export const SampleWishes: Wish[] = [
       'https://multiszop.pl/Photos/9/LARGE/000044/harry-potter-3-wiezien-azbakanu-audio-cd-mp3-audiobook.jpg',
     assignedTo: [],
     status: 0,
+    quantity: 1,
   },
   {
     id: 7,
@@ -75,5 +81,6 @@ export const SampleWishes: Wish[] = [
       'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/9/pr_2020_9_22_9_32_42_104_00.jpg',
     assignedTo: [],
     status: 0,
+    quantity: 1,
   },
 ];

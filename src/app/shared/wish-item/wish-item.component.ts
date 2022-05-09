@@ -16,6 +16,7 @@ export class WishItemComponent implements OnInit {
     userId: '',
     assignedTo: [],
     status: 0,
+    quantity: 1,
   };
 
   constructor(public dialog: MatDialog) {}

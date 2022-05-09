@@ -6,7 +6,7 @@ export default interface Wish {
   description: string;
   imageUrl?: string;
   deadline?: Date;
-  quantity?: Number;
+  quantity: number;
   assignedTo: string[];
   status: number;
 }
