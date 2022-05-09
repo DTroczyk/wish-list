@@ -1,9 +1,7 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
-import { delay } from 'rxjs';
 import User from 'src/app/models/user';
 import { WishService } from '../wish/wish.service';
 import { SampleUsers } from './sampleUsers';
-
 import { UserService } from './user.service';
 
 describe('UserService', () => {

@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
   MatDialog,
   MatDialogRef,
@@ -27,8 +27,6 @@ export class ItemDetailsDialogComponent {
       maxWidth: '100vw',
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
-    });
+    dialogRef.afterClosed().subscribe((result) => {});
   }
 }
