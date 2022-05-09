@@ -11,6 +11,14 @@ export default interface User {
   chats: Chat[];
 }
 
+export interface PublicUser {
+  login: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  wishes: Wish[];
+}
+
 export interface LoginUser {
   login: string;
   password: string;

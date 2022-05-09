@@ -1,0 +1,6 @@
+@import "../../../../assets/styles/variables.scss";
+
+.wish:hover {
+  background-color: $item-hover-color;
+  cursor: pointer;
+}
