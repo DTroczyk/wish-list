@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import User from 'src/app/models/user';
-import Wish from 'src/app/models/wish';
-import { UserService } from 'src/app/services/user/user.service';
-import { AddOrEditDialog } from 'src/app/pages/my-wish-list/add-or-edit-dialog/add-or-edit-dialog';
 import { Subscription } from 'rxjs';
+import Wish from 'src/app/models/wish';
+import { AddOrEditDialog } from 'src/app/pages/my-wish-list/add-or-edit-dialog/add-or-edit-dialog';
+import { WishService } from 'src/app/services/wish/wish.service';
 import {
   ConfirmDialogComponent,
   ConfirmDialogData,
 } from 'src/app/shared/dialogs/confirm-dialog/confirm-dialog.component';
-import { WishService } from 'src/app/services/wish/wish.service';
 
 @Component({
   selector: 'app-my-wish-list',

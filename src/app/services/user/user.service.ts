@@ -1,7 +1,7 @@
 import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { users } from 'src/app/models/temp-data';
-import User from 'src/app/models/user';
+import User, { PublicUser } from 'src/app/models/user';
 import { WishService } from '../wish/wish.service';
 import { STATUS_CODE } from './status-code';
 
@@ -14,6 +14,7 @@ export class UserService implements OnDestroy, OnInit {
       user: null as any,
       status: STATUS_CODE.NOT_SEND,
     });
+  public friendsSubject = new BehaviorSubject<PublicUser[]>([]);
 
   private _user!: User | null;
   private subs: Subscription = new Subscription();
@@ -40,11 +41,22 @@ export class UserService implements OnDestroy, OnInit {
       ) as User | null;
 
       if (this._user) {
+        // Set the logged in user wishes
         this.wishService.setWishes([...this._user.wishes]);
+        // Set logged user
         this.userSubject.next({
           user: { ...this._user },
           status: STATUS_CODE.SUCCES,
         });
+        // Set friends
+        this.friendsSubject.next([
+          ...this.userApi.filter((user) =>
+            user.friends.find(
+              (friend) =>
+                friend.toLowerCase() === this._user?.login.toLowerCase()
+            )
+          ),
+        ]);
         return true;
       }
       this._user = null;

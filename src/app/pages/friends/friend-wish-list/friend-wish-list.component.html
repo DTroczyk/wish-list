@@ -1,0 +1,17 @@
+<div class="list">
+  <div
+    class="wish p-2 container"
+    *ngFor="let wish of wishes; let i = index"
+    (click)="openDialog(wish)"
+  >
+    <div class="row">
+      <div class="wish-name col">{{ i + 1 }}. {{ wish.name }}</div>
+      <div
+        class="wish-price col-sm-3 col-3 col-md-2 col-lg-1"
+        *ngIf="wish.price"
+      >
+        {{ wish.price / 100 }} zł
+      </div>
+    </div>
+  </div>
+</div>

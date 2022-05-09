@@ -1,0 +1,26 @@
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import Wish from 'src/app/models/wish';
+import { ItemDetailsDialogComponent } from 'src/app/shared/dialogs/item-details-dialog/item-details-dialog.component';
+
+@Component({
+  selector: 'app-friend-wish-list',
+  templateUrl: './friend-wish-list.component.html',
+  styleUrls: ['./friend-wish-list.component.scss'],
+})
+export class FriendWishListComponent implements OnInit {
+  @Input() wishes: Wish[] = [];
+
+  constructor(public dialog: MatDialog) {}
+
+  ngOnInit(): void {}
+
+  openDialog(wish?: Wish): void {
+    const data = { ...wish };
+    const dialogRef = this.dialog.open(ItemDetailsDialogComponent, {
+      data,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {});
+  }
+}

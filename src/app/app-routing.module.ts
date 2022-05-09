@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/index.guard';
 import { ContactComponent } from './pages/contact/contact.component';
+import { FriendsComponent } from './pages/friends/friends.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
 import { MessagesComponent } from './pages/messages/messages.component';
@@ -43,8 +44,12 @@ const routes: Routes = [
         path: 'my-wish-list',
         component: MyWishListComponent,
       },
+      {
+        path: 'friends',
+        component: FriendsComponent,
+      },
     ],
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: '**',

@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <h1 class="text-center mt-3">Friends list</h1>
+  </div>
+  <div class="row">
+    <ng-template #spinner>
+      <mat-spinner></mat-spinner>
+    </ng-template>
+    <mat-accordion *ngIf="!isFriendsLoading; else spinner">
+      <mat-expansion-panel *ngFor="let friend of friends; let i = index">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ i + 1 }}. {{ friend.firstName }}
+            {{ friend.lastName }}</mat-panel-title
+          >
+          <mat-panel-description class="description">
+            <button mat-mini-fab color="primary">
+              <mat-icon>message</mat-icon>
+            </button>
+            <button mat-mini-fab color="warn">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+        <h3 class="text-center">List of wishes</h3>
+        <app-friend-wish-list [wishes]="friend.wishes"></app-friend-wish-list>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
