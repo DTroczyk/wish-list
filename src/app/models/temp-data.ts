@@ -87,6 +87,8 @@ export const users: User[] = [
         description: 'I want a bike for the city and the forest',
         imageUrl:
           'https://www.greenbike.pl/images/level_2_0_black_blue_white_egloss.png.jpg',
+        assignedTo: [],
+        status: 0,
       },
       {
         id: 2,
@@ -96,6 +98,8 @@ export const users: User[] = [
         description: 'Motorbike is good for cities.',
         imageUrl:
           'https://www.autocentrum.pl/ac-file/article/5892c61c582c7da1b2909bb7/honda-cbr-125-r-scigacz-w-miniaturze-07.jpg',
+        assignedTo: [],
+        status: 0,
       },
       {
         id: 3,
@@ -105,6 +109,8 @@ export const users: User[] = [
         description: 'DJI Spark is like a flying tank. Good for beginners.',
         imageUrl:
           'https://www.cnet.com/a/img/resize/668d2aca568ea89f72001ef46c323c4f62098ac0/hub/2017/07/14/057fc4a6-5f1b-404b-928f-d91c83e8cf92/dji-spark-0013.jpg?auto=webp&width=768',
+        assignedTo: [],
+        status: 0,
       },
       {
         id: 4,
@@ -114,6 +120,8 @@ export const users: User[] = [
         description: 'Raspberry for my projects.',
         imageUrl:
           'https://cdn-reichelt.de/bilder/web/xxl_ws/A300/PI4_CASE1_255.png',
+        assignedTo: [],
+        status: 0,
       },
     ],
     friends: ['janedoe', 'joedoe', 'leianeale'],
@@ -131,6 +139,8 @@ export const users: User[] = [
         userId: 'joedoe',
         price: 500000,
         description: 'I never been in the USA',
+        assignedTo: [],
+        status: 0,
       },
     ],
     friends: ['janedoe', 'dtroczyk', 'shaanferguson'],
@@ -150,6 +160,8 @@ export const users: User[] = [
         description: 'I want play Factorio',
         imageUrl:
           'https://cdn.cloudflare.steamstatic.com/steam/apps/427520/capsule_616x353.jpg?t=1620730652',
+        assignedTo: [],
+        status: 0,
       },
     ],
     friends: ['dtroczyk', 'joedoe'],
@@ -169,6 +181,8 @@ export const users: User[] = [
         description: 'I need this to commute to work.',
         imageUrl:
           'https://hndelectric.pl/wp-content/uploads/2021/03/IMG_8613-600x600.jpg',
+        assignedTo: [],
+        status: 0,
       },
     ],
     friends: ['joedoe'],

@@ -5,4 +5,8 @@ export default interface Wish {
   price?: number;
   description: string;
   imageUrl?: string;
+  deadline?: Date;
+  quantity?: Number;
+  assignedTo: string[];
+  status: number;
 }
