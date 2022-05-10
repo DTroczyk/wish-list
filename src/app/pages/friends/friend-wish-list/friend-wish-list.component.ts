@@ -19,6 +19,8 @@ export class FriendWishListComponent implements OnInit {
     const data = { ...wish };
     const dialogRef = this.dialog.open(ItemDetailsDialogComponent, {
       data,
+      maxHeight: '90vh',
+      maxWidth: '100vw',
     });
 
     dialogRef.afterClosed().subscribe((result) => {});
