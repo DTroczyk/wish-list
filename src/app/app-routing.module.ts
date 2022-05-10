@@ -49,7 +49,7 @@ const routes: Routes = [
         component: FriendsComponent,
       },
     ],
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   {
     path: '**',

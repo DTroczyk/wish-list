@@ -7,6 +7,12 @@ export default interface Wish {
   imageUrl?: string;
   deadline?: Date;
   quantity: number;
-  assignedTo: string[];
+  assignedTo: Assigned[];
   status: number;
+  visibility?: string[] | boolean;
+}
+
+export interface Assigned {
+  user: string;
+  value: number;
 }

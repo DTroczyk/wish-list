@@ -1,18 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import User from 'src/app/models/user';
 import Wish from 'src/app/models/wish';
 
 @Injectable({
   providedIn: 'root',
 })
-export class WishService {
+export class WishService implements OnDestroy {
   public wishesSubject: BehaviorSubject<Wish[]>;
 
   private wishes!: Wish[];
+  private user!: User;
 
   constructor() {
     this.wishesSubject = new BehaviorSubject<Wish[]>([]);
   }
+
+  ngOnDestroy(): void {}
 
   setWishes(wishes: Wish[]) {
     this.wishes = wishes;

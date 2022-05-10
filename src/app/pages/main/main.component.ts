@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import { SampleWishes } from './sample-wishes';
 import Wish from 'src/app/models/wish';
+import { UserService } from 'src/app/services/user/user.service';
+import { SampleWishes } from './sample-wishes';
 
 @Component({
   selector: 'app-main',
@@ -11,7 +11,11 @@ import Wish from 'src/app/models/wish';
 export class MainComponent implements OnInit {
   public wishes: Wish[] = SampleWishes;
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {}
+
+  visibility(item: Wish): boolean {
+    return this.userService.wishVisibility(item);
+  }
 }

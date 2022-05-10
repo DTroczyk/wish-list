@@ -33,13 +33,14 @@ export class ItemDetailsDialogComponent {
 
   wishStatus(wishStatus: number | null): string {
     if (!wishStatus) {
-      return "Free"
-    } 
-    if (wishStatus === this.wish.price) {
-      return "Done"
+      return 'Free';
     }
-
-    return "In progress"
-
+    if (
+      wishStatus === this.wish.price ||
+      (!this.wish.price && wishStatus === 100)
+    ) {
+      return 'Done';
+    }
+    return 'In progress';
   }
 }

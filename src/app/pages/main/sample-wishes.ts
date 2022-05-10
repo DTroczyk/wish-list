@@ -10,6 +10,7 @@ export const SampleWishes: Wish[] = [
     assignedTo: [],
     status: 18000,
     quantity: 1,
+    visibility: true,
   },
   {
     id: 2,
@@ -20,8 +21,9 @@ export const SampleWishes: Wish[] = [
     imageUrl:
       'https://pl.menu.town/storage/media/dishes_main/2286529/green-tea.jpg',
     assignedTo: [],
-    status: 1000,
+    status: 1500,
     quantity: 3,
+    visibility: true,
   },
   {
     id: 3,
@@ -35,6 +37,7 @@ export const SampleWishes: Wish[] = [
     assignedTo: [],
     status: 500,
     quantity: 1,
+    visibility: true,
   },
   {
     id: 4,
@@ -46,6 +49,7 @@ export const SampleWishes: Wish[] = [
     assignedTo: [],
     status: 100,
     quantity: 1,
+    visibility: true,
   },
   {
     id: 5,
@@ -58,6 +62,7 @@ export const SampleWishes: Wish[] = [
     assignedTo: [],
     status: 2500,
     quantity: 1,
+    visibility: true,
   },
   {
     id: 6,
@@ -69,6 +74,7 @@ export const SampleWishes: Wish[] = [
     assignedTo: [],
     status: 0,
     quantity: 1,
+    visibility: true,
   },
   {
     id: 7,
@@ -81,6 +87,19 @@ export const SampleWishes: Wish[] = [
       'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/9/pr_2020_9_22_9_32_42_104_00.jpg',
     assignedTo: [],
     status: 1000,
+    quantity: 1,
+    visibility: true,
+  },
+  {
+    id: 8,
+    name: 'Factorio',
+    userId: 'janedoe',
+    price: 7000,
+    description: 'I want play Factorio',
+    imageUrl:
+      'https://cdn.cloudflare.steamstatic.com/steam/apps/427520/capsule_616x353.jpg?t=1620730652',
+    assignedTo: [],
+    status: 0,
     quantity: 1,
   },
 ];

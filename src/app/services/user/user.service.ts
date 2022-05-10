@@ -2,6 +2,7 @@ import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { users } from 'src/app/models/temp-data';
 import User, { PublicUser } from 'src/app/models/user';
+import Wish from 'src/app/models/wish';
 import { WishService } from '../wish/wish.service';
 import { STATUS_CODE } from './status-code';
 
@@ -16,7 +17,7 @@ export class UserService implements OnDestroy, OnInit {
     });
   public friendsSubject = new BehaviorSubject<PublicUser[]>([]);
 
-  private _user!: User | null;
+  private user!: User | null;
   private subs: Subscription = new Subscription();
   private userApi: User[] = users;
 
@@ -25,7 +26,7 @@ export class UserService implements OnDestroy, OnInit {
   ngOnInit(): void {
     this.subs.add(
       this.wishService.wishesSubject.subscribe((res) => {
-        if (this._user) this._user.wishes = res;
+        if (this.user) this.user.wishes = res;
       })
     );
   }
@@ -36,16 +37,16 @@ export class UserService implements OnDestroy, OnInit {
 
   login(username: string, password: string) {
     setTimeout(() => {
-      this._user = this.userApi.find(
+      this.user = this.userApi.find(
         (user) => user.login.toLowerCase() === username.toLowerCase()
       ) as User | null;
 
-      if (this._user) {
+      if (this.user) {
         // Set the logged in user wishes
-        this.wishService.setWishes([...this._user.wishes]);
+        this.wishService.setWishes([...this.user.wishes]);
         // Set logged user
         this.userSubject.next({
-          user: { ...this._user },
+          user: { ...this.user },
           status: STATUS_CODE.SUCCES,
         });
         // Set friends
@@ -53,13 +54,13 @@ export class UserService implements OnDestroy, OnInit {
           ...this.userApi.filter((user) =>
             user.friends.find(
               (friend) =>
-                friend.toLowerCase() === this._user?.login.toLowerCase()
+                friend.toLowerCase() === this.user?.login.toLowerCase()
             )
           ),
         ]);
         return true;
       }
-      this._user = null;
+      this.user = null;
 
       this.userSubject.next({
         user: null as any,
@@ -71,6 +72,61 @@ export class UserService implements OnDestroy, OnInit {
 
   logout() {
     this.userSubject.next({ user: null as any, status: STATUS_CODE.NOT_SEND });
+  }
+
+  getUserFriends(login: string): string[] {
+    let user = this.userApi.find(
+      (user) => user.login.toLowerCase() === login.toLowerCase()
+    ) as User;
+    if (user) {
+      return user.friends;
+    } else {
+      return [];
+    }
+  }
+
+  wishVisibility(item: Wish): boolean {
+    // always show the owner
+    if (
+      this.user &&
+      item.userId.toLowerCase() === this.user.login.toLowerCase()
+    ) {
+      return true;
+    }
+    // visibility === undefinied = visible for all friends
+    else if (
+      item.visibility === undefined ||
+      (Array.isArray(item.visibility) && item.visibility.length === 0)
+    ) {
+      let userFriends = this.getUserFriends(item.userId);
+      return userFriends.find(
+        (v) => v.toLowerCase() === this.user?.login.toLowerCase()
+      )
+        ? true
+        : false;
+    }
+    // visibility.length > 0 = show for specific people
+    else if (
+      this.user &&
+      Array.isArray(item.visibility) &&
+      item.visibility.length > 0
+    ) {
+      return item.visibility.find(
+        (v) => v.toLowerCase() === this.user?.login.toLowerCase()
+      )
+        ? true
+        : false;
+    }
+    // visibility === true = show to all users
+    else if (item.visibility === true) {
+      return true;
+    }
+    // visibility === false = private
+    if (item.visibility === false) {
+      return false;
+    }
+    // else don't show
+    return false;
   }
 }
 
