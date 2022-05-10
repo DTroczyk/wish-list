@@ -1,0 +1,24 @@
+<div class="container p-4 mt-2">
+  <div class="row">
+    <h1 class="col-12 text-center">Settings</h1>
+  </div>
+  <form class="row" *ngIf="newUser">
+    <mat-form-field class="col-4">
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        disabled="true"
+        [(ngModel)]="newUser.login"
+        name="login"
+      />
+    </mat-form-field>
+    <mat-form-field class="col-4">
+      <mat-label>First name</mat-label>
+      <input matInput [(ngModel)]="newUser.firstName" name="firstName" />
+    </mat-form-field>
+    <mat-form-field class="col-4">
+      <mat-label>Last name</mat-label>
+      <input matInput [(ngModel)]="newUser.lastName" name="lastName" />
+    </mat-form-field>
+  </form>
+</div>

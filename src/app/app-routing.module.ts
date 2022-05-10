@@ -9,6 +9,7 @@ import { MessagesComponent } from './pages/messages/messages.component';
 import { MyWishListComponent } from './pages/my-wish-list/my-wish-list.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './pages/register/register.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
       {
         path: 'friends',
         component: FriendsComponent,
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent,
       },
     ],
     // canActivate: [AuthGuard],
