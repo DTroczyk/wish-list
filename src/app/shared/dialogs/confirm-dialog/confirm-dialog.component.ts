@@ -7,6 +7,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./confirm-dialog.component.scss'],
 })
 export class ConfirmDialogComponent {
+  public actions: boolean = true;
+
   constructor(
     public dialogRef: MatDialogRef<ConfirmDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ConfirmDialogData
@@ -16,4 +18,5 @@ export class ConfirmDialogComponent {
 export interface ConfirmDialogData {
   title: string;
   message: string;
+  actions?: boolean;
 }

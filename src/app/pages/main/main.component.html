@@ -1,61 +1,73 @@
-<header>
-  <h1>Welcome to Wish List</h1>
-</header>
-<div class="bootstrap-wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="card-container col-12 col-md-4 g-1">
-        <div class="card">
-          <h2 class="title">What is Wish List?</h2>
-          <p class="text">
-            Wish List is an application where you can add items you want as a
-            gift. You can also buy gifts for family or friends. You can decide
-            who sees your items. You can show them to your all friends or just
-            some of them. However, remember that your friends can share with
-            others. You don't know who wants to buy gift for you because it's a
-            surprise!
-          </p>
-          <p class="text">
-            You or other users can reserve an item for purchase for another
-            user. This prevents the item from being duplicated. And if gift is
-            too expensive, other users can buy it together. So, if you have
-            decided that you want to buy gift for your friend, you have to
-            reserved it.
-          </p>
+<ng-container *ngIf="!user">
+  <header>
+    <h1>Welcome to Wish List</h1>
+  </header>
+  <div class="bootstrap-wrapper">
+    <div class="container">
+      <div class="row">
+        <div class="card-container col-12 col-md-4 g-1">
+          <div class="card">
+            <h2 class="title">What is Wish List?</h2>
+            <p class="text">
+              Wish List is an application where you can add items you want as a
+              gift. You can also buy gifts for family or friends. You can decide
+              who sees your items. You can show them to your all friends or just
+              some of them. However, remember that your friends can share with
+              others. You don't know who wants to buy gift for you because it's
+              a surprise!
+            </p>
+            <p class="text">
+              You or other users can reserve an item for purchase for another
+              user. This prevents the item from being duplicated. And if gift is
+              too expensive, other users can buy it together. So, if you have
+              decided that you want to buy gift for your friend, you have to
+              reserved it.
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="card-container col-12 col-md-4 g-1">
-        <div class="card">
-          <h2 class="title">For Who?</h2>
-          <p class="text">
-            This app is for people who know what are they need and don't know
-            what wheir friend needs. If they use this app, their problem can be
-            resolved.
-          </p>
-          <p class="text">
-            Remember, adding a wish does not guarantee that it will be
-            fulfilled. The app allows your friends to see what you want.
-            Fulfillment depends on whether one of them will want to fulfill it.
-          </p>
+        <div class="card-container col-12 col-md-4 g-1">
+          <div class="card">
+            <h2 class="title">For Who?</h2>
+            <p class="text">
+              This app is for people who know what are they need and don't know
+              what wheir friend needs. If they use this app, their problem can
+              be resolved.
+            </p>
+            <p class="text">
+              Remember, adding a wish does not guarantee that it will be
+              fulfilled. The app allows your friends to see what you want.
+              Fulfillment depends on whether one of them will want to fulfill
+              it.
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="card-container col-12 col-md-4 g-1">
-        <div class="card">
-          <h2 class="title">Let's start!</h2>
-          <p class="text">
-            To start use the app you must register. Invite friends and family
-            and enjoy. Below this text you can see some (false) wishes.
-          </p>
+        <div class="card-container col-12 col-md-4 g-1">
+          <div class="card">
+            <h2 class="title">Let's start!</h2>
+            <p class="text">
+              To start use the app you must register. Invite friends and family
+              and enjoy. Below this text you can see some (false) wishes.
+            </p>
+          </div>
         </div>
       </div>
     </div>
-    <h2 class="mt-4 text-center">Sample wishes</h2>
+  </div>
+</ng-container>
+
+<div class="bootstrap-wrapper">
+  <div class="container">
+    <h2 class="mt-4 text-center">
+      {{ user ? "Wishes" : "Sample wishes" }}
+    </h2>
     <div class="row g-1">
-      <app-wish-item
-        *ngFor="let item of wishes"
-        [item]="item"
-        class="col-12 col-sm-6 col-md-4 col-lg-3"
-      ></app-wish-item>
+      <ng-container *ngFor="let item of wishes">
+        <app-wish-item
+          *ngIf="visibility(item)"
+          [item]="item"
+          class="col-12 col-sm-6 col-md-4 col-lg-3"
+        ></app-wish-item>
+      </ng-container>
     </div>
   </div>
 </div>

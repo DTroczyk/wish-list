@@ -14,12 +14,63 @@
     </div>
   </div>
   <mat-divider></mat-divider>
-  <div class="wish-status mt-2">
-    Status: Free | Reserved <br />
-    Assigned: ...
+  <div class="wish-status mt-2 mb-1">
+    <span>Status: {{ wishStatus(wish.status) }} </span>
+    <br />
+    <mat-progress-bar
+      [value]="
+        wish.price
+          ? (wish.status / wish.price / wish.quantity) * 100
+          : wish.status
+      "
+    ></mat-progress-bar>
+    <div class="mt-1 text-center">
+      Filled:
+      {{
+        (wish.price
+          ? ((wish.status / wish.price) * 100) / wish.quantity
+          : wish.status
+        ) | number: "1.0-2"
+      }}%
+      {{
+        wish.price && wish.quantity > 1
+          ? "(" +
+            (wish.status / wish.price | floor) +
+            " of " +
+            wish.quantity +
+            " items)"
+          : null
+      }}
+    </div>
+    <div class="mt-1 text-center" *ngIf="wish.price">
+      Collected amount: {{ wish.status / 100 }}zł
+    </div>
+    <mat-accordion *ngIf="wish.assignedTo.length > 0">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>Assigned</mat-expansion-panel-header>
+        <mat-list>
+          <mat-list-item *ngFor="let assigners of wish.assignedTo"
+            >{{ assigners.user }}:
+            {{
+              (wish.price
+                ? (assigners.value / wish.price / wish.quantity) * 100
+                : assigners.value
+              ) | number: "0.0-2"
+            }}%
+            <span *ngIf="wish.price"
+              >({{ assigners.value / 100 }} zł)</span
+            ></mat-list-item
+          >
+        </mat-list>
+      </mat-expansion-panel>
+    </mat-accordion>
   </div>
   <div class="buttons mt-2">
-    <button mat-button (click)="openDialog(wish)">
+    <button
+      mat-button
+      (click)="openDialog(wish)"
+      *ngIf="!isWishFilled() && !isUserAssigned()"
+    >
       Fill wish <mat-icon>assignment_turned_in</mat-icon>
     </button>
   </div>
