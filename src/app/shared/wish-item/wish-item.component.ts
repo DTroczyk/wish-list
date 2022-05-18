@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import Wish from 'src/app/models/wish';
+import { UserService } from 'src/app/services/user/user.service';
 import { ItemDetailsDialogComponent } from '../dialogs/item-details-dialog/item-details-dialog.component';
 
 @Component({
@@ -8,19 +9,27 @@ import { ItemDetailsDialogComponent } from '../dialogs/item-details-dialog/item-
   templateUrl: './wish-item.component.html',
   styleUrls: ['./wish-item.component.scss'],
 })
-export class WishItemComponent implements OnInit {
-  @Input() public item: Wish = { id: 0, name: '', description: '', userId: '' };
+export class WishItemComponent {
+  @Input() public item: Wish = {
+    id: 0,
+    name: '',
+    description: '',
+    userId: '',
+    assignedTo: [],
+    status: 0,
+    quantity: 1,
+  };
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, public userService: UserService) {}
 
   openDialog(wish?: Wish): void {
-    const data = { ...wish };
+    const data = wish;
     const dialogRef = this.dialog.open(ItemDetailsDialogComponent, {
       data,
+      maxHeight: '90vh',
+      maxWidth: '100vw',
     });
 
     dialogRef.afterClosed().subscribe((result) => {});
   }
-
-  ngOnInit(): void {}
 }

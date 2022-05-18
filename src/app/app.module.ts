@@ -37,6 +37,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
@@ -44,6 +45,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FriendWishListComponent } from './pages/friends/friend-wish-list/friend-wish-list.component';
 import { AssignDialogComponent } from './shared/dialogs/item-details-dialog/assign-dialog/assign-dialog.component';
+import { FloorPipe } from './pipes/floor.pipe';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import { AssignDialogComponent } from './shared/dialogs/item-details-dialog/assi
     FriendsComponent,
     FriendWishListComponent,
     AssignDialogComponent,
+    FloorPipe,
   ],
   imports: [
     AppRoutingModule,
@@ -79,6 +82,7 @@ import { AssignDialogComponent } from './shared/dialogs/item-details-dialog/assi
     MatInputModule,
     MatListModule,
     MatMenuModule,
+    MatProgressBarModule,
     MatProgressSpinnerModule,
     MatSliderModule,
     MatTableModule,
