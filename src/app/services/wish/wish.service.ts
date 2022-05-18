@@ -77,12 +77,14 @@ export class WishService implements OnDestroy {
   }
 
   assignUser(wishId: number, amount: number) {
-    let wish = this.wishes.find((w) => w.id === wishId);
-    if (wish && amount > 0) {
-      wish.status += amount;
-      wish.assignedTo.push({ user: this.user.login, value: amount });
-      this.wishesSubject.next([...this.wishes]);
-      this.updateWish.next({ ...wish });
+    if (this.user) {
+      let wish = this.wishes.find((w) => w.id === wishId);
+      if (wish && amount > 0) {
+        wish.status += amount;
+        wish.assignedTo.push({ user: this.user.login, value: amount });
+        this.wishesSubject.next([...this.wishes]);
+        this.updateWish.next({ ...wish });
+      }
     }
   }
 

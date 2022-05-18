@@ -167,6 +167,35 @@ export const wishes: Wish[] = [
     status: 0,
     quantity: 3,
   },
+  {
+    id: 9,
+    name: 'Office chair',
+    userId: 'leianeale',
+    description: '',
+    assignedTo: [
+      {
+        user: 'joedoe',
+        value: 2000,
+      },
+    ],
+    price: 20000,
+    status: 2000,
+    quantity: 1,
+    visibility: true,
+  },
+  {
+    id: 10,
+    name: 'Orchid',
+    userId: 'janedoe',
+    description: '',
+    imageUrl:
+      'https://i.iplsc.com/kwitnacy-storczyk/000ATCZYVJ51QN17-C122-F4.jpg',
+    assignedTo: [],
+    price: 5000,
+    status: 0,
+    quantity: 1,
+    visibility: true,
+  },
 ];
 
 export const users: User[] = [

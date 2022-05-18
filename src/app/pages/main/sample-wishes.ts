@@ -2,7 +2,7 @@ import Wish from 'src/app/models/wish';
 
 export const SampleWishes: Wish[] = [
   {
-    id: -1,
+    id: 1,
     name: 'Travel to the USA',
     price: 500000,
     description: 'I have always dreamed of traveling to America.',
@@ -13,7 +13,7 @@ export const SampleWishes: Wish[] = [
     visibility: true,
   },
   {
-    id: -2,
+    id: 2,
     name: 'Green Tea',
     price: 1000,
     description: 'I love green tea! I will accept any quantity :D',
@@ -29,7 +29,7 @@ export const SampleWishes: Wish[] = [
     visibility: true,
   },
   {
-    id: -3,
+    id: 3,
     name: 'Candles',
     price: 10000,
     description:
@@ -43,7 +43,7 @@ export const SampleWishes: Wish[] = [
     visibility: true,
   },
   {
-    id: -4,
+    id: 4,
     name: 'Mister Ron',
     description: 'My favourite candy.',
     userId: 'adam1234',
@@ -55,7 +55,7 @@ export const SampleWishes: Wish[] = [
     visibility: true,
   },
   {
-    id: -5,
+    id: 5,
     name: 'Mouse',
     price: 10000,
     description: 'My current mouse is breaking down. I use wireless mouses.',
@@ -74,7 +74,7 @@ export const SampleWishes: Wish[] = [
     visibility: true,
   },
   {
-    id: -6,
+    id: 6,
     name: 'Harry Potter, tom 3',
     description: 'I lost 1 of of my 7 books. I need exact this release.',
     userId: 'reader',
@@ -86,7 +86,7 @@ export const SampleWishes: Wish[] = [
     visibility: true,
   },
   {
-    id: -7,
+    id: 7,
     name: 'Xbox',
     price: 149999,
     description:
@@ -100,7 +100,7 @@ export const SampleWishes: Wish[] = [
     visibility: true,
   },
   {
-    id: -8,
+    id: 8,
     name: 'Factorio',
     userId: 'janedoe',
     price: 7000,
