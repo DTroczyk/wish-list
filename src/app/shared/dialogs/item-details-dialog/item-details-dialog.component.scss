@@ -1,3 +1,5 @@
+@import "../../../../assets/styles/variables.scss";
+
 .item {
   overflow: auto;
 }
@@ -25,4 +27,20 @@
 
 .description {
   color: white;
+}
+
+@keyframes warning {
+  0% {
+    color: $warn-color;
+  }
+  50% {
+    color: $accent-color;
+  }
+  100% {
+    color: $warn-color;
+  }
+}
+
+.warning {
+  animation: warning 3s infinite;
 }

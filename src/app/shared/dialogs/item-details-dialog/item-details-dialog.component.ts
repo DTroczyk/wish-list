@@ -72,4 +72,14 @@ export class ItemDetailsDialogComponent {
     }
     return false;
   }
+
+  isDeadlineWarning(): boolean {
+    if (this.wish.deadline) {
+      return (
+        new Date(new Date().setDate(new Date().getDate() + 7)) >
+        new Date(this.wish.deadline)
+      );
+    }
+    return false;
+  }
 }

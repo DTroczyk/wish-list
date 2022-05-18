@@ -143,6 +143,7 @@ export const wishes: Wish[] = [
     assignedTo: [],
     status: 0,
     quantity: 1,
+    deadline: new Date(new Date().setDate(new Date().getDate() + 8)),
   },
   {
     id: 7,
@@ -166,6 +167,7 @@ export const wishes: Wish[] = [
     assignedTo: [],
     status: 0,
     quantity: 3,
+    deadline: new Date(new Date().setDate(new Date().getDate() + 3)),
   },
   {
     id: 9,

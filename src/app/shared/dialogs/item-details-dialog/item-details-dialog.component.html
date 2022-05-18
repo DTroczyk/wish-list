@@ -12,6 +12,12 @@
       Description:
       <p>{{ wish.description }}</p>
     </div>
+    <div class="deadline mb-1" *ngIf="wish.deadline">
+      Deadline:
+      <span [ngClass]="{ warning: isDeadlineWarning() }">{{
+        wish.deadline.toISOString().split("T")[0]
+      }}</span>
+    </div>
   </div>
   <mat-divider></mat-divider>
   <div class="wish-status mt-2 mb-1">
