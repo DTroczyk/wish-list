@@ -88,6 +88,23 @@ export class WishService implements OnDestroy {
     }
   }
 
+  unassignUser(wishId: number) {
+    let wish = this.wishes.find((wish) => wish.id === wishId);
+    if (wish) {
+      let assign = wish.assignedTo.find(
+        (assinger) =>
+          assinger.user.toLowerCase() === this.user.login.toLowerCase()
+      );
+      if (assign) {
+        wish.status -= assign.value;
+        wish.assignedTo = wish.assignedTo.filter(
+          (assigner) => assigner !== assign
+        );
+        this.wishesSubject.next(this.wishes);
+      }
+    }
+  }
+
   wishVisibility(item: Wish): boolean {
     // always show the owner
     if (

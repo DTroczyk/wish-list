@@ -9,6 +9,7 @@ import { users } from 'src/app/models/temp-data';
 import Wish from 'src/app/models/wish';
 import { UserService } from 'src/app/services/user/user.service';
 import { WishService } from 'src/app/services/wish/wish.service';
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog.component';
 import { AssignDialogComponent } from './assign-dialog/assign-dialog.component';
 
 @Component({
@@ -43,6 +44,24 @@ export class ItemDetailsDialogComponent {
     });
   }
 
+  openConfirmDialog() {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Are you sure?',
+        message: 'Do you want to remove yourself from this wish?',
+      },
+      width: '200px',
+      maxWidth: '100vw',
+      maxHeight: '100vh',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === true) {
+        this.wishService.unassignUser(this.wish.id);
+      }
+    });
+  }
+
   wishStatus(wishStatus: number | null): string {
     if (!wishStatus) {
       return 'Free';
@@ -63,13 +82,22 @@ export class ItemDetailsDialogComponent {
     );
   }
 
+  isItLoggedUser(user: string): boolean {
+    if (this.userService.getLoggedUser)
+      return (
+        user.toLowerCase() ===
+        this.userService.getLoggedUser.login?.toLowerCase()
+      );
+    return false;
+  }
+
   isUserAssigned(): boolean {
-    let user = this.userService.getLoggedUser;
-    if (user !== null && user !== undefined) {
-      let login = user.login as string;
-      if (this.wish.assignedTo.find((assigned) => assigned.user === login))
-        return true;
-    }
+    if (
+      this.wish.assignedTo.find((assigned) =>
+        this.isItLoggedUser(assigned.user)
+      )
+    )
+      return true;
     return false;
   }
 

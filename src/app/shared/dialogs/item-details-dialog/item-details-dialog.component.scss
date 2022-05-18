@@ -29,6 +29,14 @@
   color: white;
 }
 
+.action-buttons {
+  margin-left: 10px;
+
+  button {
+    width: 20px;
+  }
+}
+
 @keyframes warning {
   0% {
     color: $warn-color;
