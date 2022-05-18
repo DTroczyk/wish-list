@@ -32,6 +32,15 @@
           : wish.status
         ) | number: "1.0-2"
       }}%
+      {{
+        wish.price && wish.quantity > 1
+          ? "(" +
+            (wish.status / wish.price | floor) +
+            " of " +
+            wish.quantity +
+            " items)"
+          : null
+      }}
     </div>
     <div class="mt-1 text-center" *ngIf="wish.price">
       Collected amount: {{ wish.status / 100 }}zł
@@ -57,7 +66,11 @@
     </mat-accordion>
   </div>
   <div class="buttons mt-2">
-    <button mat-button (click)="openDialog(wish)">
+    <button
+      mat-button
+      (click)="openDialog(wish)"
+      *ngIf="!isWishFilled() && !isUserAssigned()"
+    >
       Fill wish <mat-icon>assignment_turned_in</mat-icon>
     </button>
   </div>

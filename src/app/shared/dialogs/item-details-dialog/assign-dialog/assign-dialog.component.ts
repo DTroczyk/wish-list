@@ -10,24 +10,27 @@ import Wish from 'src/app/models/wish';
 export class AssignDialogComponent {
   public sliderValue: number = 0;
   public amountValue: number = 0;
+  public maxValue: number = 100;
 
   constructor(
     public dialogRef: MatDialogRef<AssignDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Wish
-  ) {}
+  ) {
+    if (this.data.price)
+      this.maxValue = this.data.price * this.data.quantity - this.data.status;
+  }
 
   onSliderChange() {
     if (this.data.price)
       this.amountValue = Math.round(
-        (this.sliderValue / 100) * (this.data.price / 100) * this.data.quantity
+        (this.sliderValue / 100) * (this.maxValue / 100)
       );
   }
 
   onAmountChange() {
-    this.amountValue = Math.round(this.amountValue);
     if (this.data.price)
       this.sliderValue = Math.round(
-        (this.amountValue / (this.data.price)) * 100
+        (this.amountValue / this.maxValue) * 100 * 100
       );
   }
 
@@ -37,7 +40,7 @@ export class AssignDialogComponent {
 
   onSubmit() {
     if (this.data.price && this.sliderValue > 0 && this.amountValue > 0) {
-      this.dialogRef.close(this.amountValue);
+      this.dialogRef.close(this.amountValue * 100);
     } else {
       this.dialogRef.close(true);
     }

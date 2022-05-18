@@ -26,7 +26,7 @@ export class MyWishListComponent implements OnInit {
 
   ngOnInit(): void {
     this.subs.add(
-      this.wishService.wishesSubject.subscribe((res) => {
+      this.wishService.userWishesSubject.subscribe((res) => {
         this.wishes = res;
         this.isWishesLoading = false;
       })

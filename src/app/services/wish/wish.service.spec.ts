@@ -18,7 +18,7 @@ describe('WishService', () => {
 
   it('should be set wishes', fakeAsync(() => {
     let wishes: Wish[] = [];
-    let subs = service.wishesSubject.subscribe((res) => (wishes = res));
+    let subs = service.userWishesSubject.subscribe((res) => (wishes = res));
     tick(10000);
     expect(wishes.length).toEqual(0);
 
@@ -31,7 +31,7 @@ describe('WishService', () => {
 
   it('should add the wish', fakeAsync(() => {
     let wishes: Wish[] = [];
-    let subs = service.wishesSubject.subscribe((res) => (wishes = res));
+    let subs = service.userWishesSubject.subscribe((res) => (wishes = res));
     service.setWishes([...SampleWishes]);
     tick(10000);
     expect(wishes.length).toEqual(7);
@@ -53,7 +53,7 @@ describe('WishService', () => {
 
   it('should edit the wish', fakeAsync(() => {
     let wishes: Wish[] = [];
-    let subs = service.wishesSubject.subscribe((res) => (wishes = res));
+    let subs = service.userWishesSubject.subscribe((res) => (wishes = res));
     service.setWishes([...SampleWishes]);
     tick(10000);
     expect(wishes.length).toEqual(7);
@@ -77,7 +77,7 @@ describe('WishService', () => {
 
   it('should remove the wish', fakeAsync(() => {
     let wishes: Wish[] = [];
-    let subs = service.wishesSubject.subscribe((res) => (wishes = res));
+    let subs = service.userWishesSubject.subscribe((res) => (wishes = res));
     service.setWishes([...SampleWishes]);
     tick(10000);
     expect(wishes.length).toEqual(7);

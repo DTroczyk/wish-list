@@ -23,7 +23,7 @@ export class WishItemComponent {
   constructor(public dialog: MatDialog, public userService: UserService) {}
 
   openDialog(wish?: Wish): void {
-    const data = { ...wish };
+    const data = wish;
     const dialogRef = this.dialog.open(ItemDetailsDialogComponent, {
       data,
       maxHeight: '90vh',

@@ -45,6 +45,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { FriendWishListComponent } from './pages/friends/friend-wish-list/friend-wish-list.component';
 import { AssignDialogComponent } from './shared/dialogs/item-details-dialog/assign-dialog/assign-dialog.component';
+import { FloorPipe } from './pipes/floor.pipe';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { AssignDialogComponent } from './shared/dialogs/item-details-dialog/assi
     FriendsComponent,
     FriendWishListComponent,
     AssignDialogComponent,
+    FloorPipe,
   ],
   imports: [
     AppRoutingModule,
