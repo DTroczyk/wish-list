@@ -24,7 +24,7 @@ describe('WishService', () => {
 
     service.setWishes([...SampleWishes]);
     tick(10000);
-    expect(wishes.length).toEqual(7);
+    expect(wishes.length).toEqual(8);
 
     subs.unsubscribe();
   }));
@@ -34,18 +34,21 @@ describe('WishService', () => {
     let subs = service.userWishesSubject.subscribe((res) => (wishes = res));
     service.setWishes([...SampleWishes]);
     tick(10000);
-    expect(wishes.length).toEqual(7);
+    expect(wishes.length).toEqual(8);
 
     let newWish: Wish = {
       id: 16,
       name: 'New Wish',
       description: 'Newest wish on the list',
       userId: 'user',
+      assignedTo: [],
+      quantity: 1,
+      status: 0,
     };
     service.addOrEditWish(newWish);
     tick(10000);
-    expect(wishes.length).toEqual(8);
-    let foundWish = wishes.find((w) => w.id === 8);
+    expect(wishes.length).toEqual(9);
+    let foundWish = wishes.find((w) => w.id === 9);
     expect(foundWish).toEqual(newWish);
 
     subs.unsubscribe();
@@ -56,7 +59,7 @@ describe('WishService', () => {
     let subs = service.userWishesSubject.subscribe((res) => (wishes = res));
     service.setWishes([...SampleWishes]);
     tick(10000);
-    expect(wishes.length).toEqual(7);
+    expect(wishes.length).toEqual(8);
 
     let orgWish = wishes[Math.floor((Math.random() * 10000) % wishes.length)];
     let editedWish = { ...orgWish };
@@ -67,7 +70,7 @@ describe('WishService', () => {
 
     service.addOrEditWish(editedWish);
     tick(10000);
-    expect(wishes.length).toEqual(7);
+    expect(wishes.length).toEqual(8);
 
     let foundWish = wishes.find((w) => w.id === orgWish.id);
     expect(foundWish).not.toBeUndefined();
@@ -80,13 +83,13 @@ describe('WishService', () => {
     let subs = service.userWishesSubject.subscribe((res) => (wishes = res));
     service.setWishes([...SampleWishes]);
     tick(10000);
-    expect(wishes.length).toEqual(7);
+    expect(wishes.length).toEqual(8);
     let wishToRemove =
       wishes[Math.floor((Math.random() * 10000) % wishes.length)];
 
     service.deleteWish(wishToRemove.id);
     tick(10000);
-    expect(wishes.length).toEqual(6);
+    expect(wishes.length).toEqual(7);
     let foundWish = wishes.find((w) => w.id === wishToRemove.id);
     expect(foundWish).toBeUndefined();
   }));
