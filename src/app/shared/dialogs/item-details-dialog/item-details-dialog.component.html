@@ -56,20 +56,22 @@
         <mat-expansion-panel-header>Assigned</mat-expansion-panel-header>
         <mat-list>
           <mat-list-item *ngFor="let assigner of wish.assignedTo">
-            {{ assigner.user }}:
-            {{
-              (wish.price
-                ? (assigner.value / wish.price / wish.quantity) * 100
-                : assigner.value
-              ) | number: "0.0-2"
-            }}%
-            <span *ngIf="wish.price">({{ assigner.value / 100 }} zł)</span>
+            <div>
+              {{ assigner.user }}:
+              {{
+                (wish.price
+                  ? (assigner.value / wish.price / wish.quantity) * 100
+                  : assigner.value
+                ) | number: "0.0-2"
+              }}%
+              <span *ngIf="wish.price">({{ assigner.value / 100 }} zł)</span>
+            </div>
             <div class="action-buttons" *ngIf="isItLoggedUser(assigner.user)">
               <button mat-button (click)="openDialog(wish, true)">
-                <mat-icon color="accent">edit</mat-icon>
+                <mat-icon>edit</mat-icon>
               </button>
               <button mat-button (click)="openConfirmDialog()">
-                <mat-icon color="warn">delete</mat-icon>
+                <mat-icon>delete</mat-icon>
               </button>
             </div>
           </mat-list-item>

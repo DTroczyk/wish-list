@@ -1,7 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import User from 'src/app/models/user';
-import Wish from 'src/app/models/wish';
 import { UserService } from 'src/app/services/user/user.service';
 import { AssignDialogData } from '../item-details-dialog.component';
 

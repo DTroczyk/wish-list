@@ -1,11 +1,9 @@
-import { Component, Inject, OnDestroy } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import {
   MatDialog,
   MatDialogRef,
   MAT_DIALOG_DATA,
 } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
-import { users } from 'src/app/models/temp-data';
 import Wish from 'src/app/models/wish';
 import { UserService } from 'src/app/services/user/user.service';
 import { WishService } from 'src/app/services/wish/wish.service';
