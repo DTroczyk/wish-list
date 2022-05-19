@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { AuthGuard } from './guards/index.guard';
 import { ContactComponent } from './pages/contact/contact.component';
 import { FriendsComponent } from './pages/friends/friends.component';
+import { FriendWishListComponent } from './pages/friends/friend-wish-list/friend-wish-list.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
 import { MessagesComponent } from './pages/messages/messages.component';
@@ -24,28 +25,30 @@ import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-
 import { ItemDetailsDialogComponent } from './shared/dialogs/item-details-dialog/item-details-dialog.component';
 
 // Shared components
+import { AssignDialogComponent } from './shared/dialogs/item-details-dialog/assign-dialog/assign-dialog.component';
+import { FloorPipe } from './pipes/floor.pipe';
 import { WishItemComponent } from './shared/wish-item/wish-item.component';
 
 // Material modules
-import { MatExpansionModule } from '@angular/material/expansion';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { FriendWishListComponent } from './pages/friends/friend-wish-list/friend-wish-list.component';
-import { AssignDialogComponent } from './shared/dialogs/item-details-dialog/assign-dialog/assign-dialog.component';
-import { FloorPipe } from './pipes/floor.pipe';
 
 @NgModule({
   declarations: [
@@ -75,13 +78,16 @@ import { FloorPipe } from './pipes/floor.pipe';
     MatBadgeModule,
     MatButtonModule,
     MatCardModule,
+    MatDatepickerModule,
     MatDialogModule,
     MatDividerModule,
     MatExpansionModule,
+    MatFormFieldModule,
     MatIconModule,
     MatInputModule,
     MatListModule,
     MatMenuModule,
+    MatMomentDateModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatSliderModule,

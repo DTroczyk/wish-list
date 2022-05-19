@@ -1,22 +1,46 @@
 <h1 mat-dialog-title>{{isEditMode ? 'Edit wish' : 'Add wish'}}</h1>
-<div mat-dialog-content class="dialog-content">
+<form mat-dialog-content class="dialog-content">
   <mat-form-field appearance="fill">
     <mat-label>Name</mat-label>
-    <input matInput [(ngModel)]="data.name" />
+    <input matInput [(ngModel)]="data.name" name="name" />
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Price</mat-label>
-    <input matInput type="number" [(ngModel)]="data.price" />
+    <input matInput type="number" [(ngModel)]="data.price" name="price" />
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Description</mat-label>
-    <textarea matInput type="number" [(ngModel)]="data.description"> </textarea>
+    <textarea
+      matInput
+      type="number"
+      [(ngModel)]="data.description"
+      name="description"
+    >
+    </textarea>
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Image Url</mat-label>
-    <textarea matInput type="number" [(ngModel)]="data.imageUrl"> </textarea>
+    <textarea
+      matInput
+      type="number"
+      [(ngModel)]="data.imageUrl"
+      name="imageUrl"
+    >
+    </textarea>
   </mat-form-field>
-</div>
+  <mat-form-field appearance="fill">
+    <mat-label>Deadline</mat-label>
+    <input
+      matInput
+      [min]="todayDate()"
+      [matDatepicker]="picker"
+      [(ngModel)]="data.deadline"
+      name="deadline"
+    />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+</form>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancel</button>
   <button mat-button [mat-dialog-close]="data">Save</button>
