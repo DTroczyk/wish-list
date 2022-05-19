@@ -26,8 +26,8 @@ export class ItemDetailsDialogComponent {
     private userService: UserService
   ) {}
 
-  openDialog(wish: Wish): void {
-    const data = { ...wish };
+  openDialog(wish: Wish, isEditMode?: boolean): void {
+    const data: AssignDialogData = { wish: { ...wish }, isEditMode };
     const dialogRef = this.dialog.open(AssignDialogComponent, {
       data,
       width: '400px',
@@ -110,4 +110,9 @@ export class ItemDetailsDialogComponent {
     }
     return false;
   }
+}
+
+export interface AssignDialogData {
+  wish: Wish;
+  isEditMode?: boolean;
 }
