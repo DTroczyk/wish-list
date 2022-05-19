@@ -1,5 +1,5 @@
 import { Injectable, OnDestroy } from '@angular/core';
-import { BehaviorSubject, Subject, Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { wishes } from 'src/app/models/temp-data';
 import User from 'src/app/models/user';
 import Wish from 'src/app/models/wish';
@@ -12,37 +12,40 @@ import { UserService } from '../user/user.service';
 export class WishService implements OnDestroy {
   public userWishesSubject: BehaviorSubject<Wish[]>;
   public wishesSubject: BehaviorSubject<Wish[]>;
-  public updateWish: Subject<Wish>;
 
   private userWishes!: Wish[];
   private user!: User;
   private wishes!: Wish[];
   private subs: Subscription;
+  private wishesDataBase: Wish[] = [...wishes];
 
   constructor(private userService: UserService) {
     this.subs = new Subscription();
     this.userWishesSubject = new BehaviorSubject<Wish[]>([]);
     this.wishesSubject = new BehaviorSubject<Wish[]>([]);
-    this.updateWish = new Subject<Wish>();
     this.subs.add(
       this.userService.userSubject.subscribe((res) => {
         this.user = res.user;
-        this.setWishes(res.user?.wishes);
+        if (this.user) {
+          this.getUserWishes();
+        }
       })
     );
   }
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.subs.unsubscribe();
+  }
 
-  setWishes(wishes: Wish[]) {
-    if (wishes) {
-      this.userWishes = wishes;
-      this.userWishesSubject.next([...this.userWishes]);
-    }
+  getUserWishes() {
+    this.userWishes = this.wishesDataBase.filter(
+      (wish) => wish.userId.toLowerCase() === this.user.login.toLowerCase()
+    );
+    this.userWishesSubject.next([...this.userWishes]);
   }
 
   getWishes() {
-    this.wishes = wishes.filter(
+    this.wishes = this.wishesDataBase.filter(
       (wish) => wish.userId.toLowerCase() !== this.user.login.toLowerCase()
     );
     this.wishesSubject.next([...this.wishes]);
@@ -50,21 +53,26 @@ export class WishService implements OnDestroy {
 
   addOrEditWish(wish: Wish) {
     setTimeout(() => {
-      if (wish && this.userWishes) {
+      if (wish && this.wishesDataBase) {
         if (wish.price) wish.price = wish.price * 100;
 
-        if (this.userWishes.find((w) => w.id === wish.id)) {
-          this.userWishes = this.userWishes.map((w) =>
+        if (this.wishesDataBase.find((w) => w.id === wish.id)) {
+          this.wishesDataBase = this.wishesDataBase.map((w) =>
             w.id === wish.id ? (w = wish) : w
           );
         } else {
           // Set id
-          if (this.userWishes)
-            wish.id = this.userWishes[this.userWishes.length - 1].id + 1;
+          if (this.wishesDataBase)
+            wish.id =
+              this.wishesDataBase[this.wishesDataBase.length - 1].id + 1;
+          wish.userId = this.user.login;
+          wish.assignedTo = [];
+          wish.status = 0;
 
-          this?.userWishes.push(wish);
+          this.wishesDataBase.push(wish);
         }
-        this.userWishesSubject.next([...this.userWishes]);
+        this.getUserWishes();
+        this.getWishes();
       }
     }, 1000);
   }
@@ -93,7 +101,6 @@ export class WishService implements OnDestroy {
           wish.assignedTo.push({ user: this.user.login, value: amount });
         }
         this.wishesSubject.next([...this.wishes]);
-        this.updateWish.next({ ...wish });
       }
     }
   }

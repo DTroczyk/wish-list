@@ -1,9 +1,7 @@
-import { Injectable, OnDestroy, OnInit } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { users } from 'src/app/models/temp-data';
 import User, { PublicUser } from 'src/app/models/user';
-import Wish from 'src/app/models/wish';
-import { WishService } from '../wish/wish.service';
 import { STATUS_CODE } from './status-code';
 
 @Injectable({
@@ -20,8 +18,9 @@ export class UserService {
     return { ...this.user };
   }
 
+  private userDataBase: User[] = [...users];
   private user!: User | null;
-  private userApi: User[] = users;
+  private userApi: User[] = [...this.userDataBase];
 
   login(username: string, password: string) {
     setTimeout(() => {
