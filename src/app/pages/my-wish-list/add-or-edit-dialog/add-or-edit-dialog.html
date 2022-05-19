@@ -28,6 +28,24 @@
     >
     </textarea>
   </mat-form-field>
+  <div class="container pt-1 pb-3">
+    <h3 class="row">Visibility</h3>
+    <mat-radio-group
+      [(ngModel)]="choosenVisibility"
+      name="visibility"
+      class="row"
+    >
+      <mat-radio-button [value]="0" class="col-12 mt-1"
+        >For friends</mat-radio-button
+      >
+      <mat-radio-button [value]="1" class="col-12 mt-1"
+        >Private</mat-radio-button
+      >
+      <mat-radio-button [value]="2" class="col-12 mt-1"
+        >Specific friends (chips will be below)</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
   <mat-form-field appearance="fill">
     <mat-label>Deadline</mat-label>
     <input
@@ -43,5 +61,5 @@
 </form>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data">Save</button>
+  <button mat-button (click)="onSubmit()">Save</button>
 </div>

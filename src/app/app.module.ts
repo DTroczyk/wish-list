@@ -45,6 +45,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -90,6 +91,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatMomentDateModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
+    MatRadioModule,
     MatSliderModule,
     MatTableModule,
     MatToolbarModule,
