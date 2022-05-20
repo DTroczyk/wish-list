@@ -108,6 +108,16 @@ export class ItemDetailsDialogComponent {
     }
     return false;
   }
+
+  showDate(): string {
+    if (this.wish.deadline)
+      return this.wish.deadline?.toLocaleString('pl-PL', {
+        day: 'numeric',
+        month: 'short',
+        year: 'numeric',
+      });
+    return '';
+  }
 }
 
 export interface AssignDialogData {

@@ -14,9 +14,7 @@
     </div>
     <div class="deadline mb-1" *ngIf="wish.deadline">
       Deadline:
-      <span [ngClass]="{ warning: isDeadlineWarning() }">{{
-        wish.deadline.toISOString().split("T")[0]
-      }}</span>
+      <span [ngClass]="{ warning: isDeadlineWarning() }">{{ showDate() }}</span>
     </div>
   </div>
   <mat-divider></mat-divider>

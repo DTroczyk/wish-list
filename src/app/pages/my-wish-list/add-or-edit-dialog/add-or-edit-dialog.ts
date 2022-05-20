@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import * as moment from 'moment';
 import Wish from 'src/app/models/wish';
 
 @Component({
@@ -67,9 +68,7 @@ export class AddOrEditDialog implements OnInit {
         break;
     }
     this.dialogRef.close(this.data);
-    // if (this.data.deadline) {
-    //   this.data.deadline.setDate(this.data.deadline.getDate() + 1);
-    // }
+    this.data.deadline = moment(this.data.deadline).toDate();
   }
 
   todayDate(): Date {
