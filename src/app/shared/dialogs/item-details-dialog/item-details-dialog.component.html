@@ -3,6 +3,7 @@
   <div class="text-center" *ngIf="wish.imageUrl">
     <img class="image" [src]="wish.imageUrl" />
   </div>
+
   <div class="content">
     <p class="owner">User: {{ wish.userId }}</p>
     <p class="price" *ngIf="wish.price">
@@ -17,6 +18,7 @@
       <span [ngClass]="{ warning: isDeadlineWarning() }">{{ showDate() }}</span>
     </div>
   </div>
+
   <mat-divider></mat-divider>
   <div class="wish-status mt-2 mb-1">
     <span>Status: {{ wishStatus(wish.status) }} </span>
@@ -77,6 +79,7 @@
       </mat-expansion-panel>
     </mat-accordion>
   </div>
+
   <div class="buttons mt-2">
     <button
       mat-button

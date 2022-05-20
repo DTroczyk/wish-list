@@ -27,6 +27,10 @@
 
 .description {
   color: white;
+  p {
+    max-height: 150px;
+    overflow: auto;
+  }
 }
 
 @keyframes warning {
