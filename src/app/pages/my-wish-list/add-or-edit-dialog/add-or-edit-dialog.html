@@ -1,18 +1,40 @@
 <h1 mat-dialog-title>{{isEditMode ? 'Edit wish' : 'Add wish'}}</h1>
-<form mat-dialog-content class="dialog-content">
+<form
+  mat-dialog-content
+  class="dialog-content"
+  [formGroup]="addOrEditFormGroup"
+>
   <mat-form-field appearance="fill">
     <mat-label>Name</mat-label>
-    <input matInput [(ngModel)]="data.name" name="name" />
+    <input
+      matInput
+      [(ngModel)]="data.name"
+      name="name"
+      formControlName="name"
+    />
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Price</mat-label>
-    <input matInput type="number" [(ngModel)]="data.price" name="price" />
+    <input
+      matInput
+      type="number"
+      [(ngModel)]="data.price"
+      name="price"
+      formControlName="price"
+    />
   </mat-form-field>
 
   <mat-form-field appearance="fill">
     <mat-label>Quantity</mat-label>
-    <input matInput type="number" [(ngModel)]="data.quantity" name="quantity" />
+    <input
+      matInput
+      type="number"
+      [(ngModel)]="data.quantity"
+      name="quantity"
+      [min]="1"
+      formControlName="quantity"
+    />
   </mat-form-field>
 
   <mat-form-field appearance="fill">
@@ -22,6 +44,7 @@
       type="number"
       [(ngModel)]="data.description"
       name="description"
+      formControlName="description"
     >
     </textarea>
   </mat-form-field>
@@ -32,15 +55,24 @@
       [(ngModel)]="choosenVisibility"
       name="visibility"
       class="row"
+      formControlName="visibility"
     >
-      <mat-radio-button [value]="0" class="col-12 mt-1"
+      <mat-radio-button
+        [value]="visibilityOptions.ForFriends"
+        class="col-12 mt-1"
         >For friends</mat-radio-button
       >
-      <mat-radio-button [value]="1" class="col-12 mt-1"
+      <mat-radio-button [value]="visibilityOptions.Private" class="col-12 mt-1"
         >Private</mat-radio-button
       >
-      <mat-radio-button [value]="2" class="col-12 mt-1" #specific
-        >Specific friends</mat-radio-button
+      <mat-radio-button [value]="visibilityOptions.Public" class="col-12 mt-1"
+        >Public</mat-radio-button
+      >
+      <mat-radio-button
+        [value]="visibilityOptions.ForSpecificPeople"
+        class="col-12 mt-1"
+        #specific
+        >Specific people only</mat-radio-button
       >
     </mat-radio-group>
   </div>
@@ -85,6 +117,7 @@
       type="number"
       [(ngModel)]="data.imageUrl"
       name="imageUrl"
+      formControlName="imageUrl"
     >
     </textarea>
   </mat-form-field>
@@ -97,12 +130,26 @@
       [matDatepicker]="picker"
       [(ngModel)]="data.deadline"
       name="deadline"
+      formControlName="deadline"
     />
+    <mat-datepicker-toggle
+      matSuffix
+      (click)="clearDate()"
+      *ngIf="data.deadline"
+    >
+      <mat-icon matDatepickerToggleIcon>clear</mat-icon>
+    </mat-datepicker-toggle>
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 </form>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button (click)="onSubmit()">Save</button>
+  <button
+    mat-button
+    (click)="onSubmit()"
+    [disabled]="addOrEditFormGroup.status !== 'VALID'"
+  >
+    Save
+  </button>
 </div>

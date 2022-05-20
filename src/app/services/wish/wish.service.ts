@@ -78,10 +78,10 @@ export class WishService implements OnDestroy {
   }
 
   deleteWish(wishId: number) {
-    if (this.userWishes) {
-      this.userWishes = this.userWishes.filter((w) => w.id !== wishId);
-      this.userWishesSubject.next([...this.userWishes]);
-    }
+    this.wishesDataBase = this.wishesDataBase.filter((w) => w.id !== wishId);
+
+    this.getUserWishes();
+    this.getWishes();
   }
 
   assignUser(wishId: number, amount: number) {

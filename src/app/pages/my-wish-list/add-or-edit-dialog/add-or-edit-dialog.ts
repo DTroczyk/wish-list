@@ -6,7 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -24,6 +24,7 @@ export class AddOrEditDialog implements OnInit {
   public isEditMode = true;
 
   public choosenVisibility!: VisibilityOptions;
+  public visibilityOptions = VisibilityOptions;
 
   public choosenFriends: string[] = [];
   public friendCtrl = new FormControl();
@@ -35,7 +36,8 @@ export class AddOrEditDialog implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<AddOrEditDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Wish,
-    private userService: UserService
+    private userService: UserService,
+    private formBuilder: FormBuilder
   ) {
     if (userService.getLoggedUser.friends)
       this.friendsList = [...userService.getLoggedUser.friends];
@@ -65,17 +67,18 @@ export class AddOrEditDialog implements OnInit {
       case undefined:
         this.choosenVisibility = VisibilityOptions.ForFriends;
         break;
-      case []:
-        this.choosenVisibility = VisibilityOptions.ForFriends;
-        break;
       case false:
         this.choosenVisibility = VisibilityOptions.Private;
         break;
-      case length > 0:
-        this.choosenVisibility = VisibilityOptions.ForSpecificPeople;
-        break;
       case true:
         this.choosenVisibility = VisibilityOptions.Public;
+        break;
+      default:
+        if (this.data.visibility.length > 0) {
+          this.choosenVisibility = VisibilityOptions.ForSpecificPeople;
+        } else {
+          this.choosenVisibility = VisibilityOptions.ForFriends;
+        }
         break;
     }
     if (this.data.price) this.data.price = this.data.price / 100;
@@ -100,12 +103,21 @@ export class AddOrEditDialog implements OnInit {
         this.data.visibility = true;
         break;
     }
+    if (this.data.deadline)
+      this.data.deadline = moment(this.data.deadline).toDate();
+    if (this.data.quantity <= 0) {
+      this.data.quantity = 1;
+    }
+
     this.dialogRef.close(this.data);
-    this.data.deadline = moment(this.data.deadline).toDate();
   }
 
   todayDate(): Date {
     return new Date();
+  }
+
+  clearDate() {
+    this.data.deadline = undefined;
   }
 
   add(event: MatChipInputEvent): void {
@@ -156,6 +168,17 @@ export class AddOrEditDialog implements OnInit {
       );
     return [];
   }
+
+  //Form Control
+  public addOrEditFormGroup = this.formBuilder.group({
+    name: ['', Validators.required],
+    price: [''],
+    quantity: ['', Validators.required],
+    description: ['', Validators.required],
+    visibility: ['', Validators.required],
+    imageUrl: [''],
+    deadline: [''],
+  });
 }
 
 export enum VisibilityOptions {
