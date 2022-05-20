@@ -37,7 +37,8 @@ export class MyWishListComponent implements OnInit {
     const data = { ...wish };
     const dialogRef = this.dialog.open(AddOrEditDialog, {
       data,
-      width: '400px',
+      maxWidth: '100vw',
+      width: '600px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

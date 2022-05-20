@@ -4,10 +4,17 @@
     <mat-label>Name</mat-label>
     <input matInput [(ngModel)]="data.name" name="name" />
   </mat-form-field>
+
   <mat-form-field appearance="fill">
     <mat-label>Price</mat-label>
     <input matInput type="number" [(ngModel)]="data.price" name="price" />
   </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Quantity</mat-label>
+    <input matInput type="number" [(ngModel)]="data.quantity" name="quantity" />
+  </mat-form-field>
+
   <mat-form-field appearance="fill">
     <mat-label>Description</mat-label>
     <textarea
@@ -18,16 +25,7 @@
     >
     </textarea>
   </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Image Url</mat-label>
-    <textarea
-      matInput
-      type="number"
-      [(ngModel)]="data.imageUrl"
-      name="imageUrl"
-    >
-    </textarea>
-  </mat-form-field>
+
   <div class="container pt-1 pb-3">
     <h3 class="row">Visibility</h3>
     <mat-radio-group
@@ -41,11 +39,56 @@
       <mat-radio-button [value]="1" class="col-12 mt-1"
         >Private</mat-radio-button
       >
-      <mat-radio-button [value]="2" class="col-12 mt-1"
-        >Specific friends (chips will be below)</mat-radio-button
+      <mat-radio-button [value]="2" class="col-12 mt-1" #specific
+        >Specific friends</mat-radio-button
       >
     </mat-radio-group>
   </div>
+  <mat-form-field *ngIf="specific.checked" appearance="fill">
+    <mat-label>Choose people</mat-label>
+    <mat-chip-list #chipList>
+      <mat-chip
+        *ngFor="let friend of choosenFriends"
+        (removed)="remove(friend)"
+      >
+        {{friend}}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="Type a login..."
+        #friendInput
+        [formControl]="friendCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-list>
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="selected($event)"
+    >
+      <mat-option
+        *ngFor="let friend of filteredFriends | async"
+        [value]="friend"
+        >{{friend}}</mat-option
+      >
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Image Url</mat-label>
+    <textarea
+      matInput
+      type="number"
+      [(ngModel)]="data.imageUrl"
+      name="imageUrl"
+    >
+    </textarea>
+  </mat-form-field>
+
   <mat-form-field appearance="fill">
     <mat-label>Deadline</mat-label>
     <input

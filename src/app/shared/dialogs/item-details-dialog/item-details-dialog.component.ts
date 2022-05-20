@@ -75,7 +75,8 @@ export class ItemDetailsDialogComponent {
 
   isWishFilled(): boolean {
     return (
-      (this.wish.price && this.wish.status >= this.wish.price) ||
+      (this.wish.price &&
+        this.wish.status >= this.wish.price * this.wish.quantity) ||
       (!this.wish.price && this.wish.status === 100)
     );
   }
@@ -111,7 +112,7 @@ export class ItemDetailsDialogComponent {
 
   showDate(): string {
     if (this.wish.deadline)
-      return this.wish.deadline?.toLocaleString('pl-PL', {
+      return this.wish.deadline?.toLocaleString(undefined, {
         day: 'numeric',
         month: 'short',
         year: 'numeric',

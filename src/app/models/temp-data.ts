@@ -85,7 +85,7 @@ export const wishes: Wish[] = [
     assignedTo: [],
     status: 0,
     quantity: 1,
-    visibility: [],
+    visibility: ['joedoe', 'janedoe'],
   },
   {
     id: 2,
