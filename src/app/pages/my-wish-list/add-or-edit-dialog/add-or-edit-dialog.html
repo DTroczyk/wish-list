@@ -110,6 +110,15 @@
     </mat-autocomplete>
   </mat-form-field>
 
+  <section class="ps-3 pt-2 pb-4">
+    <h3>Limitations</h3>
+    <mat-checkbox
+      [checked]="data.isMaxOne"
+      (change)="data.isMaxOne = !data.isMaxOne"
+      >Max only one person per item</mat-checkbox
+    >
+  </section>
+
   <mat-form-field appearance="fill">
     <mat-label>Image Url</mat-label>
     <textarea

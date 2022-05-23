@@ -39,7 +39,7 @@ export class MyWishListComponent implements OnInit {
       data,
       maxWidth: '100vw',
       width: '600px',
-      maxHeight: '80vh',
+      maxHeight: '85vh',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
