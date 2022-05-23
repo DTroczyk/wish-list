@@ -24,7 +24,10 @@
     <div class="col">Percentage value: {{ sliderValue }}%</div>
     <div class="col">Amount: {{ amountValue }} zł</div>
   </section>
-  <section class="select-values row" *ngIf="data.wish.price">
+  <section
+    class="select-values row"
+    *ngIf="data.wish.price || !data.wish.isMaxOne"
+  >
     <mat-slider
       min="0"
       max="100"
@@ -32,8 +35,9 @@
       [(ngModel)]="sliderValue"
       class="col-12 mt-3"
       (change)="onSliderChange()"
+      *ngIf="data.wish.price"
     ></mat-slider>
-    <mat-form-field class="col-12" color="accent">
+    <mat-form-field class="col-12" color="accent" *ngIf="data.wish.price">
       <mat-label>Type amount</mat-label>
       <input
         type="number"
@@ -42,6 +46,21 @@
         (change)="onAmountChange()"
         min="0"
         [max]="maxValue / 100"
+      />
+    </mat-form-field>
+    <mat-form-field
+      class="col-12"
+      color="accent"
+      *ngIf="!data.wish.isMaxOne && data.wish.quantity > 1"
+    >
+      <mat-label>Type quantity</mat-label>
+      <input
+        type="number"
+        matInput
+        [(ngModel)]="quantityValue"
+        (change)="onQuantityChange()"
+        min="0"
+        [max]="maxQuantity"
       />
     </mat-form-field>
   </section>

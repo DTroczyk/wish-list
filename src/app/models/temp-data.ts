@@ -86,6 +86,7 @@ export const wishes: Wish[] = [
     status: 0,
     quantity: 1,
     visibility: ['joedoe', 'janedoe'],
+    isMaxOne: false,
   },
   {
     id: 2,
@@ -98,7 +99,8 @@ export const wishes: Wish[] = [
     assignedTo: [],
     status: 0,
     quantity: 1,
-    visibility: false,
+    visibility: [],
+    isMaxOne: false,
   },
   {
     id: 3,
@@ -112,6 +114,7 @@ export const wishes: Wish[] = [
     status: 0,
     quantity: 1,
     visibility: [],
+    isMaxOne: false,
   },
   {
     id: 4,
@@ -124,6 +127,7 @@ export const wishes: Wish[] = [
     assignedTo: [],
     status: 0,
     quantity: 1,
+    isMaxOne: false,
   },
   {
     id: 5,
@@ -134,6 +138,7 @@ export const wishes: Wish[] = [
     assignedTo: [],
     status: 0,
     quantity: 1,
+    isMaxOne: false,
   },
   {
     id: 6,
@@ -147,6 +152,7 @@ export const wishes: Wish[] = [
     status: 0,
     quantity: 1,
     deadline: new Date(new Date().setDate(new Date().getDate() + 8)),
+    isMaxOne: false,
   },
   {
     id: 7,
@@ -159,6 +165,7 @@ export const wishes: Wish[] = [
     assignedTo: [],
     status: 0,
     quantity: 1,
+    isMaxOne: false,
   },
   {
     id: 8,
@@ -171,6 +178,7 @@ export const wishes: Wish[] = [
     status: 0,
     quantity: 3,
     deadline: new Date(new Date().setDate(new Date().getDate() + 3)),
+    isMaxOne: true,
   },
   {
     id: 9,
@@ -187,6 +195,7 @@ export const wishes: Wish[] = [
     status: 2000,
     quantity: 1,
     visibility: true,
+    isMaxOne: false,
   },
   {
     id: 10,
@@ -200,6 +209,7 @@ export const wishes: Wish[] = [
     status: 0,
     quantity: 1,
     visibility: true,
+    isMaxOne: false,
   },
   {
     imageUrl:
@@ -212,8 +222,9 @@ export const wishes: Wish[] = [
     assignedTo: [],
     price: 5000,
     status: 0,
-    quantity: 1,
+    quantity: 5,
     visibility: true,
+    isMaxOne: true,
   },
 ];
 

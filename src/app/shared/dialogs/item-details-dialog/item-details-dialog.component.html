@@ -67,7 +67,11 @@
               <span *ngIf="wish.price">({{ assigner.value / 100 }} zł)</span>
             </div>
             <div class="action-buttons" *ngIf="isItLoggedUser(assigner.user)">
-              <button mat-button (click)="openDialog(wish, true)">
+              <button
+                mat-button
+                (click)="openDialog(wish, true)"
+                *ngIf="wish.price || (!wish.price && !wish.isMaxOne)"
+              >
                 <mat-icon>edit</mat-icon>
               </button>
               <button mat-button (click)="openConfirmDialog()">

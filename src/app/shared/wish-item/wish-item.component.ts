@@ -18,6 +18,7 @@ export class WishItemComponent {
     assignedTo: [],
     status: 0,
     quantity: 1,
+    isMaxOne: false,
   };
 
   constructor(public dialog: MatDialog, public userService: UserService) {}

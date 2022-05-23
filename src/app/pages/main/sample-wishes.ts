@@ -11,6 +11,7 @@ export const SampleWishes: Wish[] = [
     status: 18000,
     quantity: 1,
     visibility: true,
+    isMaxOne: false,
   },
   {
     id: 2,
@@ -27,6 +28,7 @@ export const SampleWishes: Wish[] = [
     status: 1500,
     quantity: 3,
     visibility: true,
+    isMaxOne: false,
   },
   {
     id: 3,
@@ -41,6 +43,7 @@ export const SampleWishes: Wish[] = [
     status: 500,
     quantity: 1,
     visibility: true,
+    isMaxOne: false,
   },
   {
     id: 4,
@@ -53,6 +56,7 @@ export const SampleWishes: Wish[] = [
     status: 100,
     quantity: 1,
     visibility: true,
+    isMaxOne: false,
   },
   {
     id: 5,
@@ -72,6 +76,7 @@ export const SampleWishes: Wish[] = [
     status: 2500,
     quantity: 1,
     visibility: true,
+    isMaxOne: false,
   },
   {
     id: 6,
@@ -84,6 +89,7 @@ export const SampleWishes: Wish[] = [
     status: 0,
     quantity: 1,
     visibility: true,
+    isMaxOne: false,
   },
   {
     id: 7,
@@ -98,6 +104,7 @@ export const SampleWishes: Wish[] = [
     status: 1000,
     quantity: 1,
     visibility: true,
+    isMaxOne: false,
   },
   {
     id: 8,
@@ -113,5 +120,6 @@ export const SampleWishes: Wish[] = [
     ],
     status: 2000,
     quantity: 1,
+    isMaxOne: false,
   },
 ];
