@@ -18,34 +18,37 @@ describe('WishService', () => {
 
   it('should be set wishes', fakeAsync(() => {
     let wishes: Wish[] = [];
-    let subs = service.wishesSubject.subscribe((res) => (wishes = res));
+    let subs = service.userWishesSubject.subscribe((res) => (wishes = res));
     tick(10000);
     expect(wishes.length).toEqual(0);
 
     service.setWishes([...SampleWishes]);
     tick(10000);
-    expect(wishes.length).toEqual(7);
+    expect(wishes.length).toEqual(8);
 
     subs.unsubscribe();
   }));
 
   it('should add the wish', fakeAsync(() => {
     let wishes: Wish[] = [];
-    let subs = service.wishesSubject.subscribe((res) => (wishes = res));
+    let subs = service.userWishesSubject.subscribe((res) => (wishes = res));
     service.setWishes([...SampleWishes]);
     tick(10000);
-    expect(wishes.length).toEqual(7);
+    expect(wishes.length).toEqual(8);
 
     let newWish: Wish = {
       id: 16,
       name: 'New Wish',
       description: 'Newest wish on the list',
       userId: 'user',
+      assignedTo: [],
+      quantity: 1,
+      status: 0,
     };
     service.addOrEditWish(newWish);
     tick(10000);
-    expect(wishes.length).toEqual(8);
-    let foundWish = wishes.find((w) => w.id === 8);
+    expect(wishes.length).toEqual(9);
+    let foundWish = wishes.find((w) => w.id === 9);
     expect(foundWish).toEqual(newWish);
 
     subs.unsubscribe();
@@ -53,10 +56,10 @@ describe('WishService', () => {
 
   it('should edit the wish', fakeAsync(() => {
     let wishes: Wish[] = [];
-    let subs = service.wishesSubject.subscribe((res) => (wishes = res));
+    let subs = service.userWishesSubject.subscribe((res) => (wishes = res));
     service.setWishes([...SampleWishes]);
     tick(10000);
-    expect(wishes.length).toEqual(7);
+    expect(wishes.length).toEqual(8);
 
     let orgWish = wishes[Math.floor((Math.random() * 10000) % wishes.length)];
     let editedWish = { ...orgWish };
@@ -67,7 +70,7 @@ describe('WishService', () => {
 
     service.addOrEditWish(editedWish);
     tick(10000);
-    expect(wishes.length).toEqual(7);
+    expect(wishes.length).toEqual(8);
 
     let foundWish = wishes.find((w) => w.id === orgWish.id);
     expect(foundWish).not.toBeUndefined();
@@ -77,16 +80,16 @@ describe('WishService', () => {
 
   it('should remove the wish', fakeAsync(() => {
     let wishes: Wish[] = [];
-    let subs = service.wishesSubject.subscribe((res) => (wishes = res));
+    let subs = service.userWishesSubject.subscribe((res) => (wishes = res));
     service.setWishes([...SampleWishes]);
     tick(10000);
-    expect(wishes.length).toEqual(7);
+    expect(wishes.length).toEqual(8);
     let wishToRemove =
       wishes[Math.floor((Math.random() * 10000) % wishes.length)];
 
     service.deleteWish(wishToRemove.id);
     tick(10000);
-    expect(wishes.length).toEqual(6);
+    expect(wishes.length).toEqual(7);
     let foundWish = wishes.find((w) => w.id === wishToRemove.id);
     expect(foundWish).toBeUndefined();
   }));

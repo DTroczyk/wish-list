@@ -10,8 +10,8 @@
 }
 
 .item {
-  border: solid 1px $main-background;
-  border-radius: 10px;
+  border: solid 2px $main-background;
+  border-radius: 15px 15px 0px 0px;
   transition: 0.5s;
   cursor: pointer;
 }

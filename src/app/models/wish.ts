@@ -5,4 +5,14 @@ export default interface Wish {
   price?: number;
   description: string;
   imageUrl?: string;
+  deadline?: Date;
+  quantity: number;
+  assignedTo: Assigned[];
+  status: number;
+  visibility?: string[] | boolean;
+}
+
+export interface Assigned {
+  user: string;
+  value: number;
 }

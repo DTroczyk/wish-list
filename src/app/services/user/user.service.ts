@@ -2,50 +2,37 @@ import { Injectable, OnDestroy, OnInit } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { users } from 'src/app/models/temp-data';
 import User, { PublicUser } from 'src/app/models/user';
+import Wish from 'src/app/models/wish';
 import { WishService } from '../wish/wish.service';
 import { STATUS_CODE } from './status-code';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService implements OnDestroy, OnInit {
+export class UserService {
   public userSubject: BehaviorSubject<UserResponse> =
     new BehaviorSubject<UserResponse>({
       user: null as any,
       status: STATUS_CODE.NOT_SEND,
     });
   public friendsSubject = new BehaviorSubject<PublicUser[]>([]);
+  public get getLoggedUser() {
+    return { ...this.user };
+  }
 
-  private _user!: User | null;
-  private subs: Subscription = new Subscription();
+  private user!: User | null;
   private userApi: User[] = users;
-
-  constructor(private wishService: WishService) {}
-
-  ngOnInit(): void {
-    this.subs.add(
-      this.wishService.wishesSubject.subscribe((res) => {
-        if (this._user) this._user.wishes = res;
-      })
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.subs.unsubscribe();
-  }
 
   login(username: string, password: string) {
     setTimeout(() => {
-      this._user = this.userApi.find(
+      this.user = this.userApi.find(
         (user) => user.login.toLowerCase() === username.toLowerCase()
       ) as User | null;
 
-      if (this._user) {
-        // Set the logged in user wishes
-        this.wishService.setWishes([...this._user.wishes]);
+      if (this.user) {
         // Set logged user
         this.userSubject.next({
-          user: { ...this._user },
+          user: { ...this.user },
           status: STATUS_CODE.SUCCES,
         });
         // Set friends
@@ -53,13 +40,13 @@ export class UserService implements OnDestroy, OnInit {
           ...this.userApi.filter((user) =>
             user.friends.find(
               (friend) =>
-                friend.toLowerCase() === this._user?.login.toLowerCase()
+                friend.toLowerCase() === this.user?.login.toLowerCase()
             )
           ),
         ]);
         return true;
       }
-      this._user = null;
+      this.user = null;
 
       this.userSubject.next({
         user: null as any,
@@ -71,6 +58,17 @@ export class UserService implements OnDestroy, OnInit {
 
   logout() {
     this.userSubject.next({ user: null as any, status: STATUS_CODE.NOT_SEND });
+  }
+
+  getUserFriends(login: string): string[] {
+    let user = this.userApi.find(
+      (user) => user.login.toLowerCase() === login.toLowerCase()
+    ) as User;
+    if (user) {
+      return user.friends;
+    } else {
+      return [];
+    }
   }
 }
 
