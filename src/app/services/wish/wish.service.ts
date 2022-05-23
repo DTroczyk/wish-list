@@ -39,7 +39,9 @@ export class WishService implements OnDestroy {
 
   getUserWishes() {
     this.userWishes = this.wishesDataBase.filter(
-      (wish) => wish.userId.toLowerCase() === this.user.login.toLowerCase()
+      (wish) =>
+        wish.userId.toLowerCase() === this.user.login.toLowerCase() &&
+        !wish.isComplete
     );
     this.userWishesSubject.next([...this.userWishes]);
   }
@@ -84,6 +86,15 @@ export class WishService implements OnDestroy {
     this.getWishes();
   }
 
+  completeWish(wishId: number) {
+    let wish = this.wishesDataBase.find((w) => w.id === wishId);
+    if (wish) {
+      wish.isComplete = true;
+      this.getUserWishes();
+      this.getWishes();
+    }
+  }
+
   assignUser(wishId: number, amount: number) {
     if (this.user) {
       let wish = this.wishes.find((w) => w.id === wishId);
@@ -123,6 +134,10 @@ export class WishService implements OnDestroy {
   }
 
   wishVisibility(item: Wish): boolean {
+    // don't show complete wishes
+    if (item.isComplete) {
+      return false;
+    }
     // always show the owner
     if (
       this.user &&
@@ -130,8 +145,26 @@ export class WishService implements OnDestroy {
     ) {
       return true;
     }
+    // show to assigned users
+    if (this.user && item.assignedTo.length > 0) {
+      let isUserAssigned = item.assignedTo.find(
+        (assigned) =>
+          assigned.user.toLowerCase() === this.user.login.toLowerCase()
+      )
+        ? true
+        : false;
+      if (isUserAssigned) return true;
+    }
+    // don't show filled wishes
+    if (
+      item.price
+        ? item.status >= item.price * item.quantity
+        : item.status >= 100
+    ) {
+      return false;
+    }
     // visibility === undefinied = visible for all friends
-    else if (
+    if (
       item.visibility === undefined ||
       (Array.isArray(item.visibility) && item.visibility.length === 0)
     ) {
@@ -143,7 +176,7 @@ export class WishService implements OnDestroy {
         : false;
     }
     // visibility.length > 0 = show for specific people
-    else if (
+    if (
       this.user &&
       Array.isArray(item.visibility) &&
       item.visibility.length > 0
@@ -155,14 +188,14 @@ export class WishService implements OnDestroy {
         : false;
     }
     // visibility === true = show to all users
-    else if (item.visibility === true) {
+    if (item.visibility === true) {
       return true;
     }
     // visibility === false = private
     if (item.visibility === false) {
       return false;
     }
-    // else don't show
+    //  don't show
     return false;
   }
 }

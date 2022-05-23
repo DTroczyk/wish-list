@@ -18,6 +18,7 @@ export class WishItemComponent {
     assignedTo: [],
     status: 0,
     quantity: 1,
+    isComplete: false,
     isMaxOne: false,
   };
 

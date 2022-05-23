@@ -10,6 +10,7 @@ export default interface Wish {
   assignedTo: Assigned[];
   status: number;
   visibility?: string[] | boolean;
+  isComplete: boolean;
   isMaxOne: boolean;
 }
 
