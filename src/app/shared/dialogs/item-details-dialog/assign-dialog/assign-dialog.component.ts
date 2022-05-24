@@ -117,16 +117,13 @@ export class AssignDialogComponent {
       this.sliderValue > 0 &&
       this.amountValue > 0
     ) {
-      console.log('Price is greather than 0.');
       this.dialogRef.close(this.amountValue * 100);
     } else {
       if (this.quantityValue > 0 && !this.data.wish.isMaxOne) {
-        console.log('Quantity is greather than 0 and isMaxOne is false');
         this.dialogRef.close(
           (100 / this.data.wish.quantity) * this.quantityValue
         );
       } else {
-        console.log('Other conditions');
         this.dialogRef.close(true);
       }
     }

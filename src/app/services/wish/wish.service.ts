@@ -56,7 +56,8 @@ export class WishService implements OnDestroy {
   addOrEditWish(wish: Wish) {
     setTimeout(() => {
       if (wish && this.wishesDataBase) {
-        if (wish.price) wish.price = wish.price * 100;
+        if (wish.price && wish.price > 0) wish.price = wish.price * 100;
+        else wish.price = undefined;
 
         if (this.wishesDataBase.find((w) => w.id === wish.id)) {
           this.wishesDataBase = this.wishesDataBase.map((w) =>
