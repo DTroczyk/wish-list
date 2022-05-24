@@ -8,7 +8,7 @@ import { UserResponse, UserService } from './services/user/user.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styleUrls: ['./app.component.scss', '../assets/styles/angular-theme.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
   user: User = null as any;
