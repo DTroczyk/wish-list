@@ -33,7 +33,6 @@ export class AppComponent implements OnInit, OnDestroy {
         (count) => (this.unreadMessagesCount = count)
       )
     );
-    this.userService.login('joedoe', 'h');
   }
 
   ngOnDestroy(): void {
