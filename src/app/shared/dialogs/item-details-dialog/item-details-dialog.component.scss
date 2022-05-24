@@ -1,3 +1,5 @@
+@import "../../../../assets/styles/variables.scss";
+
 .item {
   overflow: auto;
 }
@@ -25,4 +27,32 @@
 
 .description {
   color: white;
+  p {
+    max-height: 150px;
+    overflow: auto;
+  }
+}
+
+@keyframes warning {
+  0% {
+    color: $warn-color;
+  }
+  50% {
+    color: $accent-color;
+  }
+  100% {
+    color: $warn-color;
+  }
+}
+
+.warning {
+  animation: warning 3s infinite;
+}
+
+mat-list-item {
+  display: flex;
+
+  .action-buttons {
+    margin-left: auto;
+  }
 }

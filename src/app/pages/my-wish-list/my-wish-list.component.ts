@@ -37,7 +37,9 @@ export class MyWishListComponent implements OnInit {
     const data = { ...wish };
     const dialogRef = this.dialog.open(AddOrEditDialog, {
       data,
-      width: '400px',
+      maxWidth: '100vw',
+      width: '600px',
+      maxHeight: '85vh',
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -45,7 +47,7 @@ export class MyWishListComponent implements OnInit {
     });
   }
 
-  openConfirmDialog(wish: Wish): void {
+  openConfirmRemoveDialog(wish: Wish): void {
     const dialogData: ConfirmDialogData = {
       title: 'Remove?',
       message: `Do you really want to delete ${wish.name}?`,
@@ -58,6 +60,22 @@ export class MyWishListComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) this.wishService.deleteWish(wish.id);
+    });
+  }
+
+  openConfirmCompleteDialog(wish: Wish): void {
+    const dialogData: ConfirmDialogData = {
+      title: 'Wish complete?',
+      message: `Do you get ${wish.name} from someone? If you click 'Yes', the wish will be hidden.`,
+    };
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: dialogData,
+      width: '400px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) this.wishService.completeWish(wish.id);
     });
   }
 }
