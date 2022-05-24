@@ -32,7 +32,7 @@
               "src/styles.scss"
             ],
             "scripts": [],
-            "baseHref": "https://dtroczyk.github.io/wish-list/"
+            "baseHref": "/"
           },
           "configurations": {
             "production": {
