@@ -1,26 +1,33 @@
 <div class="assign-dialog">
-  <h2 class="text-center">{{ data.name }}</h2>
+  <h2 class="text-center">{{ data.wish.name }}</h2>
   <div class="content">
     <p class="text">
-      You will buy {{ data.name }} for <strong>{{ data.userId }}</strong
+      You will buy {{ data.wish.name }} for
+      <strong>{{ data.wish.userId }}</strong
       >. <br />
     </p>
     <p class="text">
-      If <strong>{{ data.userId }}</strong> has provided a price, choose how
-      much you are able to give and click the check button. Otherwise, just
+      If <strong>{{ data.wish.userId }}</strong> has provided a price, choose
+      how much you are able to give and click the check button. Otherwise, just
       click the button.
     </p>
-    <p class="price" *ngIf="data.price">
-      Price: <span class="price-value">{{ data.price / 100 }} zł</span><br />
-      <span *ngIf="data.quantity > 1">Quantity: {{ data.quantity }}</span>
+    <p class="price" *ngIf="data.wish.price">
+      Price: <span class="price-value">{{ data.wish.price / 100 }} zł</span
+      ><br />
+      <span *ngIf="data.wish.quantity > 1"
+        >Quantity: {{ data.wish.quantity }}</span
+      >
     </p>
   </div>
-  <section class="values row mt-2" *ngIf="data.price">
+  <section class="values row mt-2" *ngIf="data.wish.price">
     <mat-divider class="m-2"></mat-divider>
     <div class="col">Percentage value: {{ sliderValue }}%</div>
     <div class="col">Amount: {{ amountValue }} zł</div>
   </section>
-  <section class="select-values row" *ngIf="data.price">
+  <section
+    class="select-values row"
+    *ngIf="data.wish.price || !data.wish.isMaxOne"
+  >
     <mat-slider
       min="0"
       max="100"
@@ -28,8 +35,9 @@
       [(ngModel)]="sliderValue"
       class="col-12 mt-3"
       (change)="onSliderChange()"
+      *ngIf="data.wish.price"
     ></mat-slider>
-    <mat-form-field class="col-12" color="accent">
+    <mat-form-field class="col-12" color="accent" *ngIf="data.wish.price">
       <mat-label>Type amount</mat-label>
       <input
         type="number"
@@ -40,6 +48,21 @@
         [max]="maxValue / 100"
       />
     </mat-form-field>
+    <mat-form-field
+      class="col-12"
+      color="accent"
+      *ngIf="!data.wish.isMaxOne && data.wish.quantity > 1"
+    >
+      <mat-label>Type quantity</mat-label>
+      <input
+        type="number"
+        matInput
+        [(ngModel)]="quantityValue"
+        (change)="onQuantityChange()"
+        min="1"
+        [max]="maxQuantity"
+      />
+    </mat-form-field>
   </section>
   <section class="action-buttons row">
     <button
@@ -47,8 +70,8 @@
       class="col"
       (click)="onSubmit()"
       [disabled]="
-        (!(sliderValue > 0 && amountValue > 0) && data.price) ||
-        (data.price && amountValue > maxValue / 100 && sliderValue > 100)
+        (!(sliderValue > 0 && amountValue > 0) && data.wish.price) ||
+        (data.wish.price && amountValue > maxValue / 100 && sliderValue > 100)
       "
       color="accent"
     >

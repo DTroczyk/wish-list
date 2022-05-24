@@ -3,6 +3,7 @@
   <div class="text-center" *ngIf="wish.imageUrl">
     <img class="image" [src]="wish.imageUrl" />
   </div>
+
   <div class="content">
     <p class="owner">User: {{ wish.userId }}</p>
     <p class="price" *ngIf="wish.price">
@@ -12,7 +13,12 @@
       Description:
       <p>{{ wish.description }}</p>
     </div>
+    <div class="deadline mb-1" *ngIf="wish.deadline">
+      Deadline:
+      <span [ngClass]="{ warning: isDeadlineWarning() }">{{ showDate() }}</span>
+    </div>
   </div>
+
   <mat-divider></mat-divider>
   <div class="wish-status mt-2 mb-1">
     <span>Status: {{ wishStatus(wish.status) }} </span>
@@ -49,22 +55,38 @@
       <mat-expansion-panel>
         <mat-expansion-panel-header>Assigned</mat-expansion-panel-header>
         <mat-list>
-          <mat-list-item *ngFor="let assigners of wish.assignedTo"
-            >{{ assigners.user }}:
-            {{
-              (wish.price
-                ? (assigners.value / wish.price / wish.quantity) * 100
-                : assigners.value
-              ) | number: "0.0-2"
-            }}%
-            <span *ngIf="wish.price"
-              >({{ assigners.value / 100 }} zł)</span
-            ></mat-list-item
-          >
+          <mat-list-item *ngFor="let assigner of wish.assignedTo">
+            <div>
+              {{ assigner.user }}:
+              {{
+                (wish.price
+                  ? (assigner.value / wish.price / wish.quantity) * 100
+                  : assigner.value
+                ) | number: "0.0-2"
+              }}%
+              <span *ngIf="wish.price">({{ assigner.value / 100 }} zł)</span>
+            </div>
+            <div class="action-buttons" *ngIf="isItLoggedUser(assigner.user)">
+              <button
+                mat-button
+                (click)="openDialog(wish, true)"
+                *ngIf="
+                  wish.price ||
+                  (!wish.price && !wish.isMaxOne && wish.quantity > 1)
+                "
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-button (click)="openConfirmDialog()">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </mat-list-item>
         </mat-list>
       </mat-expansion-panel>
     </mat-accordion>
   </div>
+
   <div class="buttons mt-2">
     <button
       mat-button

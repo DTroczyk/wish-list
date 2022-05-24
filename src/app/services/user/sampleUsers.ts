@@ -8,7 +8,7 @@ export const SampleUsers: User[] = [
     firstName: 'User',
     lastName: 'New',
     wishes: [],
-    friends: [],
+    friends: ['user2'],
     chats: [SampleChats[0], SampleChats[1]],
   },
   {
@@ -17,7 +17,7 @@ export const SampleUsers: User[] = [
     firstName: 'User',
     lastName: 'New',
     wishes: [],
-    friends: [],
+    friends: ['user1'],
     chats: [SampleChats[0], SampleChats[2]],
   },
   {
