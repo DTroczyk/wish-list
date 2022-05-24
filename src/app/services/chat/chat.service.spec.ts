@@ -1,4 +1,4 @@
-import { fakeAsync, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { Subscription } from 'rxjs';
 import Chat from 'src/app/models/chat';
 import { SampleUsers } from '../user/sampleUsers';

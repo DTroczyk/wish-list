@@ -16,7 +16,7 @@ export class FriendWishListComponent implements OnInit {
   ngOnInit(): void {}
 
   openDialog(wish?: Wish): void {
-    const data = { ...wish };
+    const data = wish;
     const dialogRef = this.dialog.open(ItemDetailsDialogComponent, {
       data,
       maxHeight: '90vh',
