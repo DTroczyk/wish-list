@@ -20,7 +20,7 @@ export class AssignDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: AssignDialogData,
     private userService: UserService
   ) {
-    if (this.data.wish.price) {
+    if (this.data.wish.price && this.data.wish.price > 0) {
       if (this.data.wish.isMaxOne) {
         this.maxValue = this.data.wish.price;
         if (
@@ -49,7 +49,7 @@ export class AssignDialogComponent {
       let userStatus = this.data.wish.assignedTo.find(
         (assign) => assign.user.toLowerCase() === user.login?.toLowerCase()
       );
-      if (userStatus && this.data.wish.price) {
+      if (userStatus && this.data.wish.price && this.data.wish.price > 0) {
         this.amountValue = userStatus.value / 100;
         if (this.data.wish.isMaxOne) {
           this.maxValue = this.data.wish.price;
@@ -111,16 +111,22 @@ export class AssignDialogComponent {
   }
 
   onSubmit() {
-    if (this.data.wish.price && this.sliderValue > 0 && this.amountValue > 0) {
+    if (
+      this.data.wish.price &&
+      this.data.wish.price > 0 &&
+      this.sliderValue > 0 &&
+      this.amountValue > 0
+    ) {
+      console.log('Price is greather than 0.');
       this.dialogRef.close(this.amountValue * 100);
     } else {
       if (this.quantityValue > 0 && !this.data.wish.isMaxOne) {
+        console.log('Quantity is greather than 0 and isMaxOne is false');
         this.dialogRef.close(
           (100 / this.data.wish.quantity) * this.quantityValue
         );
-      } else if (this.quantityValue <= 0 && !this.data.wish.isMaxOne) {
-        this.dialogRef.close(0);
       } else {
+        console.log('Other conditions');
         this.dialogRef.close(true);
       }
     }

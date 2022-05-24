@@ -70,7 +70,10 @@
               <button
                 mat-button
                 (click)="openDialog(wish, true)"
-                *ngIf="wish.price || (!wish.price && !wish.isMaxOne)"
+                *ngIf="
+                  wish.price ||
+                  (!wish.price && !wish.isMaxOne && wish.quantity > 1)
+                "
               >
                 <mat-icon>edit</mat-icon>
               </button>
