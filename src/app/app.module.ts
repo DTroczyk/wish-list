@@ -21,6 +21,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { RegisterComponent } from './pages/register/register.component';
 
 // Dialogs
+import { AddOrEditChannelDialogComponent } from './pages/messages/add-or-edit-channel-dialog/add-or-edit-channel-dialog.component';
 import { AddOrEditDialog } from './pages/my-wish-list/add-or-edit-dialog/add-or-edit-dialog';
 import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { ItemDetailsDialogComponent } from './shared/dialogs/item-details-dialog/item-details-dialog.component';
@@ -73,6 +74,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FriendWishListComponent,
     AssignDialogComponent,
     FloorPipe,
+    AddOrEditChannelDialogComponent,
   ],
   imports: [
     AppRoutingModule,

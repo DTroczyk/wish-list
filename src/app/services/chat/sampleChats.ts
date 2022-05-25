@@ -5,6 +5,7 @@ export const SampleChats: Chat[] = [
     id: 1,
     name: 'Chat 1',
     users: ['user1', 'user2'],
+    owner: 'user1',
     messages: [
       {
         chatId: 1,
@@ -21,6 +22,7 @@ export const SampleChats: Chat[] = [
     id: 2,
     name: 'Chat 2',
     users: ['user1', 'user3'],
+    owner: 'user1',
     messages: [
       {
         chatId: 2,
@@ -44,6 +46,7 @@ export const SampleChats: Chat[] = [
     id: 3,
     name: 'Chat 3',
     users: ['user2', 'user3'],
+    owner: 'user2',
     messages: [
       {
         chatId: 2,

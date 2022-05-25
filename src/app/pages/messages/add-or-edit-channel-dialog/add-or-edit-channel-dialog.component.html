@@ -1,0 +1,47 @@
+<h1 mat-dialog-title>{{ isEditMode ? "Edit channel" : "Add channel" }}</h1>
+<form mat-dialog-content class="dialog-content">
+  <mat-form-field>
+    <mat-label>Channel name</mat-label>
+    <input matInput [formControl]="nameCtrl" [(ngModel)]="data.name" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Choose people</mat-label>
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let person of choosenPeople" (removed)="remove(person)">
+        {{ person }}
+        <button matChipRemove>
+          <mat-icon>cancel</mat-icon>
+        </button>
+      </mat-chip>
+      <input
+        placeholder="Type a login..."
+        #peopleInput
+        [formControl]="peopleCtrl"
+        [matAutocomplete]="auto"
+        [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+        (matChipInputTokenEnd)="add($event)"
+      />
+    </mat-chip-list>
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="selected($event)"
+    >
+      <mat-option
+        *ngFor="let person of filteredPeople | async"
+        [value]="person"
+        >{{ person }}</mat-option
+      >
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button
+    mat-button
+    (click)="onSubmit()"
+    [disabled]="nameCtrl.status !== 'VALID'"
+  >
+    Save
+  </button>
+</div>

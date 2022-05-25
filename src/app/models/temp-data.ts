@@ -46,6 +46,7 @@ export const channels: Chat[] = [
     id: 1,
     name: 'Dominik, Joe',
     users: ['DTroczyk', 'joedoe'],
+    owner: 'DTroczyk',
     messages: messages.filter((mes) => mes.chatId === 1),
     lastAccess: [
       { date: new Date(2022, 3, 28, 14, 13, 24), user: 'dtroczyk', chatId: 1 },
@@ -56,6 +57,7 @@ export const channels: Chat[] = [
     id: 2,
     name: 'Joe, Jane',
     users: ['joedoe', 'janedoe'],
+    owner: 'joedoe',
     messages: messages.filter((mes) => mes.chatId === 2),
     lastAccess: [
       { date: new Date(2022, 3, 28, 14, 13, 24), user: 'joedoe ', chatId: 2 },
@@ -66,6 +68,7 @@ export const channels: Chat[] = [
     id: 3,
     name: 'Dominik, Joe, Jane',
     users: ['DTroczyk', 'joedoe', 'janedoe'],
+    owner: 'joedoe',
     messages: messages.filter((mes) => mes.chatId === 3),
     lastAccess: [
       { date: new Date(2022, 3, 28, 14, 13, 24), user: 'dtroczyk', chatId: 3 },

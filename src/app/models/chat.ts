@@ -2,6 +2,7 @@ export default interface Chat {
   id: number;
   name: string;
   users: string[];
+  owner: string;
   messages: Message[];
   lastAccess: LastAccess[];
 }
@@ -17,4 +18,10 @@ export interface LastAccess {
   user: string;
   chatId: number;
   date: Date;
+}
+
+export interface Channel {
+  id: number;
+  name: string;
+  users: string[];
 }

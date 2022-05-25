@@ -1,17 +1,26 @@
 <div class="chat-container container">
   <mat-spinner *ngIf="isChatsLoading"></mat-spinner>
   <div class="row chat-row">
-    <div class="channels col-sm-3 container" *ngIf="!isChatsLoading">
+    <div class="channels col-sm-4 col-md-3 container" *ngIf="!isChatsLoading">
       <div class="channels-column-title row">
         <div class="title" (click)="isChannelsHidden = !isChannelsHidden">
-          Channels
-          <span class="small">
-            <mat-icon>
-              {{
-                isChannelsHidden ? "keyboard_arrow_down" : "keyboard_arrow_up"
-              }}
-            </mat-icon>
-          </span>
+          <div class="">
+            <button
+              mat-icon-button
+              class="channels-add-button"
+              (click)="addOrEditChannel()"
+            >
+              <mat-icon class="add-icon">add_circle</mat-icon>
+            </button>
+            Channels
+            <span class="small">
+              <mat-icon>
+                {{
+                  isChannelsHidden ? "keyboard_arrow_down" : "keyboard_arrow_up"
+                }}
+              </mat-icon>
+            </span>
+          </div>
         </div>
       </div>
       <div class="channels-column-textbox row">
@@ -40,10 +49,19 @@
         </ng-container>
       </div>
     </div>
-    <div class="chat col-sm-9 container" *ngIf="!isChatsLoading">
+    <div class="chat col-sm-8 col-md-9 container" *ngIf="!isChatsLoading">
       <div class="messages-container" *ngIf="selectedChannel">
         <div class="row chat-column-title">
-          <div class="title">{{ selectedChannel.name }}</div>
+          <div class="title">
+            <button
+              mat-icon-button
+              (click)="addOrEditChannel(selectedChannel)"
+              *ngIf="isChatOwner()"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+            {{ selectedChannel.name }}
+          </div>
         </div>
         <div class="row chat-column-content">
           <div
