@@ -1,6 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { Subject, Subscription } from 'rxjs';
+import { TranslateKey } from './constants/translatekey';
 import User from './models/user';
 import { ChatService } from './services/chat/chat.service';
 import { UserResponse, UserService } from './services/user/user.service';
@@ -16,10 +18,13 @@ export class AppComponent implements OnInit, OnDestroy {
   subs: Subscription = new Subscription();
   unreadMessagesCount: number = 0;
 
+  translateKey = TranslateKey + '.';
+
   constructor(
     private userService: UserService,
     private router: Router,
-    private chatService: ChatService
+    private chatService: ChatService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -33,6 +38,8 @@ export class AppComponent implements OnInit, OnDestroy {
         (count) => (this.unreadMessagesCount = count)
       )
     );
+    this.translate.setDefaultLang('pl');
+    this.translate.use('pl');
   }
 
   ngOnDestroy(): void {

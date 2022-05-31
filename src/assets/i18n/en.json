@@ -1,0 +1,13 @@
+{
+  "wishApp": {
+    "contact": "Kontakt",
+    "register": "Register",
+    "login": "Log In",
+    "hi": "Hi",
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Log Out",
+    "myWishList": "My wishes",
+    "friends": "Friends"
+  }
+}
