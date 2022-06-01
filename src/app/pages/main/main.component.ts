@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { TranslateKey } from 'src/app/constants/translatekey';
 import User from 'src/app/models/user';
 import Wish from 'src/app/models/wish';
 import { UserService } from 'src/app/services/user/user.service';
 import { WishService } from 'src/app/services/wish/wish.service';
-import { SampleWishes } from './sample-wishes';
+import { SampleWishesPL, SampleWishesEN } from './sample-wishes';
 
 @Component({
   selector: 'app-main',
@@ -12,14 +14,16 @@ import { SampleWishes } from './sample-wishes';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnInit {
-  public wishes: Wish[] = SampleWishes;
+  public wishes: Wish[] = SampleWishesPL;
+  public translatekey = TranslateKey + '.mainPage.';
 
   public user!: User;
   private subs: Subscription;
 
   constructor(
     private wishService: WishService,
-    private userService: UserService
+    private userService: UserService,
+    private translate: TranslateService
   ) {
     this.user = null as any;
     this.subs = new Subscription();
@@ -30,7 +34,8 @@ export class MainComponent implements OnInit {
         if (this.user) {
           this.wishService.getWishes();
         } else {
-          this.wishes = SampleWishes;
+          if (translate.currentLang === 'en') this.wishes = SampleWishesEN;
+          else if (translate.currentLang === 'pl') this.wishes = SampleWishesPL;
         }
       })
     );
@@ -40,7 +45,8 @@ export class MainComponent implements OnInit {
         if (this.user) {
           this.wishes = [...wishes];
         } else {
-          this.wishes = SampleWishes;
+          if (translate.currentLang === 'en') this.wishes = SampleWishesEN;
+          else if (translate.currentLang === 'pl') this.wishes = SampleWishesPL;
         }
       })
     );

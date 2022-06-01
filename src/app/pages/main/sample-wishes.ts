@@ -1,6 +1,6 @@
 import Wish from 'src/app/models/wish';
 
-export const SampleWishes: Wish[] = [
+export const SampleWishesEN: Wish[] = [
   {
     id: 1,
     name: 'Travel to the USA',
@@ -124,6 +124,140 @@ export const SampleWishes: Wish[] = [
     assignedTo: [
       { user: 'g@mer', value: 1000 },
       { user: 'parent', value: 1000 },
+    ],
+    status: 2000,
+    quantity: 1,
+    isComplete: false,
+    isMaxOne: false,
+  },
+];
+
+export const SampleWishesPL: Wish[] = [
+  {
+    id: 1,
+    name: 'Wycieczka do Ameryki',
+    price: 500000,
+    description: 'Od zawsze chciałem chciałem pojechać do Ameryki.',
+    userId: 'jankowalski',
+    assignedTo: [{ user: 'anna', value: 18000 }],
+    status: 18000,
+    quantity: 1,
+    visibility: true,
+    isComplete: false,
+    isMaxOne: false,
+  },
+  {
+    id: 2,
+    name: 'Zielona herbata',
+    price: 1000,
+    description: 'Uwielbiam zieloną herbatę. Przyjmę każdą ilość :D',
+    userId: 'anna',
+    imageUrl:
+      'https://pl.menu.town/storage/media/dishes_main/2286529/green-tea.jpg',
+    assignedTo: [
+      { user: 'jankowalski', value: 500 },
+      { user: 'magda', value: 1000 },
+    ],
+    status: 1500,
+    quantity: 3,
+    visibility: true,
+    isComplete: false,
+    isMaxOne: false,
+  },
+  {
+    id: 3,
+    name: 'Świece',
+    price: 10000,
+    description:
+      'Lubię świece o zapachu cytrusów. Najlepiej jak będą sojowe, ale nie pogardzę też innymi. Bardzo lubię świece z firmy Sand + Fog.',
+    userId: 'magda',
+    imageUrl:
+      'https://a.allegroimg.com/original/11a32f/b730fb444e6196cccb28a3cdf9fb/Sand-and-fog-sojowa-swieca-Tahitian-Vanilla',
+    assignedTo: [{ user: 'anna', value: 500 }],
+    status: 500,
+    quantity: 1,
+    visibility: true,
+    isComplete: false,
+    isMaxOne: false,
+  },
+  {
+    id: 4,
+    name: 'Mister Ron',
+    description: 'Moje ulubione cukierki.',
+    userId: 'adam1234',
+    imageUrl:
+      'https://wartokupic.co/wp-content/uploads/2016/05/cukierki-mister-ron-smietanka-truskawka.jpg',
+    assignedTo: [{ user: 'g@mer', value: 100 }],
+    status: 100,
+    quantity: 1,
+    visibility: true,
+    isComplete: false,
+    isMaxOne: false,
+  },
+  {
+    id: 5,
+    name: 'Myszka',
+    price: 10000,
+    description:
+      'Moja aktualna myszka psuje się. Używam myszy bezprzewodowych.',
+    userId: 'g@mer',
+    imageUrl:
+      'https://www.ubuy.com.pl/productimg/?image=aHR0cHM6Ly9pNS53YWxtYXJ0aW1hZ2VzLmNvbS9hc3IvZmU0N2E0YWItNWVjYy00MTRmLWFlNDktNmM3YTI2NjllMTFiXzEuNDI0ODllZjBlMzMxYzk3ZjUyNTJkN2ZjMjExMzAzYTEuanBlZw.jpg',
+    assignedTo: [
+      { user: 'adam1234', value: 500 },
+      { user: 'czytelniczka', value: 500 },
+      { user: 'rodzic', value: 500 },
+      { user: 'anna', value: 500 },
+      { user: 'joedoe', value: 500 },
+    ],
+    status: 2500,
+    quantity: 1,
+    visibility: true,
+    isComplete: false,
+    isMaxOne: false,
+  },
+  {
+    id: 6,
+    name: 'Harry Potter, tom 3',
+    description:
+      'Zgubiłam jedną z moich 7 książek. Potrzebuję konkretnie tego wydania co na zdjęciu.',
+    userId: 'czytelniczka',
+    imageUrl:
+      'https://multiszop.pl/Photos/9/LARGE/000044/harry-potter-3-wiezien-azbakanu-audio-cd-mp3-audiobook.jpg',
+    assignedTo: [],
+    status: 0,
+    quantity: 1,
+    visibility: true,
+    isComplete: false,
+    isMaxOne: false,
+  },
+  {
+    id: 7,
+    name: 'Xbox',
+    price: 149999,
+    description:
+      'Mój syn chciał to na urodziny. Ja kupiłem mu już coś innego co chciał.',
+    userId: 'rodzic',
+    imageUrl:
+      'https://cdn.x-kom.pl/i/setup/images/prod/big/product-new-big,,2020/9/pr_2020_9_22_9_32_42_104_00.jpg',
+    assignedTo: [{ user: 'g@mer', value: 1000 }],
+    status: 1000,
+    quantity: 1,
+    visibility: true,
+    isComplete: false,
+    isMaxOne: false,
+  },
+  {
+    id: 8,
+    name: 'Factorio',
+    userId: 'janedoe',
+    price: 7000,
+    description: 'Chcę grać w Factorio',
+    imageUrl:
+      'https://cdn.cloudflare.steamstatic.com/steam/apps/427520/capsule_616x353.jpg?t=1620730652',
+    assignedTo: [
+      { user: 'g@mer', value: 1000 },
+      { user: 'rodzic', value: 1000 },
     ],
     status: 2000,
     quantity: 1,

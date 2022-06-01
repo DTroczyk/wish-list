@@ -1,55 +1,46 @@
 <ng-container *ngIf="!user">
   <header>
-    <h1>Welcome to Wish List</h1>
+    <h1>{{ translatekey + "welcome" | translate }}</h1>
   </header>
   <div class="bootstrap-wrapper">
     <div class="container">
       <div class="row">
         <div class="card-container col-12 col-md-4 g-1">
           <div class="card">
-            <h2 class="title">What is Wish List?</h2>
+            <h2 class="title">
+              {{ translatekey + "whatIsWishList.title" | translate }}
+            </h2>
             <p class="text">
-              Wish List is an application where you can add items you want as a
-              gift. You can also buy gifts for family or friends. You can decide
-              who sees your items. You can show them to your all friends or just
-              some of them. However, remember that your friends can share with
-              others. You don't know who wants to buy gift for you because it's
-              a surprise!
+              {{ translatekey + "whatIsWishList.p1" | translate }}
             </p>
             <p class="text">
-              You or other users can reserve an item for purchase for another
-              user. This prevents the item from being duplicated. And if gift is
-              too expensive, other users can buy it together. So, if you have
-              decided that you want to buy gift for your friend, you have to
-              reserved it.
+              {{ translatekey + "whatIsWishList.p2" | translate }}
             </p>
           </div>
         </div>
         <div class="card-container col-12 col-md-4 g-1">
           <div class="card">
-            <h2 class="title">For Who?</h2>
+            <h2 class="title">
+              {{ translatekey + "forWho.title" | translate }}
+            </h2>
             <p class="text">
-              This app is for people who know what are they need and don't know
-              what wheir friend needs. If they use this app, their problem can
-              be resolved.
+              {{ translatekey + "forWho.p1" | translate }}
             </p>
             <p class="text">
-              Remember, adding a wish does not guarantee that it will be
-              fulfilled. The app allows your friends to see what you want.
-              Fulfillment depends on whether one of them will want to fulfill
-              it.
+              {{ translatekey + "forWho.p2" | translate }}
             </p>
           </div>
         </div>
         <div class="card-container col-12 col-md-4 g-1">
           <div class="card">
-            <h2 class="title">Let's start!</h2>
+            <h2 class="title">
+              {{ translatekey + "letsStart.title" | translate }}
+            </h2>
             <p class="text">
-              To start use the app you must register. Invite friends and family
-              and enjoy. Below this text you can see some (false) wishes.
+              {{ translatekey + "letsStart.p1" | translate }}
             </p>
             <p class="text">
-              If you want try the app, you can use theese logins:
+              {{ translatekey + "letsStart.p2" | translate }}
             </p>
             <ul>
               <li>joedoe</li>
@@ -57,7 +48,7 @@
               <li>shaanferguson</li>
               <li>leianeale</li>
             </ul>
-            <p class="text">Password is any.</p>
+            <p class="text">{{ translatekey + "letsStart.p3" | translate }}</p>
           </div>
         </div>
       </div>
@@ -68,7 +59,10 @@
 <div class="bootstrap-wrapper">
   <div class="container">
     <h2 class="mt-4 text-center">
-      {{ user ? "Wishes" : "Sample wishes" }}
+      {{
+        (user ? translatekey + "wishes" : translatekey + "sampleWishes")
+          | translate
+      }}
     </h2>
     <div class="row g-1">
       <ng-container *ngFor="let item of wishes">

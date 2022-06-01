@@ -8,6 +8,29 @@
     "settings": "Ustawienia",
     "logout": "Wyloguj się",
     "myWishList": "Moje życzenia",
-    "friends": "Znajomi"
+    "friends": "Znajomi",
+
+    "mainPage": {
+      "welcome": "Witaj na Liście Życzeń",
+      "wishes": "Życzenia",
+      "sampleWishes": "Przykładowe życzenia",
+
+      "whatIsWishList": {
+        "title": "Czym jest Lista Życzeń?",
+        "p1": "Lista życzeń to aplikacja gdzie możesz dodać rzeczy które chciałbyś/chciałabyś dostać na prezent. Ty także możesz kupować prezenty dla swojej rodziny lub przyjaciół. Ty decydujesz kto może zobaczyć twoje życzenia. Możesz pokazać je wszystkim twoim znajomym lub tylko kilku osobom. Jednakże pamiętaj, Twoi znajomi będą mogli udostępnić te rzeczy innym (użytkownikom aplikacji). Nie dowiesz się kto chce Ci coś kupić ani kiedy to dostaniesz, bo to niespodzianka!",
+        "p2": "Ty lub inny użytkownik aplikacji możecie zadeklarować że chcecie kupić komuś dany przedmiot. Dzięki temu szanse na kupienie dwa razy tego samego są mniejsze. A jeśli prezent jest zbyt drogi, można zadeklarować konkretną kwotę jaką chce się przeznaczyć na ten prezent i później kupić go wraz z innymi. Więc jeśli zdecydowałeś/zdecydowałaś się kupić prezent dla Twojego znajomego, musisz go zarezerwować."
+      },
+      "forWho": {
+        "title": "Dla kogo?",
+        "p1": "Ta aplikacja jest dla osób, które wiedzą czego chcą oraz nie wiedzą czego chcą ich znajomi. Używanie tej aplikacji może pomóc rozwiązać ten problem.",
+        "p2": "Jednak pamiętaj. Dodanie życzenia nie gwarantuje jego spełnienia. Aplikacja umożliwia Twoim znajomym zobaczyć czego potrzebujesz. To czy życzenie się spełni zależy od tego czy Twoi znajomi będą chcieli je spełnić."
+      },
+      "letsStart": {
+        "title": "Zaczynajmy!",
+        "p1": "Aby zacząć używać aplikacji musisz się zarejestrować. Zaproś swoich znajomych i rodzinę, i korzystajcie! Poniżej tego tekstu znajduje się kilka (zmyślonych) życzeń.",
+        "p2": "Jeśli chcesz przetestować aplikację, możesz użyć poniższych loginów:",
+        "p3": "Hasło jest dowolne."
+      }
+    }
   }
 }
