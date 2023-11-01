@@ -6,7 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -27,7 +27,7 @@ export class AddOrEditDialog implements OnInit {
   public visibilityOptions = VisibilityOptions;
 
   public choosenFriends: string[] = [];
-  public friendCtrl = new FormControl();
+  public friendCtrl = new UntypedFormControl();
   public friendsList: string[];
   public filteredFriends;
   public separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -37,7 +37,7 @@ export class AddOrEditDialog implements OnInit {
     public dialogRef: MatDialogRef<AddOrEditDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Wish,
     private userService: UserService,
-    private formBuilder: FormBuilder
+    private formBuilder: UntypedFormBuilder
   ) {
     if (userService.getLoggedUser.friends)
       this.friendsList = [...userService.getLoggedUser.friends];
