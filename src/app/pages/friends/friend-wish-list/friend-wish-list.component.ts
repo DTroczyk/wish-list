@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import Wish from 'src/app/models/wish';
 import { ItemDetailsDialogComponent } from 'src/app/shared/dialogs/item-details-dialog/item-details-dialog.component';
 
