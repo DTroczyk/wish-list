@@ -53,7 +53,7 @@
   <div class="container pt-1 pb-3">
     <h3 class="row">Visibility</h3>
     <mat-radio-group
-      [(ngModel)]="choosenVisibility"
+      [(ngModel)]="chosenVisibility"
       name="visibility"
       class="row"
       formControlName="visibility"
@@ -79,9 +79,9 @@
   </div>
   <mat-form-field *ngIf="specific.checked" appearance="fill">
     <mat-label>Choose people</mat-label>
-    <mat-chip-list #chipList>
+    <mat-chip-listbox #chipList>
       <mat-chip
-        *ngFor="let friend of choosenFriends"
+        *ngFor="let friend of chosenFriends"
         (removed)="remove(friend)"
       >
         {{friend}}
@@ -94,11 +94,13 @@
         #friendInput
         [formControl]="friendCtrl"
         [matAutocomplete]="auto"
+        />
+        <!--
+          for later fix 2023-11-04
         [matChipInputFor]="chipList"
         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        (matChipInputTokenEnd)="add($event)"
-      />
-    </mat-chip-list>
+        (matChipInputTokenEnd)="add($event)" -->
+    </mat-chip-listbox>
     <mat-autocomplete
       #auto="matAutocomplete"
       (optionSelected)="selected($event)"
