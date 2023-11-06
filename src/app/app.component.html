@@ -35,12 +35,7 @@
       </ng-container>
 
       <ng-template #userLogged>
-        <button
-          class="nav-button"
-          mat-mini-fab
-          color="primary"
-          routerLink="/messages"
-        >
+        <button class="nav-button" mat-button routerLink="/messages">
           <mat-icon
             [matBadge]="unreadMessagesCount"
             [matBadgeHidden]="unreadMessagesCount <= 0"
