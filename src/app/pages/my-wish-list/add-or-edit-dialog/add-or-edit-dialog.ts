@@ -6,11 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormControl,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -27,11 +23,11 @@ import { UserService } from 'src/app/services/user/user.service';
 export class AddOrEditDialog implements OnInit {
   public isEditMode = true;
 
-  public chosenVisibility!: VisibilityOptions;
+  public choosenVisibility!: VisibilityOptions;
   public visibilityOptions = VisibilityOptions;
 
-  public chosenFriends: string[] = [];
-  public friendCtrl = new UntypedFormControl();
+  public choosenFriends: string[] = [];
+  public friendCtrl = new FormControl();
   public friendsList: string[];
   public filteredFriends;
   public separatorKeysCodes: number[] = [ENTER, COMMA];
@@ -41,7 +37,7 @@ export class AddOrEditDialog implements OnInit {
     public dialogRef: MatDialogRef<AddOrEditDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Wish,
     private userService: UserService,
-    private formBuilder: UntypedFormBuilder
+    private formBuilder: FormBuilder
   ) {
     if (userService.getLoggedUser.friends)
       this.friendsList = [...userService.getLoggedUser.friends];
@@ -63,25 +59,25 @@ export class AddOrEditDialog implements OnInit {
       Array.isArray(this.data.visibility) &&
       this.data.visibility.length > 0
     ) {
-      this.chosenFriends = this.data.visibility;
+      this.choosenFriends = this.data.visibility;
     }
     this.friendsList = this._filterFriends();
 
     switch (this.data.visibility) {
       case undefined:
-        this.chosenVisibility = VisibilityOptions.ForFriends;
+        this.choosenVisibility = VisibilityOptions.ForFriends;
         break;
       case false:
-        this.chosenVisibility = VisibilityOptions.Private;
+        this.choosenVisibility = VisibilityOptions.Private;
         break;
       case true:
-        this.chosenVisibility = VisibilityOptions.Public;
+        this.choosenVisibility = VisibilityOptions.Public;
         break;
       default:
         if (this.data.visibility.length > 0) {
-          this.chosenVisibility = VisibilityOptions.ForSpecificPeople;
+          this.choosenVisibility = VisibilityOptions.ForSpecificPeople;
         } else {
-          this.chosenVisibility = VisibilityOptions.ForFriends;
+          this.choosenVisibility = VisibilityOptions.ForFriends;
         }
         break;
     }
@@ -93,7 +89,7 @@ export class AddOrEditDialog implements OnInit {
   }
 
   onSubmit(): void {
-    switch (this.chosenVisibility) {
+    switch (this.choosenVisibility) {
       case VisibilityOptions.ForFriends:
         this.data.visibility = [];
         break;
@@ -101,7 +97,7 @@ export class AddOrEditDialog implements OnInit {
         this.data.visibility = false;
         break;
       case VisibilityOptions.ForSpecificPeople:
-        this.data.visibility = this.chosenFriends;
+        this.data.visibility = this.choosenFriends;
         break;
       case VisibilityOptions.Public:
         this.data.visibility = true;
@@ -129,11 +125,11 @@ export class AddOrEditDialog implements OnInit {
 
     if (
       value &&
-      this.chosenFriends.find(
+      this.choosenFriends.find(
         (friend) => friend.toLowerCase() !== value.toLocaleLowerCase()
       )
     ) {
-      this.chosenFriends.push(value);
+      this.choosenFriends.push(value);
     }
 
     event.chipInput!.clear();
@@ -142,16 +138,16 @@ export class AddOrEditDialog implements OnInit {
   }
 
   remove(friend: string): void {
-    const index = this.chosenFriends.indexOf(friend);
+    const index = this.choosenFriends.indexOf(friend);
 
     if (index >= 0) {
-      this.chosenFriends.splice(index, 1);
+      this.choosenFriends.splice(index, 1);
     }
     this.friendsList = this._filterFriends();
   }
 
   selected(event: MatAutocompleteSelectedEvent): void {
-    this.chosenFriends.push(event.option.viewValue);
+    this.choosenFriends.push(event.option.viewValue);
     this.friendInput.nativeElement.value = '';
     this.friendsList = this._filterFriends();
     this.friendCtrl.setValue(null);
@@ -168,7 +164,7 @@ export class AddOrEditDialog implements OnInit {
   private _filterFriends(): string[] {
     if (this.userService.getLoggedUser.friends)
       return this.userService.getLoggedUser.friends.filter(
-        (friend) => !this.chosenFriends.includes(friend)
+        (friend) => !this.choosenFriends.includes(friend)
       );
     return [];
   }
