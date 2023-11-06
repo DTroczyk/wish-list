@@ -1,5 +1,5 @@
 import User from 'src/app/models/user';
-import { SampleChats } from '../chat/sampleChats';
+import { SampleChats } from './sampleChats';
 
 export const SampleUsers: User[] = [
   {

@@ -1,12 +1,12 @@
 import { fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import Wish from 'src/app/models/wish';
-import { SampleWishes } from './sample-wishes';
+import { SampleWishes } from '../../test/data/sample-wishes';
 import { WishService } from './wish.service';
 
 import User from 'src/app/models/user';
 import { UserResponse, UserService } from '../user/user.service';
-import { SampleUsers } from '../user/sampleUsers';
+import { SampleUsers } from '../../test/data/sampleUsers';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { STATUS_CODE } from '../user/status-code';
 
