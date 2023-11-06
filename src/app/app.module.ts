@@ -54,6 +54,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FriendWishListComponent,
     AssignDialogComponent,
     FloorPipe,
+    NavigationComponent,
   ],
   imports: [
     AppRoutingModule,
