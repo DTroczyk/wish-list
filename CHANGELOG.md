@@ -7,7 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add reactive forms to register form.
+
 ### Changed
 
-- Separate navigation code from App component.
 - Move test data to new folder.
+- Separate navigation code from App component.

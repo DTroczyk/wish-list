@@ -1,28 +1,36 @@
-<form class="register-form container" #form="ngForm" (ngSubmit)="register()">
+<form
+  class="register-form container"
+  [formGroup]="registerUserForm"
+  (ngSubmit)="register()"
+>
   <h1>Register</h1>
   <mat-form-field appearance="fill">
-    <mat-label>Login:</mat-label>
-    <input matInput [(ngModel)]="user.login" name="login" />
+    <mat-label>Login</mat-label>
+    <input matInput name="login" formControlName="login" />
+    <mat-error>{{ getErrorMessage("login") }}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Email:</mat-label>
-    <input matInput [(ngModel)]="user.email" name="email" />
+    <mat-label>Email</mat-label>
+    <input matInput name="email" formControlName="email" />
+    <mat-error>{{ getErrorMessage("email") }}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>First name:</mat-label>
-    <input matInput [(ngModel)]="user.firstName" name="firstName" />
+    <mat-label>First name</mat-label>
+    <input matInput name="firstName" formControlName="firstName" />
+    <mat-error>{{ getErrorMessage("firstName") }}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Last name:</mat-label>
-    <input matInput [(ngModel)]="user.lastName" name="lastName" />
+    <mat-label>Last name</mat-label>
+    <input matInput name="lastName" formControlName="lastName" />
+    <mat-error>{{ getErrorMessage("lastName") }}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Password:</mat-label>
+    <mat-label>Password</mat-label>
     <input
       matInput
       [type]="hide ? 'password' : 'text'"
-      [(ngModel)]="user.password"
       name="password"
+      formControlName="password"
     />
     <button
       mat-icon-button
@@ -33,14 +41,15 @@
     >
       <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
     </button>
+    <mat-error>{{ getErrorMessage("password") }}</mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
-    <mat-label>Repeat password:</mat-label>
+    <mat-label>Repeat password</mat-label>
     <input
       matInput
       [type]="hide ? 'password' : 'text'"
-      [(ngModel)]="repPassword"
-      name="repPassword"
+      name="repeatPassword"
+      formControlName="repeatPassword"
     />
     <button
       mat-icon-button
@@ -51,15 +60,9 @@
     >
       <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
     </button>
+    <mat-error>{{ getErrorMessage("repeatPassword") }}</mat-error>
   </mat-form-field>
   <div class="row">
-    <button
-      mat-raised-button
-      class="col-sm"
-      type="submit"
-      [disabled]="isInputsWrong()"
-    >
-      Register
-    </button>
+    <button mat-raised-button class="col-sm" type="submit">Register</button>
   </div>
 </form>
