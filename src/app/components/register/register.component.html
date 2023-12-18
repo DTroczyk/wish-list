@@ -1,13 +1,8 @@
 <form class="register-form container" #form="ngForm" (ngSubmit)="register()">
   <h1>Register</h1>
   <mat-form-field appearance="fill">
-    <mat-label>Username:</mat-label>
-    <input
-      matInput
-      [(ngModel)]="user.login"
-      name="username"
-      #username="ngModel"
-    />
+    <mat-label>Login:</mat-label>
+    <input matInput [(ngModel)]="user.login" name="login" />
   </mat-form-field>
   <mat-form-field appearance="fill">
     <mat-label>Email:</mat-label>
