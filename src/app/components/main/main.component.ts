@@ -4,7 +4,7 @@ import User from 'src/app/models/user';
 import Wish from 'src/app/models/wish';
 import { UserService } from 'src/app/services/user/user.service';
 import { WishService } from 'src/app/services/wish/wish.service';
-import { SampleWishes } from './sample-wishes';
+import { SampleWishes } from './demo-wishes';
 
 @Component({
   selector: 'app-main',

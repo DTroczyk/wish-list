@@ -10,18 +10,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 // App components
 import { AppComponent } from './app.component';
 import { AuthGuard } from './guards/index.guard';
-import { ContactComponent } from './pages/contact/contact.component';
-import { FriendsComponent } from './pages/friends/friends.component';
-import { FriendWishListComponent } from './pages/friends/friend-wish-list/friend-wish-list.component';
-import { LoginComponent } from './pages/login/login.component';
-import { MainComponent } from './pages/main/main.component';
-import { MessagesComponent } from './pages/messages/messages.component';
-import { MyWishListComponent } from './pages/my-wish-list/my-wish-list.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { RegisterComponent } from './pages/register/register.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { FriendsComponent } from './components/friends/friends.component';
+import { FriendWishListComponent } from './components/friends/friend-wish-list/friend-wish-list.component';
+import { LoginComponent } from './components/login/login.component';
+import { MainComponent } from './components/main/main.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { MyWishListComponent } from './components/my-wish-list/my-wish-list.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RegisterComponent } from './components/register/register.component';
 
 // Dialogs
-import { AddOrEditDialog } from './pages/my-wish-list/add-or-edit-dialog/add-or-edit-dialog';
+import { AddOrEditDialog } from './components/my-wish-list/add-or-edit-dialog/add-or-edit-dialog';
 import { ConfirmDialogComponent } from './shared/dialogs/confirm-dialog/confirm-dialog.component';
 import { ItemDetailsDialogComponent } from './shared/dialogs/item-details-dialog/item-details-dialog.component';
 
@@ -54,6 +54,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FriendWishListComponent,
     AssignDialogComponent,
     FloorPipe,
+    NavigationComponent,
   ],
   imports: [
     AppRoutingModule,

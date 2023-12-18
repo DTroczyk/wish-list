@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import Wish from 'src/app/models/wish';
-import { AddOrEditDialog } from 'src/app/pages/my-wish-list/add-or-edit-dialog/add-or-edit-dialog';
+import { AddOrEditDialog } from 'src/app/components/my-wish-list/add-or-edit-dialog/add-or-edit-dialog';
 import { WishService } from 'src/app/services/wish/wish.service';
 import {
   ConfirmDialogComponent,

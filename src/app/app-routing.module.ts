@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/index.guard';
-import { ContactComponent } from './pages/contact/contact.component';
-import { FriendsComponent } from './pages/friends/friends.component';
-import { LoginComponent } from './pages/login/login.component';
-import { MainComponent } from './pages/main/main.component';
-import { MessagesComponent } from './pages/messages/messages.component';
-import { MyWishListComponent } from './pages/my-wish-list/my-wish-list.component';
-import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { RegisterComponent } from './pages/register/register.component';
+
+import { ContactComponent } from './components/contact/contact.component';
+import { FriendsComponent } from './components/friends/friends.component';
+import { LoginComponent } from './components/login/login.component';
+import { MainComponent } from './components/main/main.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { MyWishListComponent } from './components/my-wish-list/my-wish-list.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   {
